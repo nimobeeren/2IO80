@@ -5,6 +5,8 @@ const db = require('./db/db.js');
 const routes = require('./routes/routes.js').use(app, express, db);
 
 
-let port = process.env.PORT || 80;
+const port = process.env.PORT || 80;
 
 server.listen(port);
+
+console.log("Server running port:", port);
