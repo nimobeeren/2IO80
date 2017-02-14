@@ -3,7 +3,7 @@ module.exports = {
         app.use(express.static('public'));
 
         app.get('*', (req, res) => {
-            res.send("views/home.html");
+            res.sendfile("views/home.html");
         });
     }
 };

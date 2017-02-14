@@ -19,5 +19,3 @@ module.exports.query(db => {
         url: "/programs/bachelor-college/majors/psychology-technology"
     });
 });
-
-
