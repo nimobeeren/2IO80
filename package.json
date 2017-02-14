@@ -1,0 +1,23 @@
+{
+  "name": "hypermedia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kedarkasarekar/2IO80.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.14.0",
+    "mongodb": "2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/kedarkasarekar/2IO80/issues"
+  },
+  "homepage": "https://github.com/kedarkasarekar/2IO80#readme"
+}
