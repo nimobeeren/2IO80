@@ -17,7 +17,7 @@ gulp.task('sass', () => {
         .pipe(sourcemaps.init())
         .pipe(sass(sassSettings)
             .on('error', notify.onError(function (error) {
-                return sass.logError;
+                return error.message;
             }))
         )
         .pipe(sourcemaps.write())
