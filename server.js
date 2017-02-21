@@ -3,7 +3,9 @@ const app = express();
 const server = require('http').createServer(app);
 const db = require('./db/db.js');
 const routes = require('./routes/routes.js').use(app, express, db);
-const mustache  = require('mustache-express');
+const mustache = require('mustache-express');
+const scraper = require('scraperjs');
+const cheerio = require('cheerio');
 const port = process.env.PORT || 80;
 
 server.listen(port);
@@ -11,13 +13,13 @@ server.listen(port);
 app.engine('html', mustache());
 app.set('view engine', 'mustache');
 
-console.log("Server running port:", port);
+console.log('Server running port:', port);
 
 // Web Science URLs
-// const urls = [
-//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/',
+const urls = [
+    // 'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/program-learning-objectives/',
-//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/',
+    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/basic-courses/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/elective-courses-and-packages/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/coaching/',
@@ -29,7 +31,7 @@ console.log("Server running port:", port);
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/regulationsforms/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/advisors-tutors/',
 //     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/contact/'
-// ];
+];
 
 // P&T URLs
 // const urls = [
@@ -127,23 +129,22 @@ urls.forEach(url => {
     page['program'] = 'Human-Technology Interaction';
 
     sc.scrape(function ($) {
-        return $("main").map(function () {
+        return $('article').map(function () {
             return $(this).html();
         }).get();
-    }).then(function (main) {
-        // Concatenate all the lines
-        main = main.reduce((result, line) => {
-            return result += line;
-        }, "");
+    }).then(function (article) {
+        // Only take the first article element
+        article = '<article>' + article[0] + '</article>';
 
         // Remove useless newlines and tabs
-        main = main.replace(/\t|\n/g, " ");
+        article = article.replace(/\t/g, '');
+        article = article.replace(/(\n)+/g, '\n');
+
+        // Save article HTML
+        page['contents'] = article;
 
         // Load page source
-        let $ = cheerio.load(main);
-
-        // Get main content
-        page['contents'] = $.text();
+        let $ = cheerio.load(article);
 
         // Get headings
         let headings = $('h3');
@@ -151,18 +152,22 @@ urls.forEach(url => {
             try {
                 page['headings'].push(header.children[0].data.trim());
             } catch (ex) {
-                console.log("header is wrong", url);
+                console.log('header is wrong on page', url);
             }
         });
 
+        // Get page title
         try {
-            page['title'] = $('h1')['0'].children[0].data.trim();
+            page['title'] = $('h1')['0'].children[0].data.trim(); // this may not work for all pages
         } catch (ex) {
-            console.log("title is wrong", url);
+            console.log('title is wrong on page', url);
         }
 
+        // Add page to search database
+        console.log(page);
+        console.log(page['contents']);
         db.query(db => {
-            db.collection("search").insertOne(page);
+            // db.collection('search').insertOne(page);
         });
     });
 });
