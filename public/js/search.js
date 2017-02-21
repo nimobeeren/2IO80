@@ -2,8 +2,8 @@ let pages = [];
 
 /** Search query evaluation logic:
  *
- * Split the query into individual words, count the occurrences of the word.
- * The sum of the words of the query is the evaluation of the query.
+ * Split the query into individual words, count the occurrences of the word in the page.
+ * The sum of the words of the query in the page is the evaluation of the query.
  *
  * Splitting of the query into individual words is not done for the contents evaluation,
  * because of words like "the, a, is" etc..
@@ -31,7 +31,9 @@ function search(query) {
     if (pages.length == 0) {
         return log("Search database has not been updated");
     } else {
-        return pages.sort((a, b) => {
+        let start = new Date().getTime();
+
+        let search = pages.sort((a, b) => {
             let aTitle = evaluateTitle(a, query), bTitle = evaluateTitle(b, query);
 
             if (aTitle == bTitle) {
@@ -44,6 +46,10 @@ function search(query) {
             }
             return bTitle - aTitle;
         }).map(x => syntaxHighlight(JSON.stringify(x))).slice(0, 9);
+
+        let run = new Date().getTime() - start;
+
+        return "Took: " + run + "ms <br>" + search;
     }
 }
 

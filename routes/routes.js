@@ -17,8 +17,28 @@ module.exports = {
             }
         });
 
+        app.get('/', (req, res) => {
+            res.render('index.html');
+        });
+
+        app.get('/search', (req, res) => {
+            res.render('search.html');
+        });
+
         app.get('*', (req, res) => {
-            res.sendfile("views/" + req.originalUrl);
+            let success = false;
+            db.query(db => {
+                db.collection('search').find({url: new RegExp(req.path.slice(1), 'gi')}).forEach(obj => {
+                    !success && res.render("page.html", {
+                        title: obj.title,
+                        contents: obj.contents,
+                        headings: obj.headings
+                    });
+                    success = true;
+                }, () => {
+                    !success && res.status(404).send("404");
+                })
+            });
         });
     }
 };
