@@ -28,3 +28,5 @@ $susy: map-merge(layout(map-get($susy-breakpoints, small)), $susy-settings);
         @content;
     }
 }
+
+@import "blocks/home-featured";
