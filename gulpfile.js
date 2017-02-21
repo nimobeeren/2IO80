@@ -32,7 +32,7 @@ gulp.task('serve', function() {
     // var server = gls.static(['views', 'public']);
     server.start();
 
-    gulp.watch('./public/scss/**/*.scss', ['sass'], function (file) {
+    gulp.watch(['./public/scss/**/*.scss', './views/**/*.html'], ['sass'], function (file) {
         console.log("reloaded!!!!");
         server.notify.apply(server, [file]);
     });
