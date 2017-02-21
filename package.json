@@ -19,5 +19,16 @@
   "bugs": {
     "url": "https://github.com/kedarkasarekar/2IO80/issues"
   },
-  "homepage": "https://github.com/kedarkasarekar/2IO80#readme"
+  "homepage": "https://github.com/kedarkasarekar/2IO80#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-live-server": "0.0.30",
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "normalize.css": "^5.0.0",
+    "sass-module-importer": "^1.4.0",
+    "susy": "^2.2.12"
+  }
 }
