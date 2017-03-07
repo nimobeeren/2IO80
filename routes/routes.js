@@ -21,6 +21,10 @@ module.exports = {
             res.render('index.html');
         });
 
+        app.get('/styleguide', (req, res) => {
+            res.render('styleguide.html');
+        });
+
         app.get('/search', (req, res) => {
             res.render('search.html');
         });

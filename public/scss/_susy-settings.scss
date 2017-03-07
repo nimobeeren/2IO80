@@ -1,0 +1,27 @@
+$susy-breakpoints: (
+    small: (
+        layout: (376/16*1em) 4 64/30,
+    ),
+    large: (
+        layout: (1200/16*1em) 12 70/30,
+        media: 960/16*1em
+    )
+);
+
+$susy-settings: (
+    debug: (
+        image: show,
+        output: overlay,
+        toggle: top right
+    )
+);
+
+$susy: map-merge(layout(map-get($susy-breakpoints, small)), $susy-settings);
+
+@mixin bp($susy-breakpoint){
+    $bp: map-get($susy-breakpoints, $susy-breakpoint);
+
+    @include susy-breakpoint(map-get($bp, media), map-get($bp, layout)){
+        @content;
+    }
+}

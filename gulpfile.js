@@ -1,16 +1,26 @@
 'use strict';
 
 const gulp = require('gulp');
+
+// css
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const moduleImporter = require('sass-module-importer');
-const gls = require('gulp-live-server');
+
+// svg
+const svgSymbols = require('gulp-svg-symbols');
+const svgmin = require('gulp-svgmin');
+
+// server
 const notify = require("gulp-notify");
+const browserSync = require('browser-sync');
+const nodemon = require('gulp-nodemon');
 
 const sassSettings = {
     importer: moduleImporter()
 }
+const BROWSER_SYNC_RELOAD_DELAY = 500;
 
 gulp.task('sass', () => {
     return gulp.src('./public/scss/*.scss')
@@ -22,23 +32,56 @@ gulp.task('sass', () => {
         )
         .pipe(sourcemaps.write())
         .pipe(autoprefixer())
-        .pipe(gulp.dest('./public/css'));
+        .pipe(gulp.dest('./public/css'))
+        .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['sass', 'icons']);
+gulp.task('icons', function () {
+    return gulp.src('public/icons/*.svg')
+        .pipe(svgmin())
+        .pipe(svgSymbols({
+            templates: ['default-svg']
+        }))
+        .pipe(gulp.dest('public'));
+});
 
-gulp.task('serve', function() {
-    var server = gls.new('server.js');
-    // var server = gls.static(['views', 'public']);
-    server.start();
+gulp.task('icons-watch', ['icons'], function (done) {
+    browserSync.reload();
+    done();
+});
 
-    gulp.watch(['./public/scss/**/*.scss', './views/**/*.html'], ['sass'], function (file) {
-        console.log("reloaded!!!!");
-        server.notify.apply(server, [file]);
+gulp.task('default', ['browser-sync']);
+gulp.task('serve', ['sass', 'icons', 'browser-sync']);
+
+var nodemonInstance;
+
+gulp.task('browser-sync', ['nodemon'], function() {
+	browserSync.init(null, {
+		proxy: "http://localhost:80",
+        port: 7000,
+        browser: []
+	});
+
+    gulp.watch('public/icons/*.svg', ['icons-watch']);
+    gulp.watch('public/scss/**/*.scss', ['sass']);
+    gulp.watch('views/**/*.*').on('change', function(){
+        nodemonInstance.emit("restart");
     });
+});
 
-    //
-    // gulp.watch(['views/**/*.html', 'public/**/*.css'], function (file) {
-    //   server.notify.apply(server, [file]);
-    // });
+gulp.task('nodemon', function (cb) {
+	var started = false;
+
+	nodemonInstance = nodemon({
+		script: 'server.js'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
+
+    return nodemonInstance;
 });
