@@ -1,19 +1,17 @@
 $pinkcolor: #d1275a;
-$greycolor: #808080;
 $textfont: "Arial";
 $skewdeg: -16deg;
+
+// feature
 
 .featured{
 @include bp(large){
   @include container;
-}
+  }
 }
 #outerimage {
-/*  margin-left: 100px;
-  margin-right: 100px;*/
   height:800px;
   width:1400px;
-/*  left:-200px;*/
   position: relative;
   -ms-transform: skew($skewdeg,0deg);
   -webkit-transform: skew($skewdeg,0deg);
@@ -21,8 +19,8 @@ $skewdeg: -16deg;
   overflow: hidden;
   z-index: -1;
   @include bp(large){
-  @include span(8);
-}
+    @include span(8);
+    }
 }
 #innerimage {
   position: absolute;
@@ -34,24 +32,26 @@ $skewdeg: -16deg;
   -webkit-transform: skew(-$skewdeg,0deg);
   transform: skew(-$skewdeg,0deg);
   flow: left;
-    z-index: -1;
+  z-index: -1;
 }
 
 .text-block {
-    margin-top: 300px;
-    @include bp(large){
-        @include span(6 last);
-        @include pull(2);
-    }
+  margin-top: 300px;
+  @include bp(large){
+      @include span(6 last);
+      @include pull(2);
+  }
 }
 .text-block-inner {
-    transform: skew($skewdeg);
-    background-color: $pinkcolor;
-    right: 5%;
-    position: relative;
-    width: 600px;
-    height: 275px;
-
+  transform: skew($skewdeg);
+  background-color: $pinkcolor;
+  right: 5%;
+  position: relative;
+  width: 600px;
+  @include bp(large){
+        @include span(5 of 6);
+        @include push(2);
+    }
 }
 h1 {
   margin: 20px 20%;
@@ -67,7 +67,7 @@ h1 {
 .tomajors {
   font-family: $textfont;
   text-decoration: none;
-  color: $greycolor;
+  color: $color-grey;
   margin-top:80px;
   @include bp(large){
     @include span(4);
@@ -75,39 +75,39 @@ h1 {
   }
 }
 .button {
-    border: solid 3px $pinkcolor;
-    color: $pinkcolor;
-    padding: 15px 32px;
-    text-align: center;
-    margin-top: 15px;
-    text-decoration: none;
-    font-family: $textfont;
-    transform: skew($skewdeg);
-    &:visited { color: $pinkcolor; }
-    &:hover { background: $pinkcolor; color:white; }
-    & > span { display: inline-block; transform: skew(-$skewdeg); }
-    @include bp(large){
+  border: solid 3px $pinkcolor;
+  color: $pinkcolor;
+  padding: 15px 32px;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  font-family: $textfont;
+  transform: skew($skewdeg);
+  &:visited { color: $pinkcolor; }
+  &:hover { background: $pinkcolor; color:white; }
+  & > span { display: inline-block; transform: skew(-$skewdeg); }
+  @include bp(large){
     @include span(4 of 6);
     @include push(2);
-    }
+  }
 }
+// navigation bar
 nav {
   img {
     float: left;
     margin: 0px 80px 0px 10px;
   }
   li {
-  display: inline;
-  float: left;
-  margin: 50px 80px 5px 10px;
-  height: 100px;
+    display: inline;
+    float: left;
+    margin: 50px 80px 5px 10px;
+    height: 100px;
 
-  a {
-    margin: 50px 0px 0px 0px;
-    text-decoration: none;
-    font-family: $textfont;
-    color: darkblue;
-  }
+    a {
+      margin: 50px 0px 0px 0px;
+      text-decoration: none;
+      font-family: $textfont;
+      color: darkblue;
+    }
 }
-
 }

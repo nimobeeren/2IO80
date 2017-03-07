@@ -5,24 +5,27 @@ footer {
     padding-bottom: 15px;
     h6 {
     color: white;
-    font-size: 20px;
-    @include span(2);
-    @include push(2);
+    font-size: 30px;
+    margin: 0px;
     }
     p {
     color: white;
-    font-size: 20px;
-    @include span(2);
-    @include push(2);
+    font-size: 30px;
+    margin: 0px;
     }
     a {
     color: white;
     text-decoration: none;
+    font-size: 30px;
     }
 }
 .footer {
     &--social-media {
         @include span(2);
+        @include bp(large) {
+        @include span(6);
+        @include push(6);
+        }
     }
     &--facebook {
     background-color: $color-facebook;
@@ -42,20 +45,34 @@ footer {
     &--youtube {
     background-color: $color-youtube;
     }
+    &--navigationaddress {
+    @include push(2);
+    margin-bottom: 20px;
+    }
+    &--postaladdress {
+    @include push(2);
+    margin-top: 20px;
+    }
     &__contact {
+    display: inline;
     @include span(2);
     color: white;
-    border: solid 1px white;
+    border: solid 2px white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 50px;
+    padding: 0;
+
     svg {
         background-color: white;
         fill: $color-grey;
         text-align: left;
-        width: 30px;
-        height:30px;
+        width: 20%;
+        height: 100%;
     }
     p {
         text-align: center;
-        margin: 3px;
+        margin: 15px;
         font-size: 14px;
     }
     }
