@@ -7,16 +7,25 @@ footer {
     color: white;
     font-size: 30px;
     margin: 0px;
+    @include bp(large) {
+        font-size: 14px;
+        }
     }
     p {
     color: white;
     font-size: 30px;
     margin: 0px;
+    @include bp(large) {
+        font-size: 14px;
+        }
     }
     a {
     color: white;
     text-decoration: none;
     font-size: 30px;
+    @include bp(large) {
+        font-size: 14px;
+        }
     }
 }
 .footer {
@@ -81,6 +90,11 @@ footer {
     width: 33.33%;
     position: relative;
     float: left;
+    @include bp(large){
+        width: 10%;
+        @include push(6);
+        @include span(6);
+    }
     &:before {
         content: "";
         padding-top: 100%;
