@@ -56,6 +56,9 @@ function updateDB() {
 
 // Search the pages database, sorting results by relevance
 function search(query) {
+    // Trim spaces from query
+    query = query.trim();
+
     // Check if database is empty
     if (pages.length == 0) {
         // Give feedback when searching on an empty database
