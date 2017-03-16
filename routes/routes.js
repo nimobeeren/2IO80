@@ -1,4 +1,28 @@
+const PIETYPE = {
+    BASIC: {
+        color: "#FBA312",
+        title: "Basic courses"
+    },
+    MAJOR: {
+        color: "#00A2ED",
+        title: "Major courses"
+    },
+    USE: {
+        color: "#24357F",
+        title: "USE courses"
+    },
+    FREE: {
+        color: "#BB0000",
+        title: "Free courses"
+    },
+    SPECIALIZATION: {
+        color: "#FDEC00",
+        title: "Specialization courses"
+    }
+}
+
 const db = require('../db/db.js');
+var customFunc = require('./customFunctions.js');
 
 module.exports = {
     use: (app, express, db) => {
@@ -27,6 +51,52 @@ module.exports = {
 
         app.get('/search', (req, res) => {
             res.render('search.html');
+        });
+
+        app.get('/program/*', (req, res) => {
+            res.render('program.html', {
+                years: [
+                    [
+                        {
+                            type: PIETYPE.BASIC,
+                            percent: 1/12*4
+                        },
+                        {
+                            type: PIETYPE.MAJOR,
+                            percent: 1/12*5
+                        },
+                        {
+                            type: PIETYPE.FREE,
+                            percent: 1/12*2
+                        },
+                        {
+                            type: PIETYPE.SPECIALIZATION,
+                            percent: 1/12
+                        }
+                    ],
+                    [
+                        {
+                            type: PIETYPE.BASIC,
+                            percent: 1/12
+                        },
+                        {
+                            type: PIETYPE.MAJOR,
+                            percent: 1/12*4
+                        },
+                        {
+                            type: PIETYPE.USE,
+                            percent: 1/12*4
+                        },
+                        {
+                            type: PIETYPE.SPECIALIZATION,
+                            percent: 1/12*3
+                        }
+                    ]
+                ],
+                pieChart: function(){
+                    return customFunc.pieChart(this)
+                }
+            });
         });
 
         app.get('*', (req, res) => {
