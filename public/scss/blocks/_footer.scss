@@ -1,4 +1,7 @@
 footer {
+@include bp(large){
+    @include container;
+}
     @include container;
     background-color: $color-grey;
     padding-top: 15px;
@@ -32,8 +35,7 @@ footer {
     &--social-media {
         @include span(2);
         @include bp(large) {
-        @include span(6);
-        @include push(6);
+        @include span(6 last);
         }
     }
     &--facebook {
@@ -54,30 +56,50 @@ footer {
     &--youtube {
     background-color: $color-youtube;
     }
+    &--address{
+    @include span(2 last);
+    }
     &--navigationaddress {
-    @include push(2);
     margin-bottom: 20px;
+    @include bp(large){
+        @include span(2);
+    }
     }
     &--postaladdress {
-    @include push(2);
     margin-top: 20px;
+    @include bp(large){
+        @include span(2);
+    }
     }
     &__contact {
     display: inline;
     @include span(2);
+    @include bp(large){
+        @include span(2);
+    }
+
+    a{
     color: white;
+    display: inline-block;
     border: solid 2px white;
     margin-top: 15px;
     margin-bottom: 15px;
     height: 50px;
     padding: 0;
+    padding-top: 2px;
+    width: 100%;
+    }
 
     svg {
         background-color: white;
         fill: $color-grey;
         text-align: left;
-        width: 20%;
-        height: 100%;
+        width: 48px;
+        height: 50px;
+        vertical-align: middle;
+        margin-top: -2px;
+
+
     }
     p {
         text-align: center;
@@ -91,9 +113,7 @@ footer {
     position: relative;
     float: left;
     @include bp(large){
-        width: 10%;
-        @include push(6);
-        @include span(6);
+        @include span(1 of 6);
     }
     &:before {
         content: "";

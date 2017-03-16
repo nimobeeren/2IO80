@@ -3,7 +3,7 @@ $susy-breakpoints: (
         layout: (376/16*1em) 4 64/30 inside,
     ),
     large: (
-        layout: (1200/16*1em) 12 70/30 inside,
+        layout: (1200/16*1em) 12 70/30 split,
         media: 960/16*1em
     )
 );
