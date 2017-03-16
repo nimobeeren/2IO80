@@ -1,32 +1,58 @@
+// Initialize and update search database
 let pages = [];
+updateDB();
+
+// Define common words to ignore when searching
+let ignore = {
+    the: true,
+    be: true,
+    of: true,
+    and: true,
+    a: true,
+    in: true,
+    that: true,
+    have: true,
+    i: true,
+    it: true,
+    for: true,
+    not: true,
+    on: true,
+    with: true,
+    he: true,
+    as: true,
+    you: true,
+    do: true,
+    at: true
+};
 
 /** Search query evaluation logic:
  *
  * Split the query into individual words, count the occurrences of the word in the page.
  * The sum of the words of the query in the page is the evaluation of the query.
  *
- * Splitting of the query into individual words is not done for the contents evaluation,
- * because of words like "the, a, is" etc..
+ * Common words defined above are ignored altogether
  *
  * */
-const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => s + (p.title.match(new RegExp(w, "gi")) || []).length, 0);
-const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0), 0);
-const evaluateContent = (p, q) => (p.contents.match(new RegExp(q, "gi")) || []).length;
+const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
+const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
+const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0);
 
 // Retrieve page database
-openUrl("GET", "api/cache", {
-        callback: res => {
-            try {
-                pages = JSON.parse(res);
-            } catch (e) {
-                console.log(e);
+function updateDB() {
+    openUrl("GET", "api/cache", {
+            callback: res => {
+                try {
+                    pages = JSON.parse(res);
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            error: res => {
+                console.log(res);
             }
-        },
-        error: res => {
-            console.log(res);
         }
-    }
-);
+    );
+}
 
 // Search the pages database, sorting results by relevance
 function search(query) {
@@ -56,12 +82,18 @@ function search(query) {
                     let bContent = evaluateContent(b, query);
 
                     // Decide order based on content occurrences
+                    a.score = aContent;
+                    b.score = bContent;
                     return bContent - aContent;
                 }
                 // Decide order based on heading occurrences
+                a.score = aHeadings;
+                b.score = bHeadings;
                 return bHeadings - aHeadings;
             }
             // Decide order based on title occurrences
+            a.score = aTitle;
+            b.score = bTitle;
             return bTitle - aTitle;
         }).map(x => syntaxHighlight(JSON.stringify(x))).slice(0, 9);
 
