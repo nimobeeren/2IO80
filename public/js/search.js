@@ -1,6 +1,5 @@
-// Initialize and update search database
-let pages = [];
-updateDB();
+window.onload = () =>
+    id('search').oninput = () => search(id('search').value.trim());
 
 // Define common words to ignore when searching
 let ignore = {
@@ -35,24 +34,7 @@ let ignore = {
  * */
 const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
 const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
-const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.contents.match(new RegExp(w, "gi")) || []).length : ignore[w], 0);
-
-// Retrieve page database
-function updateDB() {
-    openUrl("get", "api/cache", {
-            success: res => {
-                try {
-                    pages = JSON.parse(res);
-                } catch (e) {
-                    console.log(e);
-                }
-            },
-            error: res => {
-                console.log(res);
-            }
-        }
-    );
-}
+const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0);
 
 // Search the pages database, sorting results by relevance
 function search(query) {
@@ -62,7 +44,7 @@ function search(query) {
     // Check if database is empty
     if (pages.length == 0) {
         // Give feedback when searching on an empty database
-        return log("Search database has not been updated");
+        return log("The database has not been updated");
     } else {
         let corrected = '';
         let words = query.split(" ");
@@ -73,6 +55,9 @@ function search(query) {
                     corrected += x + ' ';
                     correctedWords++;
                     correctedWords == words.length && startSearch(corrected.trim());
+                },
+                error: res => {
+                    console.log(res);
                 }
             })
         });
@@ -117,7 +102,3 @@ function search(query) {
         }
     }
 }
-
-/** For testing only */
-id('search') ? id('search').oninput = () => search(id('search').value.trim()) : 0;
-
