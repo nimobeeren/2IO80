@@ -45,7 +45,7 @@ module.exports = {
         app.get('/api/correct/:word', () => {});
 
         app.get('/', (req, res) => {
-            res.render('style-guide.html');
+            res.render('index.html');
         });
 
         app.get('/styleguide', (req, res) => {

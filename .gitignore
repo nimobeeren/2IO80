@@ -60,3 +60,5 @@ typings/
 # gulp build output
 public/css
 public/svg-symbols.svg
+
+.idea

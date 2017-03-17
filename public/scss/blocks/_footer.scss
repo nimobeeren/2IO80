@@ -1,133 +1,129 @@
 footer {
-@include bp(large){
     @include container;
-}
-    @include container;
-    background-color: $color-grey;
+    // @include full-width-bars($color-grey); // todo: uncomment (destroys susy debug)
+    background: $color-grey; // todo: remove when done above comment
     padding-top: 15px;
     padding-bottom: 15px;
+    @include bp(large){
+        @include container;
+    }
     h6 {
-    color: white;
-    font-size: 30px;
-    margin: 0px;
-    @include bp(large) {
-        font-size: 14px;
+        color: white;
+        font-size: 30px;
+        margin: 0px;
+        @include bp(large) {
+            font-size: 14px;
         }
     }
-    p {
-    color: white;
-    font-size: 30px;
-    margin: 0px;
-    @include bp(large) {
+    h6, p {
+        color: white;
+        font-size: 30px;
+        margin: 0px;
         font-size: 14px;
-        }
     }
     a {
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    @include bp(large) {
+        color: white;
+        text-decoration: none;
+        font-size: 30px;
         font-size: 14px;
-        }
     }
 }
 .footer {
-    &--social-media {
+    &__social-media {
         @include span(2);
         @include bp(large) {
-        @include span(6 last);
+            // 6 columns width, positioned at the right, has nested columns
+            @include span(6 last nest);
+            margin-right: 0; // overwrite margin-right from mobile bp
+        }
+    }
+    &__socialbutton {
+        width: 33.33%;
+        position: relative;
+        float: left;
+        @include bp(large){
+            // is nested, "of 6" gives susy context
+            @include span(1 of 6);
+        }
+        // makes the div keeping a 1:1 aspect ratio
+        &:before {
+            content: "";
+            padding-top: 100%;
+            display:block;
+        }
+        // fit the svg inside the parent
+        // (whitespace is embedded svg)
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            fill: white;
+            width: 100%;
+            height: 100%;
         }
     }
     &--facebook {
-    background-color: $color-facebook;
+        background-color: $color-facebook;
     }
     &--googleplus {
-    background-color: $color-googleplus;
+        background-color: $color-googleplus;
     }
     &--instagram {
-    background-color: $color-instagram;
+        background-color: $color-instagram;
     }
     &--linkedin {
-    background-color: $color-linkedin;
+        background-color: $color-linkedin;
     }
     &--twitter {
-    background-color: $color-twitter;
+        background-color: $color-twitter;
     }
     &--youtube {
-    background-color: $color-youtube;
+        background-color: $color-youtube;
     }
-    &--address{
-    @include span(2 last);
+    &__address{
+        @include span(2 last);
+        @include bp(large){
+            @include span(4 nest);
+        }
     }
-    &--navigationaddress {
-    margin-bottom: 20px;
-    @include bp(large){
-        @include span(2);
-    }
-    }
-    &--postaladdress {
-    margin-top: 20px;
-    @include bp(large){
-        @include span(2);
-    }
+    &--navigationaddress, &--postaladdress {
+        margin-bottom: 15px;
+        @include bp(large){
+            @include span(2 of 4);
+        }
     }
     &__contact {
-    display: inline;
-    @include span(2);
-    @include bp(large){
+        display: inline;
         @include span(2);
-    }
-
-    a{
-    color: white;
-    display: inline-block;
-    border: solid 2px white;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 50px;
-    padding: 0;
-    padding-top: 2px;
-    width: 100%;
-    }
-
-    svg {
-        background-color: white;
-        fill: $color-grey;
-        text-align: left;
-        width: 48px;
-        height: 50px;
-        vertical-align: middle;
-        margin-top: -2px;
+        @include bp(large){
+            @include span(2);
+        }
+        a{
+            color: white;
+            display: inline-block;
+            border: solid 2px white;
+            margin-bottom: 15px;
+            padding-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        svg {
+            background-color: white;
+            fill: $color-grey;
+            text-align: left;
+            width: 2em;
+            height: 2em;
+            vertical-align: middle;
+            margin-top: -2px;
 
 
-    }
-    p {
-        text-align: center;
-        margin: 15px;
-        font-size: 14px;
-    }
-    }
-}
-.footer__socialbutton {
-    width: 33.33%;
-    position: relative;
-    float: left;
-    @include bp(large){
-        @include span(1 of 6);
-    }
-    &:before {
-        content: "";
-        padding-top: 100%;
-        display:block;
-    }
-    svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        fill: white;
-        width: 100%;
-        height: 100%;
+        }
+        p {
+            text-align: center;
+            margin: 15px;
+            font-size: 14px;
+        }
     }
 }
