@@ -38,7 +38,7 @@ module.exports = {
         });
 
         app.get('/', (req, res) => {
-            res.render('style-guide.html');
+            res.render('index.html');
         });
 
         app.get('/styleguide', (req, res) => {
