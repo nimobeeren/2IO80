@@ -33,14 +33,14 @@ let ignore = {
  * Common words defined above are ignored altogether
  *
  * */
-const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
-const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
-const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0);
+const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
+const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
+const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.contents.match(new RegExp(w, "gi")) || []).length : ignore[w], 0);
 
 // Retrieve page database
 function updateDB() {
-    openUrl("GET", "api/cache", {
-            callback: res => {
+    openUrl("get", "api/cache", {
+            success: res => {
                 try {
                     pages = JSON.parse(res);
                 } catch (e) {
@@ -64,50 +64,60 @@ function search(query) {
         // Give feedback when searching on an empty database
         return log("Search database has not been updated");
     } else {
-        // Store starting time
-        let start = new Date().getTime();
-
-        let search = pages.sort((a, b) => {
-            // Count occurrences of query in title of pages
-            let aTitle = evaluateTitle(a, query);
-            let bTitle = evaluateTitle(b, query);
-
-            // If title count is equal, look at the headings
-            if (aTitle == bTitle) {
-                // Count occurrences of query in headings of pages
-                let aHeadings = evaluateHeadings(a, query);
-                let bHeadings = evaluateHeadings(b, query);
-
-                // If heading count is equal, look at the contents
-                if (aHeadings == bHeadings) {
-                    // Count occurrences of query in contents of pages
-                    let aContent = evaluateContent(a, query);
-                    let bContent = evaluateContent(b, query);
-
-                    // Decide order based on content occurrences
-                    a.score = aContent;
-                    b.score = bContent;
-                    return bContent - aContent;
+        let corrected = '';
+        let words = query.split(" ");
+        let correctedWords = 0;
+        words.forEach(x => {
+            openUrl("get", "api/correct/" + x, {
+                success: (x) => {
+                    corrected += x + ' ';
+                    correctedWords++;
+                    correctedWords == words.length && startSearch(corrected.trim());
                 }
-                // Decide order based on heading occurrences
-                a.score = aHeadings;
-                b.score = bHeadings;
-                return bHeadings - aHeadings;
-            }
-            // Decide order based on title occurrences
-            a.score = aTitle;
-            b.score = bTitle;
-            return bTitle - aTitle;
-        }).map(x => syntaxHighlight(JSON.stringify(x))).slice(0, 9);
+            })
+        });
+        function startSearch(query) {
+            // Store starting time
+            let start = new Date().getTime();
+            // PageRank implementation
+            let linkFrequency = {};
+            pages.forEach(page => {
+                page.links.forEach(link => {
+                    linkFrequency[link] = linkFrequency[link] ? linkFrequency[link] + 1 : 1;
+                })
+            });
 
-        // Calculate running time
-        let run = new Date().getTime() - start;
+            let search = pages.sort((a, b) => {
+                // Count occurrences of query in title of pages
+                a.score = evaluateTitle(a, query);
+                b.score = evaluateTitle(b, query);
+                // If title count is equal, look at the headings
+                if (a.score == b.score) {
+                    // Count occurrences of query in headings of pages
+                    a.score = evaluateHeadings(a, query);
+                    b.score = evaluateHeadings(b, query);
+                    // If heading count is equal, look at the contents
+                    if (a.score == b.score) {
+                        // Count occurrences of query in contents of pages
+                        a.score = evaluateContent(a, query);
+                        b.score = evaluateContent(b, query);
+                    }
+                }
+                b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+                a.pageRank = (linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
 
-        // Return running time
-        return "Took: " + run + "ms <br>" + search;
+                // Decide order based on overall occurrences
+                return (b.score + b.pageRank) - (a.score + a.pageRank);
+            }).map(x => "<pre>" + syntaxHighlight(JSON.stringify(x, null, 20)) + "</pre>").slice(0, 9);
+            // Calculate running time
+            let run = new Date().getTime() - start;
+
+            // Return running time
+            id('search_result').innerHTML = "Searched for: " + query + " <br> Took: " + run + "ms <br>" + search;
+        }
     }
 }
 
 /** For testing only */
-id('search') ? id('search').oninput = () => id('search_result').innerHTML = search(id('search').value) : 0;
+id('search') ? id('search').oninput = () => search(id('search').value.trim()) : 0;
 

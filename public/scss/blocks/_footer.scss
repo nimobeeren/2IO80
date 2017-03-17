@@ -1,0 +1,129 @@
+footer {
+    @include container;
+    // @include full-width-bars($color-grey); // todo: uncomment (destroys susy debug)
+    background: $color-grey; // todo: remove when done above comment
+    padding-top: 15px;
+    padding-bottom: 15px;
+    @include bp(large){
+        @include container;
+    }
+    h6 {
+        color: white;
+        font-size: 30px;
+        margin: 0px;
+        @include bp(large) {
+            font-size: 14px;
+        }
+    }
+    h6, p {
+        color: white;
+        font-size: 30px;
+        margin: 0px;
+        font-size: 14px;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 30px;
+        font-size: 14px;
+    }
+}
+.footer {
+    &__social-media {
+        @include span(2);
+        @include bp(large) {
+            // 6 columns width, positioned at the right, has nested columns
+            @include span(6 last nest);
+            margin-right: 0; // overwrite margin-right from mobile bp
+        }
+    }
+    &__socialbutton {
+        width: 33.33%;
+        position: relative;
+        float: left;
+        @include bp(large){
+            // is nested, "of 6" gives susy context
+            @include span(1 of 6);
+        }
+        // makes the div keeping a 1:1 aspect ratio
+        &:before {
+            content: "";
+            padding-top: 100%;
+            display:block;
+        }
+        // fit the svg inside the parent
+        // (whitespace is embedded svg)
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            fill: white;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &--facebook {
+        background-color: $color-facebook;
+    }
+    &--googleplus {
+        background-color: $color-googleplus;
+    }
+    &--instagram {
+        background-color: $color-instagram;
+    }
+    &--linkedin {
+        background-color: $color-linkedin;
+    }
+    &--twitter {
+        background-color: $color-twitter;
+    }
+    &--youtube {
+        background-color: $color-youtube;
+    }
+    &__address{
+        @include span(2 last);
+        @include bp(large){
+            @include span(4 nest);
+        }
+    }
+    &--navigationaddress, &--postaladdress {
+        margin-bottom: 15px;
+        @include bp(large){
+            @include span(2 of 4);
+        }
+    }
+    &__contact {
+        display: inline;
+        @include span(2);
+        @include bp(large){
+            @include span(2);
+        }
+        a{
+            color: white;
+            display: inline-block;
+            border: solid 2px white;
+            margin-bottom: 15px;
+            padding-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        svg {
+            background-color: white;
+            fill: $color-grey;
+            text-align: left;
+            width: 2em;
+            height: 2em;
+            vertical-align: middle;
+            margin-top: -2px;
+
+
+        }
+        p {
+            text-align: center;
+            margin: 15px;
+            font-size: 14px;
+        }
+    }
+}
