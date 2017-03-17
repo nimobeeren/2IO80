@@ -2,7 +2,9 @@
 let pages = [];
 updateDB();
 
-// Retrieve page database
+/**
+ * Retrieves the search database
+ */
 function updateDB() {
     openUrl("GET", "api/cache", {
             success: res => {

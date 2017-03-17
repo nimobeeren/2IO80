@@ -7,7 +7,9 @@ window.onload = () => {
     filter();
 };
 
-// Display a subset of programs based on the selected filters
+/**
+ * Displays a subset of programs based on the selected filters
+ */
 function filter() {
     // Populate the programs list using the database
     if (pages.length == 0) {
