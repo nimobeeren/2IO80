@@ -39,8 +39,8 @@ const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowe
 
 // Retrieve page database
 function updateDB() {
-    openUrl("GET", "api/cache", {
-            callback: res => {
+    openUrl("get", "api/cache", {
+            success: res => {
                 try {
                     pages = JSON.parse(res);
                 } catch (e) {
@@ -61,46 +61,60 @@ function search(query) {
         // Give feedback when searching on an empty database
         return log("Search database has not been updated");
     } else {
-        // Store starting time
-        let start = new Date().getTime();
-        // PageRank implementation
-        let linkFrequency = {};
-        pages.forEach(page => {
-            page.links.forEach(link => {
-                linkFrequency[link] = linkFrequency[link] ? linkFrequency[link] + 1 : 1;
+        let corrected = '';
+        let words = query.split(" ");
+        let correctedWords = 0;
+        words.forEach(x => {
+            openUrl("get", "api/correct/" + x, {
+                success: (x) => {
+                    corrected += x + ' ';
+                    correctedWords++;
+                    correctedWords == words.length && startSearch(corrected.trim());
+                }
             })
         });
+        function startSearch(query) {
+            // Store starting time
+            let start = new Date().getTime();
+            // PageRank implementation
+            let linkFrequency = {};
+            pages.forEach(page => {
+                page.links.forEach(link => {
+                    linkFrequency[link] = linkFrequency[link] ? linkFrequency[link] + 1 : 1;
+                })
+            });
 
-        let search = pages.sort((a, b) => {
-            // Count occurrences of query in title of pages
-            a.score = evaluateTitle(a, query);
-            b.score = evaluateTitle(b, query);
-            // If title count is equal, look at the headings
-            if (a.score == b.score) {
-                // Count occurrences of query in headings of pages
-                a.score = evaluateHeadings(a, query);
-                b.score = evaluateHeadings(b, query);
-                // If heading count is equal, look at the contents
+            let search = pages.sort((a, b) => {
+                // Count occurrences of query in title of pages
+                a.score = evaluateTitle(a, query);
+                b.score = evaluateTitle(b, query);
+                // If title count is equal, look at the headings
                 if (a.score == b.score) {
-                    // Count occurrences of query in contents of pages
-                    a.score = evaluateContent(a, query);
-                    b.score = evaluateContent(b, query);
+                    // Count occurrences of query in headings of pages
+                    a.score = evaluateHeadings(a, query);
+                    b.score = evaluateHeadings(b, query);
+                    // If heading count is equal, look at the contents
+                    if (a.score == b.score) {
+                        // Count occurrences of query in contents of pages
+                        a.score = evaluateContent(a, query);
+                        b.score = evaluateContent(b, query);
+                    }
                 }
-            }
-            b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
-            a.pageRank = (linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+                b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+                a.pageRank = (linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
 
-            // Decide order based on overall occurrences
-            return (b.score + b.pageRank) - (a.score + a.pageRank);
-        }).map(x => "<pre>" + syntaxHighlight(JSON.stringify(x, null, 20)) + "</pre>");
-        // Calculate running time
-        let run = new Date().getTime() - start;
+                // Decide order based on overall occurrences
+                return (b.score + b.pageRank) - (a.score + a.pageRank);
+            }).map(x => "<pre>" + syntaxHighlight(JSON.stringify(x, null, 20)) + "</pre>").slice(0, 9);
+            // Calculate running time
+            let run = new Date().getTime() - start;
 
-        // Return running time
-        return "Took: " + run + "ms <br>" + search;
+            // Return running time
+            id('search_result').innerHTML = "Searched for: " + query + " <br> Took: " + run + "ms <br>" + search;
+        }
     }
 }
 
 /** For testing only */
-id('search') ? id('search').oninput = () => id('search_result').innerHTML = search(id('search').value.trim()) : 0;
+id('search') ? id('search').oninput = () => search(id('search').value.trim()) : 0;
 
