@@ -33,9 +33,9 @@ let ignore = {
  * Common words defined above are ignored altogether
  *
  * */
-const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
-const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
-const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0);
+const evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
+const evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
+const evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !ignore[w.toLowerCase()] ? s + (p.contents.match(new RegExp(w, "gi")) || []).length : ignore[w], 0);
 
 // Retrieve page database
 function updateDB() {
@@ -63,40 +63,36 @@ function search(query) {
     } else {
         // Store starting time
         let start = new Date().getTime();
+        // PageRank implementation
+        let linkFrequency = {};
+        pages.forEach(page => {
+            page.links.forEach(link => {
+                linkFrequency[link] = linkFrequency[link] ? linkFrequency[link] + 1 : 1;
+            })
+        });
 
         let search = pages.sort((a, b) => {
             // Count occurrences of query in title of pages
-            let aTitle = evaluateTitle(a, query);
-            let bTitle = evaluateTitle(b, query);
-
+            a.score = evaluateTitle(a, query);
+            b.score = evaluateTitle(b, query);
             // If title count is equal, look at the headings
-            if (aTitle == bTitle) {
+            if (a.score == b.score) {
                 // Count occurrences of query in headings of pages
-                let aHeadings = evaluateHeadings(a, query);
-                let bHeadings = evaluateHeadings(b, query);
-
+                a.score = evaluateHeadings(a, query);
+                b.score = evaluateHeadings(b, query);
                 // If heading count is equal, look at the contents
-                if (aHeadings == bHeadings) {
+                if (a.score == b.score) {
                     // Count occurrences of query in contents of pages
-                    let aContent = evaluateContent(a, query);
-                    let bContent = evaluateContent(b, query);
-
-                    // Decide order based on content occurrences
-                    a.score = aContent;
-                    b.score = bContent;
-                    return bContent - aContent;
+                    a.score = evaluateContent(a, query);
+                    b.score = evaluateContent(b, query);
                 }
-                // Decide order based on heading occurrences
-                a.score = aHeadings;
-                b.score = bHeadings;
-                return bHeadings - aHeadings;
             }
-            // Decide order based on title occurrences
-            a.score = aTitle;
-            b.score = bTitle;
-            return bTitle - aTitle;
-        }).map(x => syntaxHighlight(JSON.stringify(x))).slice(0, 9);
+            b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+            a.pageRank = (linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
 
+            // Decide order based on overall occurrences
+            return (b.score + b.pageRank) - (a.score + a.pageRank);
+        }).map(x => "<pre>" + syntaxHighlight(JSON.stringify(x, null, 20)) + "</pre>");
         // Calculate running time
         let run = new Date().getTime() - start;
 
@@ -106,5 +102,5 @@ function search(query) {
 }
 
 /** For testing only */
-id('search') ? id('search').oninput = () => id('search_result').innerHTML = search(id('search').value) : 0;
+id('search') ? id('search').oninput = () => id('search_result').innerHTML = search(id('search').value.trim()) : 0;
 
