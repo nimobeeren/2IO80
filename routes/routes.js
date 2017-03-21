@@ -19,10 +19,10 @@ const PIETYPE = {
         color: "#FDEC00",
         title: "Specialization courses"
     }
-}
+};
 
 const db = require('../db/db.js');
-var customFunc = require('./customFunctions.js');
+let customFunc = require('./customFunctions.js');
 let spellingCorrector = require("spelling-corrector");
 spellingCorrector = new spellingCorrector();
 spellingCorrector.loadDictionary();
@@ -54,6 +54,10 @@ module.exports = {
 
         app.get('/search', (req, res) => {
             res.render('search.html');
+        });
+
+        app.get('/filter', (req, res) => {
+            res.render('filter.html');
         });
 
         app.get('/program/*', (req, res) => {
