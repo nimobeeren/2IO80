@@ -1,0 +1,38 @@
+body {
+  @include container;
+}
+
+.filters {
+  width: 100%;
+  .filter {
+    padding: 15px;
+    border-bottom: 2px solid black;
+    .filter-name {
+      display: inline-block;
+    }
+    .filter-expand-button {
+      display: inline-block;
+      float: right;
+      padding: 0 0 0 15px;
+    }
+  }
+  .filter:first-child {
+    border-top: 2px solid black;
+  }
+}
+
+.program-list {
+  width: 100%;
+  .program {
+    height: 125px;
+    margin: 15px;
+    padding: 15px;
+    border: 2px solid black;
+    h3 {
+      margin: 0 0 10px;
+    }
+    .program-abstract {
+      text-overflow: ellipsis;
+    }
+  }
+}

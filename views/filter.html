@@ -3,18 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/utility.js"></script>
     <script src="js/db.js"></script>
     <script src="js/filter.js"></script>
 </head>
 <body>
-<form class="filter" name="profile" action="">
-    <input type="checkbox" name="profile" value="nt">Nature & Technology<br>
-    <input type="checkbox" name="profile" value="ng">Nature & Health<br>
-    <input type="checkbox" name="profile" value="em">Economics & Society<br>
-    <input type="checkbox" name="profile" value="cm">Culture & Society<br>
-</form>
-<div id="filter_result"></div>
+<!-- OLD TEST PAGE
+<form class="filter" name="profile" action="">-->
+    <!--<input type="checkbox" name="profile" value="nt">Nature & Technology<br>-->
+    <!--<input type="checkbox" name="profile" value="ng">Nature & Health<br>-->
+    <!--<input type="checkbox" name="profile" value="em">Economics & Society<br>-->
+    <!--<input type="checkbox" name="profile" value="cm">Culture & Society<br>-->
+<!--</form>-->
+<!--<div id="filter_result"></div>
+-->
+{{! > header}}
+<h2>Filter</h2>
+<div class="filters">
+    <div class="filter" id="interest">
+        <div class="filter-name">Area of interest</div>
+        <div class="filter-expand-button">+</div>
+    </div>
+    <div class="filter" id="profile">
+        <div class="filter-name">Admissible Dutch profiles</div>
+        <div class="filter-expand-button">+</div>
+    </div>
+    <div class="filter" id="language">
+        <div class="filter-name">Language of instruction</div>
+        <div class="filter-expand-button">+</div>
+    </div>
+</div>
+<div class="program-list">
+    <div class="program">
+        <h3>Psychology & Technology</h3>
+        <div class="program-abstract">
+            You learn how technology influences people, and how you can us knowledge of psychology to let people use technology...
+        </div>
+    </div>
+    <div class="program">
+        <h3>Web Science</h3>
+        <div class="program-abstract">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit tellus et viverra iaculis. Pellentesque semper turpis sed tortor vehicula malesuada...
+        </div>
+    </div>
+</div>
+{{> footer}}
 </body>
 
 <style>
