@@ -1,5 +1,9 @@
+// Automatically search whenever input changes
 window.onload = () =>
-    id('search').oninput = () => search(id('search').value.trim());
+    id('search').oninput = () => {
+        let query = id('search').value.trim();
+        query && search(query);
+    };
 
 // Define common words to ignore when searching
 let ignore = {
@@ -46,6 +50,10 @@ function search(query) {
         // Give feedback when searching on an empty database
         return log("The database has not been updated");
     } else {
+        // Store starting time
+        let startCorrect = new Date().getTime();
+
+        // Correct the search query
         let corrected = '';
         let words = query.split(" ");
         let correctedWords = 0;
@@ -54,16 +62,21 @@ function search(query) {
                 success: (x) => {
                     corrected += x + ' ';
                     correctedWords++;
-                    correctedWords == words.length && startSearch(corrected.trim());
+                    if (correctedWords == words.length) {
+                        startSearch(corrected.trim());
+                    }
                 },
                 error: res => {
                     console.log(res);
                 }
             })
         });
+
+        // Start searching using the corrected query
         function startSearch(query) {
             // Store starting time
-            let start = new Date().getTime();
+            let startSearch = new Date().getTime();
+
             // PageRank implementation
             let linkFrequency = {};
             pages.forEach(page => {
@@ -88,17 +101,20 @@ function search(query) {
                         b.score = evaluateContent(b, query);
                     }
                 }
-                b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
                 a.pageRank = (linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+                b.pageRank = (linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
 
                 // Decide order based on overall occurrences
                 return (b.score + b.pageRank) - (a.score + a.pageRank);
             }).map(x => "<pre>" + syntaxHighlight(JSON.stringify(x, null, 20)) + "</pre>").slice(0, 9);
+
             // Calculate running time
-            let run = new Date().getTime() - start;
+            let endSearch = new Date().getTime();
+            let correctTime = startSearch - startCorrect;
+            let searchTime = endSearch - startSearch;
 
             // Return running time
-            id('search_result').innerHTML = "Searched for: " + query + " <br> Took: " + run + "ms <br>" + search;
+            id('search_result').innerHTML = "Searched for: " + query + " <br> Correct took: " + correctTime + " ms <br> Search took: " + searchTime + "ms <br>" + search;
         }
     }
 }
