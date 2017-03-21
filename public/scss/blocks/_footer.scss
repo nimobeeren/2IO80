@@ -1,31 +1,29 @@
+//todo: edit svg to arrow symbol in html
+
 footer {
     @include container;
     // @include full-width-bars($color-grey); // todo: uncomment (destroys susy debug)
     background: $color-grey; // todo: remove when done above comment
     padding-top: 15px;
     padding-bottom: 15px;
+    position: relative;
     @include bp(large){
         @include container;
     }
     h6 {
         color: white;
-        font-size: 30px;
+        font-size: $fontsize-footer;
         margin: 0px;
-        @include bp(large) {
-            font-size: 14px;
-        }
     }
     h6, p {
         color: white;
-        font-size: 30px;
         margin: 0px;
-        font-size: 14px;
+        font-size: $fontsize-footer;
     }
     a {
         color: white;
         text-decoration: none;
-        font-size: 30px;
-        font-size: 14px;
+        font-size: $fontsize-footer;
     }
 }
 .footer {
@@ -35,6 +33,7 @@ footer {
             // 6 columns width, positioned at the right, has nested columns
             @include span(6 last nest);
             margin-right: 0; // overwrite margin-right from mobile bp
+            margin-left: 0;
         }
     }
     &__socialbutton {
@@ -86,6 +85,8 @@ footer {
         @include span(2 last);
         @include bp(large){
             @include span(4 nest);
+            margin-left:0;
+            margin-right:0;
         }
     }
     &--navigationaddress, &--postaladdress {
@@ -95,35 +96,64 @@ footer {
         }
     }
     &__contact {
-        display: inline;
         @include span(2);
+        margin-top: 10px;
         @include bp(large){
             @include span(2);
+            margin-top: 0;
         }
         a{
-            color: white;
-            display: inline-block;
-            border: solid 2px white;
             margin-bottom: 15px;
-            padding-top: 2px;
+            display: table;
             width: 100%;
-            box-sizing: border-box;
         }
         svg {
-            background-color: white;
             fill: $color-grey;
-            text-align: left;
-            width: 2em;
-            height: 2em;
+            width: 27/16*1em;
+            height: 27/16*1em;
+            padding: 6px;
             vertical-align: middle;
-            margin-top: -2px;
-
-
+            display: inline-block;
+            box-sizing: border-box;
         }
-        p {
+        &-icon{
+            display: table-cell;
+            background-color: white;
+            width: 1px;
+        }
+    }
+
+    &--mailto, &--telnr {
+         border: solid 2px white;
+         padding: 6px;
+         box-sizing: border-box;
+         display: table-cell;
+         p {
             text-align: center;
-            margin: 15px;
-            font-size: 14px;
+            vertical-align: center;
+            font-size: 1em;
+            box-sizing: border-box;
+         }
+    }
+    &__totop {
+        @include span(2 last);
+        @include bp(large){
+            display: none;
+        }
+        margin-right: 5px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 5px;
+        a {
+            font-size: $fontsize-footer;
+            text-align: right;
+        svg {
+            fill: white;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        }
         }
     }
 }

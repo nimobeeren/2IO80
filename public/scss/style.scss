@@ -17,6 +17,7 @@
         box-shadow: 9990px 0 0 $color;
     }
 }
+// social media button colors (footer)
 $color-grey: #4A4A4A;
 $color-facebook: #3b5998;
 $color-googleplus: #dd4b39;
@@ -24,6 +25,7 @@ $color-instagram: #bc2a8d;
 $color-linkedin: #007bb6;
 $color-twitter: #00aced;
 $color-youtube: #bb0000;
+$fontsize-footer: 0.75em; // for font-size footer
 @import "blocks/home-featured";
 @import "blocks/footer";
 @import "blocks/header";
