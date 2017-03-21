@@ -1,0 +1,71 @@
+// Inputs
+//
+// Styleguide 2.2
+
+// checkbox
+//
+// markup:
+// <input id="uniqueId" type="checkbox"><label for="uniqueId">Label text</label
+//
+// Styleguide 2.2.1
+input[type="checkbox"]{
+    display: none;
+    &:checked{
+        + label{
+            position: relative;
+            &:after{
+                content: url('data:image/svg+xml;utf8,<svg width="17" height="14" viewBox="6 4 17 14" xmlns="http://www.w3.org/2000/svg"><path d="M21 4.7c-.3-.4-1-.4-1.3 0L13 11.5c-.3.4-1 .4-1.3 0L9.4 9.3C9 9 8.4 9 8 9.3l-1.3 1.3c-.4.4-.4 1 0 1.4l5 4.8c.4.3 1 .3 1.4 0l9.4-9.5c.4-.4.4-1 0-1.4L21 4.5z" fill="#CF285A"/></svg>');
+                width: 1em;
+                height: 1em;
+                display: inline-block;
+                position: absolute;
+                left: 4px;
+                top: 0;
+            }
+        }
+    }
+    + label{
+        &:before{
+            content: "";
+            width: 1em;
+            height: 1em;
+            border: 2px solid $color-grey;
+            display: inline-block;
+            border-radius: 4px;
+            vertical-align: bottom;
+            margin-right: 15px;
+        }
+    }
+}
+
+// checkbox
+//
+// markup:
+// <input id="uniqueId" type="radio"><label for="uniqueId">Label text</label
+//
+// Styleguide 2.2.2
+input[type="radio"]{
+    display: none;
+    &:checked{
+        + label{
+            &:before{
+                background-image: linear-gradient($color-pink, $color-pink);
+            }
+        }
+    }
+    + label{
+        &:before{
+            content: "";
+            box-sizing: border-box;
+            width: 1em;
+            height: 1em;
+            padding: 2px;
+            border: 2px solid $color-grey;
+            display: inline-block;
+            border-radius: 50%;
+            vertical-align: bottom;
+            margin-right: 15px;
+            background-clip: content-box;
+        }
+    }
+}
