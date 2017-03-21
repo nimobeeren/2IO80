@@ -25,8 +25,13 @@ $color-instagram: #bc2a8d;
 $color-linkedin: #007bb6;
 $color-twitter: #00aced;
 $color-youtube: #bb0000;
+$color-blue: #24357f;
 $fontsize-footer: 0.75em; // for font-size footer
 @import "blocks/home-featured";
 @import "blocks/footer";
 @import "blocks/header";
 @import "blocks/filter";
+@import "blocks/program-button";
+@import "form-elements";
+
+
