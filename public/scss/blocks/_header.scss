@@ -1,0 +1,30 @@
+// navigation bar
+header {
+    @include bp(large){
+        @include container;
+    }
+    @include container;
+    img {
+      @include span(1);
+      }
+
+    nav{
+      li {
+        float: left;
+        margin: 50px 80px 5px 10px;
+        height: 100px;
+      a {
+        margin: 50px 0px 0px 0px;
+        text-decoration: none;
+        font-family: $textfont;
+        color: darkblue;
+      }
+    }
+    &--mobilesearch{
+        @include span(2);
+    }
+    &--hamburger{
+        @include span(1 last);
+    }
+}
+}

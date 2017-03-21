@@ -91,23 +91,4 @@ h1 {
     @include push(2);
   }
 }
-// navigation bar
-nav {
-  img {
-    float: left;
-    margin: 0px 80px 0px 10px;
-  }
-  li {
-    display: inline;
-    float: left;
-    margin: 50px 80px 5px 10px;
-    height: 100px;
 
-    a {
-      margin: 50px 0px 0px 0px;
-      text-decoration: none;
-      font-family: $textfont;
-      color: darkblue;
-    }
-}
-}

@@ -19,10 +19,13 @@ const PIETYPE = {
         color: "#FDEC00",
         title: "Specialization courses"
     }
-}
+};
 
 const db = require('../db/db.js');
-var customFunc = require('./customFunctions.js');
+let customFunc = require('./customFunctions.js');
+let spellingCorrector = require("spelling-corrector");
+spellingCorrector = new spellingCorrector();
+spellingCorrector.loadDictionary();
 
 module.exports = {
     use: (app, express, db) => {
@@ -36,6 +39,10 @@ module.exports = {
                 });
             });
         });
+        app.param('word', (req, res, next, word) => {
+            res.send(spellingCorrector.correct(word));
+        });
+        app.get('/api/correct/:word', () => {});
 
         app.get('/', (req, res) => {
             res.render('index.html');
@@ -49,47 +56,51 @@ module.exports = {
             res.render('search.html');
         });
 
+        app.get('/filter', (req, res) => {
+            res.render('filter.html');
+        });
+
         app.get('/program/*', (req, res) => {
             res.render('program.html', {
                 years: [
                     [
                         {
                             type: PIETYPE.BASIC,
-                            percent: 1/12*4
+                            percent: 1 / 12 * 4
                         },
                         {
                             type: PIETYPE.MAJOR,
-                            percent: 1/12*5
+                            percent: 1 / 12 * 5
                         },
                         {
                             type: PIETYPE.FREE,
-                            percent: 1/12*2
+                            percent: 1 / 12 * 2
                         },
                         {
                             type: PIETYPE.SPECIALIZATION,
-                            percent: 1/12
+                            percent: 1 / 12
                         }
                     ],
                     [
                         {
                             type: PIETYPE.BASIC,
-                            percent: 1/12
+                            percent: 1 / 12
                         },
                         {
                             type: PIETYPE.MAJOR,
-                            percent: 1/12*4
+                            percent: 1 / 12 * 4
                         },
                         {
                             type: PIETYPE.USE,
-                            percent: 1/12*4
+                            percent: 1 / 12 * 4
                         },
                         {
                             type: PIETYPE.SPECIALIZATION,
-                            percent: 1/12*3
+                            percent: 1 / 12 * 3
                         }
                     ]
                 ],
-                pieChart: function(){
+                pieChart: function () {
                     return customFunc.pieChart(this)
                 }
             });
