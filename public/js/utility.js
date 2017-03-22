@@ -6,7 +6,7 @@
  * @param success
  * @param error
  */
-function openUrl(type, url, {params, success, error}) {
+function openUrl(type, url, {params, success = () => {}, error = (e) => {console.log(e)}}) {
     try {
         let xhr = new XMLHttpRequest();
         xhr.open(type, url, true);
