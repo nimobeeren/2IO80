@@ -9,68 +9,56 @@ body {
 .filter {
   border-bottom: 2px solid black;
   padding: 0 15px;
-}
-
-.filter:first-child {
-  border-top: 2px solid black;
-}
-
-.filter__header {
-  cursor: pointer;
-}
-
-.filter__header__name {
-  padding: 15px;
-  display: inline-block;
-}
-
-.filter__header__expand-button {
-  width: 15px;
-  height: 15px;
-  display: inline-block;
-  float: right;
-  padding: 15px 0 15px 15px;
-  font-size: 20px;
-}
-
-.filter__options {
-  display: none;
-}
-
-.filter__options__single {
-  border-bottom: 2px solid #f3f3f3;
-}
-
-.filter__options__single:first-child {
-  border-top: 2px solid #f3f3f3;
-}
-
-.filter__options__checkbox {
-  display: inline-block;
-  margin: 15px;
-}
-
-.filter__options__name {
-  display: inline-block;
+  &:first-child {
+    border-top: 2px solid black;
+  }
+  &__header {
+    cursor: pointer;
+    &__name {
+      padding: 15px;
+      display: inline-block;
+    }
+    &__expand-button {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      float: right;
+      padding: 15px 0 15px 15px;
+      font-size: 20px;
+    }
+  }
+  &__options {
+    display: none;
+    &__single {
+      border-bottom: 2px solid #f3f3f3;
+      &:first-child {
+        border-top: 2px solid #f3f3f3;
+      }
+      &__checkbox {
+        display: inline-block;
+        margin: 15px;
+      }
+      &__name {
+        display: inline-block;
+      }
+    }
+  }
 }
 
 .program-list {
   width: 100%;
-}
-
-.program-list__program {
-  height: 125px;
-  margin: 15px;
-  padding: 15px;
-  border: 2px solid black;
-}
-
-.program-list__program__name {
-  margin: 0 0 10px;
-}
-
-.program-list__abstract {
-  text-overflow: ellipsis;
+  &__program {
+    height: 125px;
+    margin: 15px;
+    padding: 15px;
+    border: 2px solid black;
+    &__name {
+      margin: 0 0 10px;
+    }
+    &__abstract {
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .filter-popup {
