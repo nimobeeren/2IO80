@@ -1,0 +1,55 @@
+// Headings
+//
+// These are our headings
+//
+// markup:
+// <h1>Heading 1</h1>
+// <h2>Heading 2</h2>
+// <h3>Heading 3</h3>
+// <h4>Heading 4</h4>
+// <h5>Heading 5</h5>
+//
+// Styleguide 1.2
+
+h1, h2, h3, h4, h5, h6{
+    color: $color-grey;
+    font-weight: 600;
+}
+
+h1{
+    font-size: rem(32px);
+    @include bp(large){
+        font-size: rem(42px);
+    }
+}
+
+h2{
+    font-size: rem(24px);
+    letter-spacing: rem(-0.2px);
+    line-height: (28/24);
+    @include bp(large){
+        font-size: rem(32px);
+        letter-spacing: rem(-0.3px);
+    }
+}
+
+h3{
+    font-size: rem(18px);
+    @include bp(large){
+        font-size: rem(26px);
+    }
+}
+
+h4{
+    font-size: rem(16px);
+    @include bp(large){
+        font-size: rem(20px);
+    }
+}
+
+h5{
+    font-size: rem(14px);
+    @include bp(large){
+        font-size: rem(18px);
+    }
+}
