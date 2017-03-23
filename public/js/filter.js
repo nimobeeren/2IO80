@@ -7,6 +7,22 @@ window.onload = () => {
     filter();
 };
 
+function showElement(element) {
+    id(element).style.display = 'block'
+}
+
+function hideElement(element) {
+    id(element).style.display = 'none'
+}
+
+function toggleElement(element) {
+    if (id(element).style.display == 'none') {
+        id(element).style.display = 'block';
+    } else {
+        id(element).style.display = 'none';
+    }
+}
+
 /**
  * Displays a subset of programs based on the selected filters
  */
