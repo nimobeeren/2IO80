@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i');
+
+body{
+    font-family: 'Fira Sans', sans-serif;
+    color: $color-grey;
+    @include container;
+    @include bp(large){
+        @include container;
+    }
+}
+
+// added for the styleguide, because it uses the shadow DOM
+.section-markup-wrapper{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+// Colors and typography
+//
+// This section describes base colors and typography
+//
+// Styleguide 1.0
+
+@import "elements/headings";
+
+// Buttons and inputs
+//
+// Links, buttons, input boxes etc.
+//
+// Styleguide 2.0
+
+@import "elements/buttons";
+@import "elements/inputs";

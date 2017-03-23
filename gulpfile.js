@@ -16,11 +16,12 @@ const svgmin = require('gulp-svgmin');
 const notify = require("gulp-notify");
 const browserSync = require('browser-sync');
 const nodemon = require('gulp-nodemon');
+const styleguide = require('sc5-styleguide');
 
 const sassSettings = {
     importer: moduleImporter()
 }
-const BROWSER_SYNC_RELOAD_DELAY = 500;
+const outputPath = 'styleguide-output';
 
 gulp.task('sass', () => {
     return gulp.src('./public/scss/*.scss')
@@ -50,7 +51,7 @@ gulp.task('icons-watch', ['icons'], function (done) {
     done();
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['serve']);
 gulp.task('serve', ['sass', 'icons', 'browser-sync']);
 
 var nodemonInstance;
@@ -84,4 +85,34 @@ gulp.task('nodemon', function (cb) {
 	});
 
     return nodemonInstance;
+});
+
+gulp.task('styleguide:generate', function() {
+    return gulp.src('public/scss/**/*.scss')
+      .pipe(styleguide.generate({
+          title: 'My Styleguide',
+          server: true,
+          rootPath: outputPath,
+          overviewPath: 'README.md'
+        }))
+      .pipe(gulp.dest(outputPath));
+});
+
+gulp.task('styleguide:applystyles', function() {
+    return gulp.src('public/scss/style.scss')
+      .pipe(sass(sassSettings))
+      .pipe(styleguide.applyStyles())
+      .pipe(gulp.dest(outputPath));
+});
+
+gulp.task('styleguide', ['styleguide:static', 'styleguide:generate', 'styleguide:applystyles']);
+
+gulp.task('styleguide:static', function() {
+  gulp.src(['public/scss/**/*.scss'])
+    .pipe(gulp.dest(outputPath));
+});
+
+gulp.task('styleguide:serve', ['styleguide'], function() {
+  // Start watching changes and update styleguide whenever changes are detected
+  gulp.watch('public/scss/**/*.scss', ['styleguide']);
 });

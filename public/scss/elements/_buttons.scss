@@ -1,0 +1,64 @@
+// Buttons
+//
+// Styleguide 2.1
+
+// Default button
+//
+// The basic button
+//
+// markup:
+// <a class="btn" type="button">Button</a>
+//
+// Styleguide 2.1.1
+.btn{
+    background: $color-pink;
+    border: none;
+    border-radius: 4px;
+    color: $color-white;
+    font-family: inherit;
+    font-style: italic;
+    font-size: rem(18px);
+    padding: 17px 15px;
+    text-decoration: none;
+}
+
+// Modified buttons
+//
+// btn--skew - Skewed button
+// btn--secondary - Secondary button
+// btn--tertiary - Tertiary button
+// btn--white - White button
+//
+// markup:
+// <button class="btn {$modifiers}"><div class="btn__inner">.{$modifiers}</div></button>
+//
+// Styleguide 2.1.2
+.btn{
+    &__inner{
+        display: inline;
+    }
+    &--secondary{
+        background: none;
+        border: 2px solid currentColor;
+        padding: 8px 15px;
+        color: $color-pink;
+    }
+    &--skew{
+        transform: skewX(-16deg);
+        .btn__inner{
+            transform: skewX(16deg);
+        }
+    }
+    &--tertiary{
+        color: $color-grey;
+        background: none;
+        svg{
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+        }
+    }
+    &--white{
+        color: $color-white;
+    }
+}
