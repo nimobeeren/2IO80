@@ -5,9 +5,9 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/utility.js"></script>
-    <script src="js/db.js"></script>
-    <script src="js/filter.js"></script>
+    <script src="/js/utility.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/filter.js"></script>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 <h2>Filter</h2>
 <div class="filters">
     <div class="filter">
-        <div class="filter__header" onclick="toggleElement('filter__options--interest')">
+        <div class="filter__header" onclick="toggleFilter('filter__options--interest')">
             <div class="filter__header__name">Area of interest</div>
             <div class="filter__header__expand-button">+</div>
         </div>
@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="filter">
-        <div class="filter__header" onclick="toggleElement('filter__options--profile')">
+        <div class="filter__header" onclick="toggleFilter('filter__options--profile')">
             <div class="filter__header__name">Admissible Dutch profiles</div>
             <div class="filter__header__expand-button">+</div>
         </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="filter">
-        <div class="filter__header" onclick="toggleElement('filter__options--language')">
+        <div class="filter__header" onclick="toggleFilter('filter__options--language')">
             <div class="filter__header__name">Language of instruction</div>
             <div class="filter__header__expand-button">+</div>
         </div>

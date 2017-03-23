@@ -1,5 +1,8 @@
-// Define the list of programs
+// The list of programs
 let programs = [];
+
+// Which filters are being shown right now
+let shownFilters = {};
 
 // Set checkboxes to call filter when clicked
 window.onload = () => {
@@ -7,19 +10,17 @@ window.onload = () => {
     filter();
 };
 
-function showElement(element) {
-    id(element).style.display = 'block'
-}
-
-function hideElement(element) {
-    id(element).style.display = 'none'
-}
-
-function toggleElement(element) {
-    if (id(element).style.display == 'none') {
-        id(element).style.display = 'block';
-    } else {
+/**
+ * Shows and hides the filter options
+ * @param element the filter options to toggle
+ */
+function toggleFilter(element) {
+    if (shownFilters[element]) {
         id(element).style.display = 'none';
+        shownFilters[element] = false;
+    } else {
+        id(element).style.display = 'block';
+        shownFilters[element] = true;
     }
 }
 
