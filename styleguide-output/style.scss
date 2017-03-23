@@ -1,6 +1,5 @@
 @import "susy";
 @import "normalize.css";
-
 @import "susy-settings";
 
 @mixin full-width-bars($color){
@@ -54,5 +53,4 @@ $color-youtube: #bb0000;
 
 @import "blocks/home-featured";
 @import "blocks/footer";
-
 @import "form-elements";

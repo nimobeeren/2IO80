@@ -1,3 +1,22 @@
 .program-button{
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.1);
+    border: solid 1px $color-blue;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 15px;
+    text-decoration: none;
+    &__overview-icon{
+        display: none;
+    }
+    h3{
+        color: $color-blue;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    p{
+        color: $color-grey;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 
 }
