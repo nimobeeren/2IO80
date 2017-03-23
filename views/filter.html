@@ -22,38 +22,68 @@
 {{! > header}}
 <h2>Filter</h2>
 <div class="filters">
-    <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--interest')">
+    <div class="filter" id="filter--interest">
+        <div class="filter__header" onclick="toggleFilter('filter--interest')">
             <div class="filter__header__name">Area of interest</div>
             <div class="filter__header__expand-button">+</div>
         </div>
-        <div class="filter__options" id="filter__options--interest">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Science" value="science"><div class="filter__options__single__name">Science</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Multidisciplinary Studies" value="multidisc"><div class="filter__options__single__name">Multidisciplinary Studies</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Media, Culture and History" value="media-culture-history"><div class="filter__options__single__name">Media, Culture and History</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Health and Life Sciences" value="health-life"><div class="filter__options__single__name">Health and Life Sciences</div></div>
+        <div class="filter__options">
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--interest--science" type="checkbox" value="science">
+                <label class="filter__options__single__name" for="filter--interest--science">Science</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--interest--multidisc" type="checkbox" value="multidisc">
+                <label class="filter__options__single__name" for="filter--interest--multidisc">Multidisciplinary Studies</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--interest--media-culture-history" type="checkbox" value="media-culture-history">
+                <label class="filter__options__single__name" for="filter--interest--media-culture-history">Media, Culture and History</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--interest--health-life" type="checkbox" value="health-life">
+                <label class="filter__options__single__name" for="filter--interest--health-life">Health and Life Sciences</label>
+            </div>
         </div>
     </div>
-    <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--profile')">
+    <div class="filter" id="filter--profile">
+        <div class="filter__header" onclick="toggleFilter('filter--profile')">
             <div class="filter__header__name">Admissible Dutch profiles</div>
             <div class="filter__header__expand-button">+</div>
         </div>
-        <div class="filter__options" id="filter__options--profile">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Nature & Technology" value="nt"><div class="filter__options__single__name">Nature & Technology</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Nature & Health" value="ng"><div class="filter__options__single__name">Nature & Health</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Economics & Society" value="em"><div class="filter__options__single__name">Economics & Society</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Culture & Society" value="cm"><div class="filter__options__single__name">Culture & Society</div></div>
+        <div class="filter__options">
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--profile-nt" type="checkbox" value="nt">
+                <label class="filter__options__single__name" for="filter--profile-nt">Nature & Technology</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--profile-ng" type="checkbox" value="ng">
+                <label class="filter__options__single__name" for="filter--profile-ng">Nature & Health</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--profile-em" type="checkbox" value="em">
+                <label class="filter__options__single__name" for="filter--profile-em">Economics & Society</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--profile-cm" type="checkbox" value="cm">
+                <label class="filter__options__single__name" for="filter--profile-cm">Culture & Society</label>
+            </div>
         </div>
     </div>
-    <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--language')">
+    <div class="filter" id="filter--language">
+        <div class="filter__header" onclick="toggleFilter('filter--language')">
             <div class="filter__header__name">Language of instruction</div>
             <div class="filter__header__expand-button">+</div>
         </div>
-        <div class="filter__options" id="filter__options--language">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Dutch" value="nl"><div class="filter__options__single__name">Dutch</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="English" value="en"><div class="filter__options__single__name">English</div></div>
+        <div class="filter__options">
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--language-en" type="checkbox" value="en">
+                <label class="filter__options__single__name" for="filter--language-en">English</label>
+            </div>
+            <div class="filter__options__single">
+                <input class="filter__options__single__checkbox" id="filter--language-nl" type="checkbox" value="nl">
+                <label class="filter__options__single__name" for="filter--language-nl">Dutch</label>
+            </div>
         </div>
     </div>
 </div>
@@ -71,7 +101,7 @@
         </div>
     </div>
 </div>
-<div id="filter_result"></div>
+<!--<div id="filter_result"></div>-->
 {{> footer}}
 </body>
 
