@@ -31,7 +31,8 @@ function filter() {
     // Populate the programs list using the database
     if (pages.length == 0) {
         return log("The database has not been updated");
-    } else if (programs.length != 0) {
+    } else if (programs.length == 0) {
+        // Populate the programs list
         pages.forEach(page => {
             // Check whether current program exists in programs list
             let found = false;
