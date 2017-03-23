@@ -1,14 +1,13 @@
 //todo: edit svg to arrow symbol in html
 
 footer {
-    @include container;
-    // @include full-width-bars($color-grey); // todo: uncomment (destroys susy debug)
-    background: $color-grey; // todo: remove when done above comment
+    @include span(full);
+    @include full-width-bars($color-grey);
     padding-top: 15px;
     padding-bottom: 15px;
     position: relative;
     @include bp(large){
-        @include container;
+        @include span(full);
     }
     h6 {
         color: white;
