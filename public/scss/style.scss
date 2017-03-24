@@ -29,8 +29,9 @@
 
 // Main colors
 //
-// $color-grey - grey
+// $color-black - grey
 // $color-pink - #todo
+// $color-grey - #todo
 // $color-grey-light - #todo
 // $color-white: white; - #todo
 //
@@ -39,8 +40,9 @@
 //
 // Styleguide 1.1.1
 // social media button colors (footer)
-$color-grey: #4A4A4A;
+$color-black: #4A4A4A;
 $color-pink: #cf285a;
+$color-grey: #7F7F7F;
 $color-grey-light: #F3F3F3;
 $color-white: white;
 
@@ -64,7 +66,6 @@ $color-linkedin: #007bb6;
 $color-twitter: #00aced;
 $color-youtube: #bb0000;
 $color-blue: #24357f;
-$fontsize-footer: 0.75em; // for font-size footer
 
 @import "form-elements";
 @import "blocks/home-featured";
@@ -72,5 +73,5 @@ $fontsize-footer: 0.75em; // for font-size footer
 @import "blocks/header";
 @import "blocks/filter";
 @import "blocks/program-button";
-
+@import "blocks/accordion";
 @import "elements";

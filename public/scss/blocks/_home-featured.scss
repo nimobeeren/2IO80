@@ -5,90 +5,91 @@ $skewdeg: -16deg;
 // feature
 
 .featured{
-@include bp(large){
-  @include container;
-  }
-}
-#outerimage {
-  height:800px;
-  width:1400px;
-  position: relative;
-  -ms-transform: skew($skewdeg,0deg);
-  -webkit-transform: skew($skewdeg,0deg);
-  transform: skew($skewdeg,0deg);
-  overflow: hidden;
-  z-index: -1;
-  @include bp(large){
-    @include span(8);
+    @include bp(large){
+        @include container;
     }
-}
-#innerimage {
-  position: absolute;
-  left: -50px;
-  background-image: url("http://rosiemecca.com/wp-content/uploads/2016/06/Slider6-Stealdownline.png");
-  height:800px;
-  width:2400px;
-  -ms-transform: skew(-$skewdeg,0deg);
-  -webkit-transform: skew(-$skewdeg,0deg);
-  transform: skew(-$skewdeg,0deg);
-  flow: left;
-  z-index: -1;
-}
-
-.text-block {
-  margin-top: 300px;
-  @include bp(large){
-      @include span(6 last);
-      @include pull(2);
-  }
-}
-.text-block-inner {
-  transform: skew($skewdeg);
-  background-color: $pinkcolor;
-  right: 5%;
-  position: relative;
-  width: 600px;
-  @include bp(large){
-        @include span(5 of 6);
-        @include push(2);
+    #outerimage {
+        height:800px;
+        width:1400px;
+        position: relative;
+        -ms-transform: skew($skewdeg,0deg);
+        -webkit-transform: skew($skewdeg,0deg);
+        transform: skew($skewdeg,0deg);
+        overflow: hidden;
+        z-index: -1;
+        @include bp(large){
+            @include span(8);
+        }
     }
-}
-h1 {
-  margin: 20px 20%;
-  float: right;
-  text-align: left;
-  font-family: $textfont;
-  font-size: 2.5em;
-  transform: skew(-$skewdeg);
-  padding:  50px 0px;
-  color: white;
-  z-index: 1;
-}
-.tomajors {
-  font-family: $textfont;
-  text-decoration: none;
-  color: $color-grey;
-  margin-top:80px;
-  @include bp(large){
-    @include span(4);
-    @include pull(6);
-  }
-}
-.button {
-  border: solid 3px $pinkcolor;
-  color: $pinkcolor;
-  padding: 15px 32px;
-  text-align: center;
-  margin-top: 15px;
-  text-decoration: none;
-  font-family: $textfont;
-  transform: skew($skewdeg);
-  &:visited { color: $pinkcolor; }
-  &:hover { background: $pinkcolor; color:white; }
-  & > span { display: inline-block; transform: skew(-$skewdeg); }
-  @include bp(large){
-    @include span(4 of 6);
-    @include push(2);
-  }
-}
+    #innerimage {
+        position: absolute;
+        left: -50px;
+        background-image: url("http://rosiemecca.com/wp-content/uploads/2016/06/Slider6-Stealdownline.png");
+        height:800px;
+        width:2400px;
+        -ms-transform: skew(-$skewdeg,0deg);
+        -webkit-transform: skew(-$skewdeg,0deg);
+        transform: skew(-$skewdeg,0deg);
+        flow: left;
+        z-index: -1;
+    }
 
+    .text-block {
+        margin-top: 300px;
+        @include bp(large){
+            @include span(6 last);
+            @include pull(2);
+        }
+    }
+    .text-block-inner {
+        transform: skew($skewdeg);
+        background-color: $pinkcolor;
+        right: 5%;
+        position: relative;
+        width: 600px;
+        @include bp(large){
+            @include span(5 of 6);
+            @include push(2);
+        }
+    }
+    h1 {
+        margin: 20px 20%;
+        float: right;
+        text-align: left;
+        font-family: $textfont;
+        font-size: 2.5em;
+        transform: skew(-$skewdeg);
+        padding:  50px 0px;
+        color: white;
+        z-index: 1;
+    }
+    .tomajors {
+        font-family: $textfont;
+        text-decoration: none;
+        color: $color-grey;
+        margin-top:80px;
+        @include bp(large){
+            @include span(4);
+            @include pull(6);
+        }
+    }
+    .button {
+        border: solid 3px $pinkcolor;
+        color: $pinkcolor;
+        padding: 15px 32px;
+        text-align: center;
+        margin-top: 15px;
+        text-decoration: none;
+        font-family: $textfont;
+        transform: skew($skewdeg);
+        &:visited { color: $pinkcolor; }
+        &:hover { background: $pinkcolor; color:white; }
+        & > span { display: inline-block; transform: skew(-$skewdeg); }
+        @include bp(large){
+            @include span(4 of 6);
+            @include push(2);
+        }
+    }
+
+
+}

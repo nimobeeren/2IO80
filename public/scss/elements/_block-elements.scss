@@ -1,0 +1,17 @@
+// Figure
+//
+// markup:
+// <figure>
+//     <img src="//lorempixel.com/300/200/" />
+//     <figcaption>This is a awesome picture</figcaption>
+// </figure>
+//
+// Styleguide 3.1
+figure{
+    text-align: center;
+}
+figcaption{
+    @extend small;
+    padding-top: 10px;
+    color: $color-grey;
+}
