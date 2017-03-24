@@ -19,59 +19,59 @@
     <!--<input type="checkbox" name="profile" value="cm">Culture & Society<br>-->
 <!--</form>-->
 
+<div id="filter_result"></div>
 {{! > header}}
 <h2>Filter</h2>
 <div class="filters">
     <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--interest')">
+        <div class="filter__header" onclick="toggleElement('filter__options--interest')">
             <div class="filter__header__name">Area of interest</div>
             <div class="filter__header__expand-button">+</div>
         </div>
         <div class="filter__options" id="filter__options--interest">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Science" value="science"><div class="filter__options__single__name">Science</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Multidisciplinary Studies" value="multidisc"><div class="filter__options__single__name">Multidisciplinary Studies</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Media, Culture and History" value="media-culture-history"><div class="filter__options__single__name">Media, Culture and History</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Health and Life Sciences" value="health-life"><div class="filter__options__single__name">Health and Life Sciences</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Science" value="science"><div class="filter__options__name">Science</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Multidisciplinary Studies" value="multidisc"><div class="filter__options__name">Multidisciplinary Studies</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Media, Culture and History" value="media-culture-history"><div class="filter__options__name">Media, Culture and History</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Health and Life Sciences" value="health-life"><div class="filter__options__name">Health and Life Sciences</div></div>
         </div>
     </div>
     <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--profile')">
+        <div class="filter__header" onclick="toggleElement('filter__options--profile')">
             <div class="filter__header__name">Admissible Dutch profiles</div>
             <div class="filter__header__expand-button">+</div>
         </div>
         <div class="filter__options" id="filter__options--profile">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Nature & Technology" value="nt"><div class="filter__options__single__name">Nature & Technology</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Nature & Health" value="ng"><div class="filter__options__single__name">Nature & Health</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Economics & Society" value="em"><div class="filter__options__single__name">Economics & Society</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Culture & Society" value="cm"><div class="filter__options__single__name">Culture & Society</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Nature & Technology" value="nt"><div class="filter__options__name">Nature & Technology</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Nature & Health" value="ng"><div class="filter__options__name">Nature & Health</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Economics & Society" value="em"><div class="filter__options__name">Economics & Society</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Culture & Society" value="cm"><div class="filter__options__name">Culture & Society</div></div>
         </div>
     </div>
     <div class="filter">
-        <div class="filter__header" onclick="toggleFilter('filter__options--language')">
+        <div class="filter__header" onclick="toggleElement('filter__options--language')">
             <div class="filter__header__name">Language of instruction</div>
             <div class="filter__header__expand-button">+</div>
         </div>
         <div class="filter__options" id="filter__options--language">
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="Dutch" value="nl"><div class="filter__options__single__name">Dutch</div></div>
-            <div class="filter__options__single"><input class="filter__options__single__checkbox" type="checkbox" title="English" value="en"><div class="filter__options__single__name">English</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="Dutch" value="nl"><div class="filter__options__name">Dutch</div></div>
+            <div class="filter__options__single"><input class="filter__options__checkbox" type="checkbox" title="English" value="en"><div class="filter__options__name">English</div></div>
         </div>
     </div>
 </div>
-<div class="program-list">
+<div class="program-list"
     <div class="program-list__program">
         <h3 class="program-list__program__name">Psychology & Technology</h3>
-        <div class="program-list__program__abstract">
+        <div class="program-abstract">
             You learn how technology influences people, and how you can us knowledge of psychology to let people use technology...
         </div>
     </div>
     <div class="program-list__program">
         <h3 class="program-list__program__name">Web Science</h3>
-        <div class="program-list__program__abstract">
+        <div class="program-list__abstract">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit tellus et viverra iaculis. Pellentesque semper turpis sed tortor vehicula malesuada...
         </div>
     </div>
 </div>
-<div id="filter_result"></div>
 {{> footer}}
 </body>
 
