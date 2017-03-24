@@ -73,7 +73,7 @@ function filter() {
     });
 
     // Display result nicely formatted
-    id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
+    //id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
 
     // Get a list of allowed profiles
     // let allowedProfiles = [];
