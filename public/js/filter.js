@@ -4,9 +4,9 @@ let programs = [];
 // Which filters are being shown right now
 let shownFilters = {};
 
-// Set checkboxes to call filter when clicked
+// Set checkboxes to call filter when changed
 window.onload = () => {
-    document.querySelectorAll('[type="checkbox"]').forEach(checkbox => checkbox.onclick = filter);
+    [].concat(document.querySelectorAll('[type="checkbox"]')).forEach(checkbox => checkbox.onchange = filter);
     filter();
 };
 
@@ -15,11 +15,14 @@ window.onload = () => {
  * @param element the filter options to toggle
  */
 function toggleFilter(element) {
+    let el = id(element);
     if (shownFilters[element]) {
-        id(element).style.display = 'none';
+        el.querySelector('.filter__options').style.display = 'none';
+        el.querySelector('.filter__header__expand-button').innerHTML = '+';
         shownFilters[element] = false;
     } else {
-        id(element).style.display = 'block';
+        el.querySelector('.filter__options').style.display = 'block';
+        el.querySelector('.filter__header__expand-button').innerHTML = '-';
         shownFilters[element] = true;
     }
 }
@@ -29,15 +32,15 @@ function toggleFilter(element) {
  */
 function filter() {
     // Populate the programs list using the database
-    if (pages.length == 0) {
+    if (pages.length === 0) {
         return log("The database has not been updated");
-    } else if (programs.length == 0) {
+    } else if (programs.length === 0) {
         // Populate the programs list
         pages.forEach(page => {
             // Check whether current program exists in programs list
             let found = false;
             programs.forEach(program => {
-                if (program.name == page['program']) {
+                if (program.name === page['program']) {
                     found = true;
                 }
             });
@@ -56,10 +59,10 @@ function filter() {
 
     // Loop over all filters
     let result = programs;
-    [...document.getElementsByTagName('form')].forEach(form => {
+    [].concat(document.getElementsByTagName('form')).forEach(form => {
         // Get the allowed values for the current filter
         let allowedValues = [];
-        form.querySelectorAll('[type=checkbox').forEach(checkbox => {
+        [].concat(form.querySelectorAll('[type=checkbox')).forEach(checkbox => {
             if (checkbox.checked) {
                 allowedValues.push(checkbox.value);
             }
@@ -70,7 +73,7 @@ function filter() {
     });
 
     // Display result nicely formatted
-    id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
+    //id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
 
     // Get a list of allowed profiles
     // let allowedProfiles = [];
