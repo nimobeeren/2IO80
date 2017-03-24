@@ -117,7 +117,7 @@ footer {
             background-color: white;
             width: 1px;
             svg {
-                fill: $color-grey;
+                fill: $color-black;
                 width: 27/16*1em;
                 height: 27/16*1em;
                 padding: 2px 4px 4px 6px;
@@ -132,6 +132,7 @@ footer {
         background: none;
         border: none;
         color: $color-white;
+        background: none;
         @include bp(large){
             display: none;
         }
