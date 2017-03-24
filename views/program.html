@@ -6,16 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css"/>
-    <script src="/js/utility.js"></script>
-    <script src="/js/program.js"></script>
 </head>
 <body>
     {{! > header}}
-    {{! #years}}
+    {{#years}}
         <h6>Year 1</h6>
-        {{{! pieChart}}}
-    {{! /years}}
-    {{> accordion}}
-    {{> footer}}
+        {{{pieChart}}}
+    {{/years}}
+    {{ > program-button}}
+    {{! > footer}}
 </body>
 </html>
