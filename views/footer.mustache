@@ -32,46 +32,38 @@
         </a>
     </div>
     <div class="footer__address">
-        <div class="footer--navigationaddress">
+        <div class="footer__address-block">
             <h6>Navigation address</h6>
             <p>De zaale <br/> Eindhoven</p>
         </div>
-        <div class="footer--postaladdress">
+        <div class="footer__address-block">
             <h6>Postal address</h6>
             <p>PO Box 513 <br/> 5600 MB Eindhoven</p>
         </div>
     </div>
     <div class="footer__contact">
-        <a href="mailto:info@tue.nl">
+        <a class="footer__contact-btn" href="mailto:info@tue.nl">
             <div class="footer__contact-icon">
                 <svg>
-                <use xlink:href="/svg-symbols.svg#mail"></use>
+                    <use xlink:href="/svg-symbols.svg#mail"></use>
                 </svg>
             </div>
-            <div class="footer--mailto">
             <p>info@tue.nl</p>
-            </div>
         </a>
-        <a href="tel:0031402479111">
+        <a class="footer__contact-btn" href="tel:0031402479111">
             <div class="footer__contact-icon">
                 <svg>
                     <use xlink:href="/svg-symbols.svg#phone"></use>
                 </svg>
             </div>
-            <div class="footer--telnr">
-                <p> +31 (0)40 247 9111 </p>
-            </div>
+            <p> +31 (0)40 247 9111 </p>
         </a>
     </div>
-    <div class="footer__totop">
-        <a href="#">
-            scroll to the top
-            <svg>
-            <use xlink:href="svg-symbols.svg#mail"></use>
-            todo: replace by arrow symbol
-            todo: automatic scroll to top (in JavaScript)
-            </svg>
-        +31 (0)40 247 911
-        </a>
-    </div>
+    <button class="footer__totop">
+        scroll to the top
+        <svg>
+            <use xlink:href="svg-symbols.svg#arrow"></use>
+        </svg>
+        <!-- todo: automatic scroll to top (in JavaScript) -->
+    </button>
 </footer>
