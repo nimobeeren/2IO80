@@ -1,3 +1,55 @@
+
 body{
     font-family: 'Fira Sans', sans-serif;
+    color: $color-grey;
+    @include container;
+    @include bp(large){
+        @include container;
+    }
+}
+
+// added for the styleguide, because it uses the shadow DOM
+.section-markup-wrapper{
+    font-family: 'Fira Sans', sans-serif;
+}
+.contain_all{
+    @include full;
+    @include bp(large){
+        @include full;
+    };
+}
+
+abbr{
+    position: relative;
+    &:hover:after{
+        content: attr(title);
+        position: absolute;
+        bottom: 100%;
+        white-space: nowrap;;
+        left: 0;
+        display: block;
+        background: $color-grey;
+        color: white;
+        padding: .3em;
+        @extend small;
+    }
+}
+mark{
+    background: $color-pink;
+    color: white;
+    padding: .1em .4em;
+}
+code, samp{
+    background: $color-grey-light;
+    padding: .1em .4em;
+}
+hr{
+    background-color: $color-grey-light;
+    border: none;
+    height: 1px;
+}
+table{
+    thead{
+        background-color: $color-grey-light;
+    }
 }
