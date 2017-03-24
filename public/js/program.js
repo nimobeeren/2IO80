@@ -7,7 +7,6 @@ window.onload = () => {
 };
 
 function toggleAccordion(element) {
-    // MOBILE
     let el = id(element);
     if (shownItems[element]) {
         // Hide the item
