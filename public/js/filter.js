@@ -22,12 +22,12 @@ window.onload = () => {
 function toggleFilter(element) {
     let el = id(element);
     if (shownFilters[element]) {
-        el.querySelector('.filter__options').style.display = 'none';
-        el.querySelector('.filter__header__expand-button').innerHTML = '+';
+        el.querySelector('.filters__options').style.display = 'none';
+        el.querySelector('.filters__expand-button').innerHTML = '+';
         shownFilters[element] = false;
     } else {
-        el.querySelector('.filter__options').style.display = 'block';
-        el.querySelector('.filter__header__expand-button').innerHTML = '-';
+        el.querySelector('.filters__options').style.display = 'block';
+        el.querySelector('.filters__expand-button').innerHTML = '-';
         shownFilters[element] = true;
     }
 }

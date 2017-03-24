@@ -2,66 +2,52 @@
   @include bp(large) {
     @include span(3);
   }
-}
-
-.filter {
-  border-bottom: 2px solid $color-grey;
-  padding: 0 15px;
-  &:first-child {
-    border-top: 2px solid $color-grey;
+  &__item {
+    border-bottom: 2px solid $color-grey;
+    padding: 0 15px;
+    &:first-child {
+      border-top: 2px solid $color-grey;
+    }
+    &:last-child {
+      margin-bottom: 15px;
+    }
   }
-  &:last-child {
-    margin-bottom: 15px;
-  }
-  &__header {
+  &__heading {
     cursor: pointer;
     min-width: 230px;
-    &__name {
-      padding: 15px;
-      display: inline-block;
-    }
-    &__expand-button {
-      width: 15px;
-      height: 15px;
-      display: inline-block;
-      float: right;
-      padding: 15px 0;
-      font-size: 20px;
-    }
+  }
+  &__heading-name {
+    padding: 15px;
+    display: inline-block;
+  }
+  &__expand-button {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    float: right;
+    padding: 15px 0;
+    font-size: 20px;
   }
   &__options {
     display: none;
-    &__single {
-      border-bottom: 2px solid $color-grey-light;
-      padding: 15px 0;
-      &:first-child {
-        border-top: 2px solid $color-grey-light;
-      }
-      &__checkbox {
-        display: inline-block;
-        margin: 15px;
-      }
-      &__name {
-        display: inline-block;
-      }
+  }
+  &__option {
+    border-bottom: 2px solid $color-grey-light;
+    &:first-child {
+      border-top: 2px solid $color-grey-light;
     }
+  }
+  &__checkbox {
+    display: inline-block;
+    margin: 15px;
+  }
+  &__option-name {
+    display: inline-block;
   }
 }
 
 .program-list {
   @include bp(large) {
     @include span(last 9);
-  }
-  &__program {
-    height: 125px;
-    margin-bottom: 15px;
-    padding: 15px;
-    border: 2px solid $color-grey;
-    &__name {
-      margin: 0 0 10px;
-    }
-    &__abstract {
-      text-overflow: ellipsis;
-    }
   }
 }
