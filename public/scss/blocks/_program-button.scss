@@ -37,9 +37,12 @@
             width: 2em;
             height: 2em;
             display: inline-block;
+            vertical-align: middle;
         }
         p{
             padding-top: 5px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         &--top{
