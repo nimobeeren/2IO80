@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/js/utility.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/program.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i">
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css"/>
-    <script src="/js/utility.js"></script>
-    <script src="/js/program.js"></script>
 </head>
 <body>
     {{! > header}}
+    {{> program-button}}
     {{#years}}
         <h6>Year 1</h6>
         {{{pieChart}}}
