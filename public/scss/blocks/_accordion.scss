@@ -1,4 +1,47 @@
 .accordion {
-  border-top: 2px solid $color-grey-light;
-  border-bottom: 2px solid $color-grey-light;
+  margin: 15px;
+  @include bp(large) {
+    @include span(full nest);
+    border-top: 2px solid $color-grey-light;
+    border-bottom: 2px solid $color-grey-light;
+    padding: 15px;
+  }
+  &__items {
+    @include bp(large) {
+      @include span(4);
+    }
+    &__single {
+      border-bottom: 2px solid $color-grey-light;
+      &:first-child {
+        border-top: 2px solid $color-grey-light;
+      }
+      &__header {
+        cursor: pointer;
+        &__name {
+          display: inline-block;
+          padding: 15px;
+        }
+        &__expand-button {
+          display: inline-block;
+          float: right;
+          width: 15px;
+          height: 15px;
+          padding: 15px 0;
+          font-size: 20px;
+        }
+      }
+      &__content {
+        display: none;
+        border-top: 2px solid $color-grey-light;
+        padding: 15px;
+      }
+    }
+  }
+  &__desktop-content {
+    display: none;
+    @include bp(large) {
+      @include span(last 8);
+      display: block;
+    }
+  }
 }
