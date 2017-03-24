@@ -15,11 +15,14 @@ window.onload = () => {
  * @param element the filter options to toggle
  */
 function toggleFilter(element) {
+    let el = id(element);
     if (shownFilters[element]) {
-        id(element).style.display = 'none';
+        el.querySelector('.filter__options').style.display = 'none';
+        el.querySelector('.filter__header__expand-button').innerHTML = '+';
         shownFilters[element] = false;
     } else {
-        id(element).style.display = 'block';
+        el.querySelector('.filter__options').style.display = 'block';
+        el.querySelector('.filter__header__expand-button').innerHTML = '-';
         shownFilters[element] = true;
     }
 }
@@ -70,7 +73,7 @@ function filter() {
     });
 
     // Display result nicely formatted
-    id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
+    //id('filter_result').innerHTML = result.map(x => syntaxHighlight(JSON.stringify(x)));
 
     // Get a list of allowed profiles
     // let allowedProfiles = [];
