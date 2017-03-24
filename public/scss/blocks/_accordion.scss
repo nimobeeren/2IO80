@@ -34,6 +34,9 @@
         display: none;
         border-top: 2px solid $color-grey-light;
         padding: 15px;
+        @include bp(large) {
+          display: none !important;
+        }
       }
     }
   }
