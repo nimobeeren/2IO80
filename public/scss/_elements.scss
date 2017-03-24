@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i');
-
 body{
     font-family: 'Fira Sans', sans-serif;
-    color: $color-grey;
+    color: $color-black;
     @include container;
     @include bp(large){
         @include container;
@@ -12,6 +10,7 @@ body{
 // added for the styleguide, because it uses the shadow DOM
 .section-markup-wrapper{
     font-family: 'Fira Sans', sans-serif;
+    color: $color-black;
 }
 
 // Colors and typography
@@ -21,6 +20,7 @@ body{
 // Styleguide 1.0
 
 @import "elements/headings";
+@import "elements/inline-elements";
 
 // Buttons and inputs
 //
@@ -30,3 +30,8 @@ body{
 
 @import "elements/buttons";
 @import "elements/inputs";
+
+// Block elements
+//
+// Styleguide 3.0
+@import "elements/block-elements";
