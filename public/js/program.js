@@ -11,12 +11,12 @@ function toggleAccordion(element) {
     if (shownItems[element]) {
         // Hide the item
         el.getElementsByClassName('accordion__content')[0].style.display = 'none';
-        el.getElementsByClassName('accordion__expand-button')[0].innerHTML = '+';
+        el.getElementsByClassName('accordion--expand')[0].innerHTML = '+';
         shownItems[element] = false;
     } else {
         // Show the item
         el.getElementsByClassName('accordion__content')[0].style.display = 'block';
-        el.getElementsByClassName('accordion__expand-button')[0].innerHTML = '-';
+        el.getElementsByClassName('accordion--expand')[0].innerHTML = '-';
         shownItems[element] = true;
     }
 
