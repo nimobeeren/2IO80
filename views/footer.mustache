@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
     <div class="footer__social-media">
         <a class="footer--facebook footer__socialbutton" href="https://www.facebook.com/TU.Eindhoven">
             <svg>
@@ -34,11 +34,17 @@
     <div class="footer__address">
         <div class="footer__address-block">
             <h6>Navigation address</h6>
-            <p>De zaale <br/> Eindhoven</p>
+            <p>
+                De Zaale<br/>
+                5612 AJ Eindhoven
+            </p>
         </div>
         <div class="footer__address-block">
             <h6>Postal address</h6>
-            <p>PO Box 513 <br/> 5600 MB Eindhoven</p>
+            <p>
+                PO Box 513<br/>
+                5600 MB Eindhoven
+            </p>
         </div>
     </div>
     <div class="footer__contact">
@@ -56,14 +62,14 @@
                     <use xlink:href="/svg-symbols.svg#phone"></use>
                 </svg>
             </div>
-            <p> +31 (0)40 247 9111 </p>
+            <p>+31 (0)40 247 9111</p>
         </a>
     </div>
-    <button class="footer__totop">
-        scroll to the top
+    <div class="footer__totop" onclick="window.scrollTo(0, 0)">
+        <div>scroll to the top</div>
         <svg>
+            <!--todo: edit svg to arrow symbol in html-->
             <use xlink:href="svg-symbols.svg#arrow"></use>
         </svg>
-        <!-- todo: automatic scroll to top (in JavaScript) -->
-    </button>
+    </div>
 </footer>

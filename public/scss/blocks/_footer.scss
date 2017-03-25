@@ -1,52 +1,45 @@
-//todo: edit svg to arrow symbol in html
-
-footer {
+.footer {
+    color: $color-white;
+    padding: 15px 0;
+    @extend small;
     @include span(full nest);
     @include full-width-bars($color-black);
-    color: $color-white;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    position: relative;
-    @extend small;
-    @include bp(large){
+    @include bp(large) {
         @include span(full nest);
     }
     h6 {
         color: $color-white;
-        margin: 0px;
+        margin: 0;
         @extend small;
     }
-    p{
+    p {
         margin: 0;
     }
     a {
         color: CurrentColor;
         text-decoration: none;
     }
-}
-.footer {
     &__social-media {
         @include span(2);
         @include bp(large) {
             // 6 columns width, positioned at the right, has nested columns
             @include span(6 last nest);
-            margin-right: 0; // overwrite margin-right from mobile bp
-            margin-left: 0;
+            margin: 0; // overrides mobile margin
         }
     }
     &__socialbutton {
-        width: 33.33%;
+        width: 33%;
         position: relative;
         float: left;
-        @include bp(large){
-            // is nested, "of 6" gives susy context
+        @include bp(large) {
+            width: 70px;
             @include span(1 of 6);
         }
         // makes the div keeping a 1:1 aspect ratio
         &:before {
             content: "";
             padding-top: 100%;
-            display:block;
+            display: block;
         }
         // fit the svg inside the parent
         // (whitespace is embedded svg)
@@ -79,31 +72,33 @@ footer {
     &--youtube {
         background-color: $color-youtube;
     }
-    &__address{
+    &__address {
         @include span(2 last);
-        @include bp(large){
+        @include bp(large) {
             @include span(4 nest);
-            margin-left:0;
-            margin-right:0;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
-    &__address-block{
+    &__address-block {
         margin-bottom: 15px;
-        @include bp(large){
+        @include bp(large) {
             @include span(2 of 4);
         }
     }
     &__contact {
         @include span(2);
-        margin-top: 10px;
-        @include bp(large){
+        @include bp(large) {
             @include span(2);
             margin-top: 0;
         }
-        &-btn{
-            margin-bottom: 15px;
+        &-btn {
             display: table;
             width: 100%;
+            min-width: 147px;
+            &:first-child {
+                margin-bottom: 15px;
+            }
             p {
                 border: solid 2px white;
                 padding: 6px 6px 5px 6px;
@@ -112,7 +107,7 @@ footer {
             }
         }
         // icon within
-        &-icon{
+        &-icon {
             display: table-cell;
             background-color: white;
             width: 1px;
@@ -128,13 +123,15 @@ footer {
         }
     }
     &__totop {
+        text-align: center;
+        padding-top: 47px;
+        cursor: pointer; // Why does this only work for the icon?
         @include span(2 last);
-        background: none;
-        border: none;
-        color: $color-white;
-        background: none;
-        @include bp(large){
+        @include bp(large) {
             display: none;
+        }
+        div {
+            display: inline-block;
         }
         svg {
             fill: currentColor;
@@ -143,6 +140,7 @@ footer {
             height: 1em;
             vertical-align: middle;
             transform: rotate(-90deg);
+            border: 1px dotted $color-white;
         }
     }
 }
