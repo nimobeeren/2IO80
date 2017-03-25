@@ -22,9 +22,9 @@
     &__social-media {
         @include span(2);
         @include bp(large) {
-            // 6 columns width, positioned at the right, has nested columns
-            @include span(6 last nest);
-            margin: 0; // overrides mobile margin
+            @include span(last 6);
+            margin: 0 15px; // overrides mobile margin
+            width: auto;
         }
     }
     &__socialbutton {
@@ -32,16 +32,16 @@
         position: relative;
         float: left;
         @include bp(large) {
-            width: 70px;
-            @include span(1 of 6);
+            width: 77px;
+            display: inline-block;
         }
-        // makes the div keeping a 1:1 aspect ratio
+        // Makes the div keep a 1:1 aspect ratio
         &:before {
             content: "";
             padding-top: 100%;
             display: block;
         }
-        // fit the svg inside the parent
+        // Fit the svg inside the parent
         // (whitespace is embedded svg)
         svg {
             position: absolute;
@@ -73,7 +73,7 @@
         background-color: $color-youtube;
     }
     &__address {
-        @include span(2 last);
+        @include span(last 2);
         @include bp(large) {
             @include span(4 nest);
             margin-left: 0;
@@ -106,7 +106,7 @@
                 text-align: center;
             }
         }
-        // icon within
+        // Icon within
         &-icon {
             display: table-cell;
             background-color: white;
@@ -126,7 +126,7 @@
         text-align: center;
         padding-top: 47px;
         cursor: pointer; // Why does this only work for the icon?
-        @include span(2 last);
+        @include span(last 2);
         @include bp(large) {
             display: none;
         }
