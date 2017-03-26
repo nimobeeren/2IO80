@@ -28,8 +28,8 @@ header {
     &__mobilesearch{
         @include span(2);
         svg {
-        width: 20px;
-        height: 20px;
+            width: 20px;
+            height: 20px;
         }
     }
     &__hamburger{
