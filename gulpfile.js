@@ -109,6 +109,9 @@ gulp.task('styleguide', ['styleguide:static', 'styleguide:generate', 'styleguide
 
 gulp.task('styleguide:static', function() {
   gulp.src(['public/scss/**/*.scss'])
+      .on('error', notify.onError(function (error) {
+          return error.message;
+      }))
     .pipe(gulp.dest(outputPath));
 });
 

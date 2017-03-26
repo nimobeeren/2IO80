@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i">
+    <script src="/js/utility.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/program.js"></script>
 </head>
 <body>
     {{! > header}}
@@ -13,22 +17,8 @@
         <h6>Year 1</h6>
         {{{pieChart}}}
     {{/years}}
-    <a href="" class="program-button">
-        <h3>In tartiflette we trust!</h3>
-        <p>Also very nice text about something cool and such very cool indeed. Beautiful.</p>
-        <div class="program-button__overview-icon">
-            <svg>
-                <use xlink:href="/svg-symbols.svg#facebook"></use>
-            </svg>
-            <p>coole text</p>
-        </div>
-        <div class="program-button__overview-icon">
-            <svg>
-                <use xlink:href="/svg-symbols.svg#facebook"></use>
-            </svg>
-            <p>meer text</p>
-        </div>
-    </a>
-    {{! > footer}}
+    {{> accordion}}
+    {{> program-button}}
+    {{> footer}}
 </body>
 </html>

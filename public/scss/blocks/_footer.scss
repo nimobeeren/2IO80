@@ -2,56 +2,49 @@
 //todo: add interactivity to "scroll to top" button
 
 footer {
-    @include container;
-    // @include full-width-bars($color-grey); // todo: uncomment (destroys susy debug)
-    background: $color-grey; // todo: remove when done above comment
-    padding-top: 15px;
-    padding-bottom: 15px;
-    position: relative;
-    @include bp(large){
-        @include container;
-    }
+    color: $color-white;
+    padding: 15px 0;
+    @extend small;
+    @include span(full nest);
+    @include full-width-bars($color-black);
+    @include bp(large) {
+        @include span(full nest);
+        }
     h6 {
-        color: white;
-        font-size: $fontsize-footer;
-        margin: 0px;
+        color: $color-white;
+        margin: 0;
+        @extend small;
     }
-    h6, p {
-        color: white;
-        margin: 0px;
-        font-size: $fontsize-footer;
+    p {
+        margin: 0;
     }
     a {
-        color: white;
+        color: CurrentColor;
         text-decoration: none;
-        font-size: $fontsize-footer;
     }
-}
-.footer {
     &__social-media {
         @include span(2);
         @include bp(large) {
-            // 6 columns width, positioned at the right, has nested columns
-            @include span(6 last nest);
-            margin-right: 0; // overwrite margin-right from mobile bp
-            margin-left: 0;
+            @include span(last 6);
+            margin: 0 15px; // overrides mobile margin
+            width: auto;
         }
     }
     &__socialbutton {
-        width: 33.33%;
+        width: 33%;
         position: relative;
         float: left;
-        @include bp(large){
-            // is nested, "of 6" gives susy context
-            @include span(1 of 6);
+        @include bp(large) {
+            width: 77px;
+            display: inline-block;
         }
-        // makes the div keeping a 1:1 aspect ratio
+        // Makes the div keep a 1:1 aspect ratio
         &:before {
             content: "";
             padding-top: 100%;
-            display:block;
+            display: block;
         }
-        // fit the svg inside the parent
+        // Fit the svg inside the parent
         // (whitespace is embedded svg)
         svg {
             position: absolute;
@@ -82,79 +75,75 @@ footer {
     &--youtube {
         background-color: $color-youtube;
     }
-    &__address{
-        @include span(2 last);
-        @include bp(large){
+    &__address {
+        @include span(last 2);
+        @include bp(large) {
             @include span(4 nest);
-            margin-left:0;
-            margin-right:0;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
-    &--navigationaddress, &--postaladdress {
+    &__address-block {
         margin-bottom: 15px;
-        @include bp(large){
+        @include bp(large) {
             @include span(2 of 4);
         }
     }
     &__contact {
         @include span(2);
-        margin-top: 10px;
-        @include bp(large){
+        @include bp(large) {
             @include span(2);
             margin-top: 0;
         }
-        a{
-            margin-bottom: 15px;
+        &-btn {
             display: table;
             width: 100%;
+            min-width: 147px;
+            &:first-child {
+                margin-bottom: 15px;
+            }
+            p {
+                border: solid 2px white;
+                padding: 6px 6px 5px 6px;
+                display: table-cell;
+                text-align: center;
+            }
         }
-        svg {
-            fill: $color-grey;
-            width: 27/16*1em;
-            height: 27/16*1em;
-            padding: 6px;
-            vertical-align: middle;
-            display: inline-block;
-            box-sizing: border-box;
-        }
-        &-icon{
+        // Icon within
+        &-icon {
             display: table-cell;
             background-color: white;
             width: 1px;
+            svg {
+                fill: $color-black;
+                width: 27/16*1em;
+                height: 27/16*1em;
+                padding: 2px 4px 4px 6px;
+                vertical-align: middle;
+                display: inline-block;
+                box-sizing: border-box;
+            }
         }
-    }
-
-    &--mailto, &--telnr {
-         border: solid 2px white;
-         padding: 6px;
-         box-sizing: border-box;
-         display: table-cell;
-         p {
-            text-align: center;
-            vertical-align: center;
-            font-size: 1em;
-            box-sizing: border-box;
-         }
     }
     &__totop {
-        @include span(2 last);
-        @include bp(large){
+        text-align: center;
+        padding-top: 47px;
+        cursor: pointer; // Why does this only work for the icon?
+        @include span(last 2);
+        @include bp(large) {
             display: none;
         }
-        margin-right: 5px;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin-bottom: 5px;
-        a {
-            font-size: $fontsize-footer;
-            text-align: right;
+        div {
+            display: inline-block;
+        }
         svg {
-            fill: white;
+            fill: currentColor;
+            display: inline-block;
             width: 1em;
             height: 1em;
             vertical-align: middle;
-        }
+            transform: rotate(-90deg);
+            border: 1px dotted $color-white;
         }
     }
 }
