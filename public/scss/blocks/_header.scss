@@ -1,14 +1,17 @@
 // navigation bar
 header {
+    @include container;
     @include bp(large){
         @include container;
     }
-    @include container;
-    img {
+    &--logo {
       @include span(1);
+      width: 60px;
+      height: 30px;
       }
 
     nav{
+    display: none;
       li {
         float: left;
         margin: 50px 80px 5px 10px;
@@ -20,11 +23,19 @@ header {
         color: darkblue;
       }
     }
-    &--mobilesearch{
-        @include span(2);
     }
-    &--hamburger{
+
+    &__mobilesearch{
+        @include span(2);
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &__hamburger{
         @include span(1 last);
     }
-}
+    &__form {
+        display: none;
+    }
 }
