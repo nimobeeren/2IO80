@@ -1,4 +1,4 @@
-footer {
+.footer {
     color: $color-white;
     padding: 30px 0;
     @extend small;
@@ -6,7 +6,7 @@ footer {
     @include full-width-bars($color-black);
     @include bp(large) {
         @include span(full nest);
-        }
+    }
     h6 {
         color: $color-white;
         margin: 0;
@@ -99,14 +99,7 @@ footer {
             &:first-child {
                 margin-bottom: 15px;
             }
-            p {
-                border: solid 2px white;
-                padding: 6px 6px 5px 6px;
-                display: table-cell;
-                text-align: center;
-            }
         }
-        // Icon within
         &-icon {
             display: table-cell;
             background-color: white;
@@ -120,6 +113,12 @@ footer {
                 display: inline-block;
                 box-sizing: border-box;
             }
+        }
+        &-content {
+            border: solid 2px white;
+            padding: 6px 6px 5px 6px;
+            display: table-cell;
+            text-align: center;
         }
     }
     &__totop {
