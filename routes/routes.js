@@ -60,10 +60,6 @@ module.exports = {
             res.render('filter.html');
         });
 
-        app.get('/city', (req, res) => {
-                    res.render('city-information.html');
-                });
-
         app.get('/ietsleuks', (req, res) => {
             res.render('default.html', {
                 heading: "Truuske is jarig!",
