@@ -87,8 +87,8 @@ function filter() {
 
 // Filter out programs that do not fulfill the current filter
     if (profiles.length > 0 || interests.length > 0)
-        result = result.filter(program => !profiles.includes('nl') && (profiles.length == 0 || profiles.every(profile => program.profile.includes(profile)))
-        && (interests.length == 0 || interests.every(interest => program.interest.includes(interest))));
+        result = result.filter(program => !profiles.includes('nl') && (profiles.length == 0 || profiles.some(profile => program.profile.includes(profile)))
+        && (interests.length == 0 || interests.some(interest => program.interest.includes(interest))));
 
 
     program_list.innerHTML = '';

@@ -10,12 +10,16 @@ $skewdeg: -16deg;
     }
     .mobileimg {
         height: 353px;
-        overflow: hidden;
+        margin-left: -50px;
+        max-width: 480px;
+        overflow: auto;
         @include bp(large){
             display: none;
         }
     }
-
+    .background {
+        position: relative;
+    }
     #outerimage {
         display: none;
         @include bp(large){
@@ -24,8 +28,8 @@ $skewdeg: -16deg;
             overflow: hidden;
             z-index: -1;
             left: -150px;
-            height:800px;
-            width:1400px;
+            height:700px;
+            max-width:1400px;
             position: relative;
             -ms-transform: skew($skewdeg,0deg);
             -webkit-transform: skew($skewdeg,0deg);
@@ -40,9 +44,10 @@ $skewdeg: -16deg;
         background-image: url("http://rosiemecca.com/wp-content/uploads/2016/06/Slider6-Stealdownline.png");
         z-index:-1;
         flow:left;
+        overflow: visible;
         position: absolute;
         left: -50px;
-        height:800px;
+        height:700px;
         width:2400px;
         -ms-transform: skew(-$skewdeg,0deg);
         -webkit-transform: skew(-$skewdeg,0deg);
@@ -51,11 +56,16 @@ $skewdeg: -16deg;
     }
 
     .text-block {
+        @include span(4);
+        position: absolute;
+        top: 150px;
+        right: 30px;
         transform: skew($skewdeg);
         @include bp(large){
-            margin-top: 300px;
+            margin-top: 100px;
             @include span(6 last);
             @include pull(2);
+            left: 850px;
         }
     }
     .text-block-inner {
@@ -63,11 +73,9 @@ $skewdeg: -16deg;
         @include span(4);
         margin: 15px;
         @include bp(large){
-            @include span(5 of 6);
             @include push(2);
             background-color: $pinkcolor;
             right: 5%;
-            position: relative;
             width: 600px;
         }
     }
@@ -95,17 +103,26 @@ $skewdeg: -16deg;
         color: white;
         margin-top: 20px;
         font-size: 1em;
+        transform: skew(16deg);
+        svg {
+            fill: white;
+            height: 10px;
+            width: 10px;
+            }
         @include bp(large){
             @include span(4);
             @include pull(6);
             margin-top: 80px;
             color: $color-grey;
+            svg {
+                fill: $color-grey;
+            }
         }
     }
     .button {
         @include span(2);
         border: solid 3px $pinkcolor;
-        color: white;
+        color: $pinkcolor;
         background-color: $pinkcolor;
         padding: 15px 50px;
         margin-left: 100px;
