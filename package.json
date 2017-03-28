@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/kedarkasarekar/2IO80/issues"
   },
+  "engines": {
+    "node": "6.9.4"
+  },
   "homepage": "https://github.com/kedarkasarekar/2IO80#readme",
   "devDependencies": {
     "browser-sync": "^2.18.8",
