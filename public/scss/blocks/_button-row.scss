@@ -1,0 +1,14 @@
+.button-row{
+    &__buttons{
+    transform: skew($skewdeg);
+    }
+    &__bachelors, &__masters, &__premasters{
+       //transform: skew($skewdeg);
+        background-color: $color-blue;
+        color: $color-white;
+        height: 5em;
+        display:inline-block;
+        border-radius: 4px;
+
+    }
+}
