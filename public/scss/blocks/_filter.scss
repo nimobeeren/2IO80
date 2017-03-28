@@ -42,7 +42,11 @@
     margin: 15px;
   }
   &__option-name {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+      &:before {
+          flex-shrink: 0;
+      }
   }
 }
 
