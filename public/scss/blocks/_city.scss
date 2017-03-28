@@ -1,37 +1,41 @@
-.city-icon{
-    svg{
+.city-icon {
+    svg {
         width: 4em;
         height: 4em;
         display: inline-block;
         vertical-align: middle;
         //TODO: color: $color-blue;
     }
-    p{
-       display: inline-block;
+    p {
+        display: inline-block;
     }
-    &__beer, &__students{
+    &__beer, &__students {
         //TODO: make it go to the left side
         display: inline-block;
     }
-    &__research, &__nationalities{
+    &__research, &__nationalities {
         //TODO: make it go to the right side
         display: inline-block;
     }
 }
-.city-link{
-   text-decoration: none;
-   float: right;
-   svg{
+
+.city-link {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    text-decoration: none;
+    svg {
         width: 1.5em;
         height: 1.5em;
         display: inline-block;
         vertical-align: middle;
     }
-   p{
+    p {
         display: inline-block;
     }
 
 }
+
 /*{
     background-color: rgba(0, 0, 0, 0.1);
 }*/
