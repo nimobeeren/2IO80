@@ -36,7 +36,6 @@ function toggleFilter(element) {
  * Displays a subset of programs based on the selected filters
  */
 function filter() {
-
     let result = [
         {
             name: "Web Science",
@@ -74,30 +73,46 @@ function filter() {
             url: "/program/bachelors/CSE"
         }];
 
-// Get the allowed values for the current filter
-    let profiles = [];
-    let interests = [];
-    [].concat(document.querySelectorAll('input[type="checkbox"]:checked'))[0].forEach(checkbox => {
-        if (checkbox.value.length > 2) {
-            interests.push(checkbox.value);
-        } else if (checkbox.value != 'en') {
-            profiles.push(checkbox.value);
-        }
+    // Get the allowed values for the current filter
+    let allowedInterests = [];
+    let allowedProfiles = [];
+    let allowedLanguages = [];
+    [...document.querySelectorAll('.filters__item')].forEach(item => {
+        [...item.querySelectorAll('input[type="checkbox"]:checked')].forEach(checkbox => {
+            if (item.id === 'filters--interest') {
+                allowedInterests.push(checkbox.value);
+            } else if (item.id === 'filters--profile') {
+                allowedProfiles.push(checkbox.value);
+            } else if (item.id === 'filters--language') {
+                allowedLanguages.push(checkbox.value);
+            }
+        })
     });
+    console.log(allowedInterests, allowedProfiles, allowedLanguages);
 
-// Filter out programs that do not fulfill the current filter
-    if (profiles.length > 0 || interests.length > 0)
-        result = result.filter(program => !profiles.includes('nl') && (profiles.length == 0 || profiles.some(profile => program.profile.includes(profile)))
-        && (interests.length == 0 || interests.some(interest => program.interest.includes(interest))));
+    // Filter out programs that do not fulfill the current filter
+    if (allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
+        // result = result.filter(program => !allowedProfiles.includes('nl') && (allowedProfiles.length === 0 || allowedProfiles.some(profile => program.profile.includes(profile)))
+        // && (allowedInterests.length === 0 || allowedInterests.some(interest => program.interest.includes(interest))));
+        result = result.filter(program => {
+            return (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
+                && (allowedProfiles.length === 0 || allowedProfiles.some(prof => program.profile.includes(prof)))
+                && (allowedLanguages.length === 0 || allowedLanguages.some(lang => program.language === lang));
+        });
+    }
+    console.log(result);
 
+    if (result.length === 0) {
+        program_list.innerHTML = 'No results were found for the selected filters. Please make a different selection.';
+    } else {
+        program_list.innerHTML = '';
 
-    program_list.innerHTML = '';
-
-    template.remove();
+    Array.from(document.querySelectorAll('.program-button')).forEach(el => el.remove());
 
     result.forEach(result => {
         template.children[0].children[0].innerHTML = result.title;
         template.children[0].children[1].innerHTML = result.contents.substring(0, 200);
         program_list.appendChild(template.cloneNode(true));
     });
+    }
 }
