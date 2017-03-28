@@ -1,41 +1,89 @@
+$pinkcolor: #d1275a;
+
 // navigation bar
 header {
     @include container;
     @include bp(large){
         @include container;
     }
-    &--logo {
+    img {
       @include span(1);
-      width: 60px;
-      height: 30px;
+      max-width: 100px;
+      height: 60px;
+      @include bp(large) {
+        @include span(2 of 12);
+        max-width: 200px;
+        height: 90px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
       }
 
-    nav{
-    display: none;
-      li {
-        float: left;
-        margin: 50px 80px 5px 10px;
-        height: 100px;
-      a {
-        margin: 50px 0px 0px 0px;
-        text-decoration: none;
-        font-family: $textfont;
-        color: darkblue;
-      }
-    }
-    }
-
-    &__mobilesearch{
+    .header--msearch{
         @include span(2);
-        svg {
-            width: 20px;
-            height: 20px;
+        width: 150px;
+        height: 60px;
+        transform: skewX(-16deg);
+        background-color: lightgrey;
+        svg{
+           transform: skewX(16deg);
+           height: 60px;
+           width: 100%;
+           position: center;
+           fill: grey;
+           }
+        @include bp(large){
+            float: right;
+            background-color: $pinkcolor;
+            svg {
+                fill: white;
+            }
+            }
+    }
+
+    ul{
+        display: none;
+        @include bp(large){
+        display: inline;
+        @include span(9 of 12);
+          li {
+            list-style-type:none;
+            float: left;
+            margin-top: 30px;
+            a {
+              margin-left: auto;
+              margin-right: auto;
+              padding-top: 10px;
+              width: 100px;
+              text-decoration: none;
+              font-family: Arial;
+              color: darkblue;
+              display: table;
+              text-align: center;
+            }
+            .slash {
+              font-size: 2em;
+              margin-top: 20px;
+              color: $pinkcolor;
+            }
+          }
         }
     }
-    &__hamburger{
-        @include span(1 last);
+    .header--hamburger{
+        @include span(1);
+        display: inline;
+        sg{
+        height: 100%;
+        width: 100%;
+        }
+        @include bp(large) {
+            display: none;
+        }
     }
-    &__form {
+    .header__form {
         display: none;
+        @include bp(large){
+            display:none;
+        }
     }
 }
