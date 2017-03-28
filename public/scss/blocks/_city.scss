@@ -7,6 +7,7 @@
         //TODO: color: $color-blue;
     }
     p {
+        color: $color-grey;
         display: inline-block;
     }
     &__beer, &__students {
@@ -32,6 +33,10 @@
     }
     p {
         display: inline-block;
+        transform: skew($skewdeg);
+        color: $color-grey;
+        font-weight: bold;
+
     }
 
 }
