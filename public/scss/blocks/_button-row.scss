@@ -1,14 +1,34 @@
 .button-row{
-    &__buttons{
-    transform: skew($skewdeg);
+    &__text{
+        color: $color-blue;
+        padding-top: 50px;
     }
+   /* &__buttons{
+        transform: skew($skewdeg);
+        width: 100%;
+        display: inline-block;
+        padding-bottom: 10px;
+        horizontal-align: center;
+    }*/
+
     &__bachelors, &__masters, &__premasters{
-       //transform: skew($skewdeg);
+        box-sizing: border-box;
         background-color: $color-blue;
-        color: $color-white;
-        height: 5em;
+        @include span(2)
+        .btn__inner{
+            font-style: normal;
+        }
+
+       /* color: $color-white;
         display:inline-block;
         border-radius: 4px;
-
+        width: 20%;
+        margin-right: 30px;*/
+    }
+    &__masters{
+        @include last
+    }
+    &__premasters{
+        display: none;
     }
 }

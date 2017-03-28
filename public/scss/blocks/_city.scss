@@ -4,7 +4,7 @@
         height: 4em;
         display: inline-block;
         vertical-align: middle;
-        //TODO: color: $color-blue;
+        fill: $color-blue;
     }
     p {
         color: $color-grey;
@@ -30,6 +30,7 @@
         height: 1.5em;
         display: inline-block;
         vertical-align: middle;
+        fill: $color-grey;
     }
     p {
         display: inline-block;
