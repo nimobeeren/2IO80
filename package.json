@@ -22,7 +22,7 @@
     "url": "https://github.com/kedarkasarekar/2IO80/issues"
   },
   "engines": {
-    "node": "6.9.4"
+    "node": "6.3.1"
   },
   "homepage": "https://github.com/kedarkasarekar/2IO80#readme",
   "devDependencies": {
