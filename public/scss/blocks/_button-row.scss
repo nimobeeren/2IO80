@@ -1,14 +1,28 @@
 .button-row{
-    &__buttons{
-    transform: skew($skewdeg);
+    &__text{
+        color: $color-blue;
+        padding-top: 50px;
     }
-    &__bachelors, &__masters, &__premasters{
-       //transform: skew($skewdeg);
+    &__buttons{
+        transform: skew($skewdeg);
+        width: 100%;
+        display: inline-block;
+        padding-bottom: 10px;
+        horizontal-align: center;
+    }
+    &__bachelors--outer, &__masters--outer, &__premasters--outer{
         background-color: $color-blue;
         color: $color-white;
-        height: 5em;
+        height: 3em;
         display:inline-block;
         border-radius: 4px;
-
+        width: 20%;
+        margin-right: 30px;
+    }
+    &__bachelors--inner, &__masters--inner, &__premasters--inner{
+        transform: skew(-$skewdeg);
+        display: inline-block;
+        text-align: center;
+        width: 100%;
     }
 }
