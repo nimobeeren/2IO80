@@ -1,9 +1,10 @@
 .switch-menu {
     &__item {
+        width: 50%;
         display: inline-block;
-        width: 45%; // todo: fix
         color: $color-grey;
         border-bottom: 1px dotted $color-grey-light;
+        box-sizing: border-box;
         margin: 15px;
         text-align: center;
         &:first-child {
