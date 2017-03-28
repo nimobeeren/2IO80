@@ -1,5 +1,27 @@
-.swtich-menu {
+.switch-menu {
     &__item {
-        width: auto;
+        display: inline-block;
+        width: 45%; // todo: fix
+        color: $color-grey;
+        border-bottom: 1px dotted $color-grey-light;
+        margin: 15px;
+        text-align: center;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__content {
+        display: none;
+        overflow: hidden;
+        padding: 15px;
+        .program-button {
+            // todo: use small buttons
+            width: 290px;
+            height: 125px;
+            margin: 15px;
+        }
     }
 }

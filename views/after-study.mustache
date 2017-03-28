@@ -1,4 +1,7 @@
 <h2>After your study</h2>
 <div class="switch-menu">
-    <div class="switch-menu__item">Masters</div><div class="switch-menu__item">Work</div>
+    <div class="switch-menu__item" data-subject="masters" onclick="showSwitchMenu('masters')">Masters</div>
+    <div class="switch-menu__item" data-subject="jobs" onclick="showSwitchMenu('jobs')">Jobs</div>
+    <div class="switch-menu__content" data-subject="masters">{{> program-button}} {{> program-button}}</div>
+    <div class="switch-menu__content" data-subject="jobs">Nothing to see here</div>
 </div>
