@@ -18,34 +18,59 @@ header {
         margin-bottom: 20px;
       }
       }
+    .msearch-outter {
+        width: 150px;
+        height: 60px;
+        @include span(2);
+        @include bp(large) {
+            @include span(2 of 12 last);
+            margin-top: 30px;
+            -ms-transform: rotate(16deg); /* IE 9 */
+            -webkit-transform: rotate(16deg); /* Safari */
+            transform: rotate(16deg); /* Standard syntax */
+            display: inline;
+            width: 65px;
+            height: 65px;
+            background-image: linear-gradient(286deg, #f3f2f2, #c6c6c6);
+            position: relative;
+        }
+
 
     .header--msearch{
-        @include span(2);
+        position: absolute;
         width: 150px;
         height: 60px;
         transform: skewX(-16deg);
-        background-color: lightgrey;
+        background-color: $color-grey-light;
         svg{
            transform: skewX(16deg);
-           height: 60px;
+           height: 40px;
+           margin-top: 10px;
            width: 100%;
            position: center;
-           fill: grey;
+           fill: $color-grey;
            }
         @include bp(large){
+            -ms-transform: rotate(-16deg) skewX(-16deg); /* IE 9 */
+            -webkit-transform: rotate(-16deg) skewX(-16deg); /* Safari */
+            transform: rotate(-16deg) skewX(-16deg); /* Standard syntax */
             float: right;
+            width: 60px;
+            left: -5px;
+            top: -5px;
             background-color: $pinkcolor;
             svg {
                 fill: white;
             }
             }
     }
+    }
 
     ul{
         display: none;
         @include bp(large){
         display: inline;
-        @include span(9 of 12);
+        @include span(7 of 12);
           li {
             list-style-type:none;
             float: left;
@@ -70,11 +95,13 @@ header {
         }
     }
     .header--hamburger{
-        @include span(1);
+        @include span(1 last);
         display: inline;
-        sg{
-        height: 100%;
-        width: 100%;
+        svg{
+        height: 40px;
+        width: 40px;
+        margin-top: 10px;
+        fill: $color-grey;
         }
         @include bp(large) {
             display: none;
