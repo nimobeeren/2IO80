@@ -15,6 +15,7 @@
     }
     &__content {
         display: none;
+        overflow: hidden;
         padding: 15px;
         .program-button {
             // todo: use small buttons
