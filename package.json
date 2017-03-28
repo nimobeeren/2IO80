@@ -16,7 +16,16 @@
     "express": "4.14.0",
     "mongodb": "2.2.0",
     "mustache-express": "^1.2.4",
-    "spelling-corrector": "latest",
+    "spelling-corrector": "^3.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/kedarkasarekar/2IO80/issues"
+  },
+  "engines": {
+    "node": "6.3.1"
+  },
+  "homepage": "https://github.com/kedarkasarekar/2IO80#readme",
+  "devDependencies": {
     "browser-sync": "^2.18.8",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -30,12 +39,5 @@
     "sass-module-importer": "^1.4.0",
     "sc5-styleguide": "^1.5.0",
     "susy": "^2.2.12"
-  },
-  "bugs": {
-    "url": "https://github.com/kedarkasarekar/2IO80/issues"
-  },
-  "engines": {
-    "node": "6.3.1"
-  },
-  "homepage": "https://github.com/kedarkasarekar/2IO80#readme"
+  }
 }
