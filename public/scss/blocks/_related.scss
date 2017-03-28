@@ -1,15 +1,15 @@
-.program-button {
-    @include bp(large) {
-        display: inline-block;
-        width: 290px;
-        height: 125px;
-    }
-}
-.title {
+.related {
     @include bp(large) {
         display: inline-block;
         width: 290px;
         float: left;
+    }
+    .program-button {
+        @include bp(large) {
+            display: inline-block;
+            width: 290px;
+            height: 125px;
+        }
     }
 }
 h2 {

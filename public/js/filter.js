@@ -4,6 +4,7 @@ let programs = [];
 // Which filters are being shown right now
 let shownFilters = {};
 
+// Elements used for displaying filter results
 let template;
 let program_list;
 
@@ -77,8 +78,8 @@ function filter() {
     let allowedInterests = [];
     let allowedProfiles = [];
     let allowedLanguages = [];
-    [...document.querySelectorAll('.filters__item')].forEach(item => {
-        [...item.querySelectorAll('input[type="checkbox"]:checked')].forEach(checkbox => {
+    Array.from(document.querySelectorAll('.filters__item')).forEach(item => {
+        Array.from(item.querySelectorAll('input[type="checkbox"]:checked')).forEach(checkbox => {
             if (item.id === 'filters--interest') {
                 allowedInterests.push(checkbox.value);
             } else if (item.id === 'filters--profile') {
@@ -88,27 +89,27 @@ function filter() {
             }
         })
     });
-    console.log(allowedInterests, allowedProfiles, allowedLanguages);
 
     // Filter out programs that do not fulfill the current filter
     if (allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
-        // result = result.filter(program => !allowedProfiles.includes('nl') && (allowedProfiles.length === 0 || allowedProfiles.some(profile => program.profile.includes(profile)))
-        // && (allowedInterests.length === 0 || allowedInterests.some(interest => program.interest.includes(interest))));
         result = result.filter(program => {
             return (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
                 && (allowedProfiles.length === 0 || allowedProfiles.some(prof => program.profile.includes(prof)))
                 && (allowedLanguages.length === 0 || allowedLanguages.some(lang => program.language === lang));
         });
     }
-    console.log(result);
 
+    // Show message if result is empty
     if (result.length === 0) {
         program_list.innerHTML = 'No results were found for the selected filters. Please make a different selection.';
     } else {
         program_list.innerHTML = '';
+    }
 
+    // Remove all old program buttons
     Array.from(document.querySelectorAll('.program-button')).forEach(el => el.remove());
 
+    // Add the program buttons for the result
     result.forEach(result => {
         template.children[0].children[0].innerHTML = result.title;
         template.children[0].children[1].innerHTML = result.contents.substring(0, 200);
