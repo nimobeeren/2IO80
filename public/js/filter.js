@@ -115,5 +115,4 @@ function filter() {
         template.children[0].children[1].innerHTML = result.contents.substring(0, 200);
         program_list.appendChild(template.cloneNode(true));
     });
-    }
 }
