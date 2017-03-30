@@ -1,4 +1,7 @@
 .button-row{
+    @include bp(large){
+            @include container;
+        }
     &__text{
         color: $color-blue;
         padding-top: 50px;
@@ -17,6 +20,17 @@
         @include span(2)
         .btn__inner{
             font-style: normal;
+            text-align: center;
+            display: table;
+            height: 10px;
+            margin-top: 3px;
+            margin-bottom:3px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @include bp(large){
+            @include span(4);
+
         }
 
        /* color: $color-white;
@@ -30,5 +44,8 @@
     }
     &__premasters{
         display: none;
+        @include bp(large){
+            display: inline;
+        }
     }
 }

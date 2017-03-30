@@ -1,5 +1,5 @@
 $pinkcolor: #d1275a;
-$textfont: "Arial";
+$textfont: "Fira Sans";
 $skewdeg: -16deg;
 
 // feature
@@ -24,10 +24,11 @@ $skewdeg: -16deg;
         display: none;
         @include bp(large){
             display: inline-block;
-            @include span(8);
+            @include span(11);
+            @include pull(1);
             overflow: hidden;
             z-index: -1;
-            left: -150px;
+            left: -170px;
             height:700px;
             max-width:1400px;
             position: relative;
@@ -40,7 +41,8 @@ $skewdeg: -16deg;
     display: none;
     @include bp(large) {
         display: inline-block;
-        @include span(8);
+        @include span(11);
+        @include pull(1);
         background-image: url("http://rosiemecca.com/wp-content/uploads/2016/06/Slider6-Stealdownline.png");
         z-index:-1;
         flow:left;
@@ -56,22 +58,26 @@ $skewdeg: -16deg;
     }
 
     .text-block {
-        @include span(4);
+        @include span(4 of 4);
+        margin-top: 20px;
         position: absolute;
-        top: 150px;
-        right: 30px;
+        top: 50px;
         transform: skew($skewdeg);
         @include bp(large){
             margin-top: 100px;
             @include span(6 last);
             @include pull(2);
             left: 850px;
+            position: absolute;
+            right: 10px;
+            top: 300px;
         }
     }
     .text-block-inner {
         width: 100px;
         @include span(4);
         margin: 15px;
+        font: $textfont;
         @include bp(large){
             @include push(2);
             background-color: $pinkcolor;
