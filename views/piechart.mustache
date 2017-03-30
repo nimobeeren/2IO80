@@ -1,0 +1,19 @@
+<div class="piechart">
+    {{#years}}
+        <div class="piechart__year">
+        <h6>Year 1</h6>
+        {{{pieChart}}}
+        </div>
+    {{/years}}
+    <div class="piechart__legend">
+        <div class="piechart__legend-item piechart__legend-item--basic">Basic courses</div>
+        <div class="piechart__legend-item piechart__legend-item--major">Major courses</div>
+        <div class="piechart__legend-item piechart__legend-item--use">USE courses</div>
+        <div class="piechart__legend-item piechart__legend-item--free">Free courses</div>
+        <div class="piechart__legend-item piechart__legend-item--specialisation">Specialisation</div>
+        <a href="#" class="btn btn--tertiary piechart__btn">
+            courses in detail
+            <svg><use xlink:href="/svg-symbols.svg#arrow" /></svg>
+        </a>
+    </div>
+</div>

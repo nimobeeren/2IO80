@@ -29,11 +29,15 @@
 
 // Main colors
 //
-// $color-black - grey
-// $color-pink - #todo
-// $color-grey - #todo
-// $color-grey-light - #todo
-// $color-white: white; - #todo
+// $color-black - black
+// $color-pink - pink
+// $color-grey - grey
+// $color-grey-light - grey-light
+// $color-white - white
+// $color-blue - blue
+// $color-orange - orange
+// $color-blue-light - blue-light
+// $color-yellow - yellow
 //
 // markup:
 // <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
@@ -45,6 +49,10 @@ $color-pink: #cf285a;
 $color-grey: #7F7F7F;
 $color-grey-light: #F3F3F3;
 $color-white: white;
+$color-blue: #24357f;
+$color-orange: #fd9900;
+$color-blue-light: #00a2ed;
+$color-yellow: #fdec00;
 
 // Social media colors
 //
@@ -65,7 +73,6 @@ $color-instagram: #bc2a8d;
 $color-linkedin: #007bb6;
 $color-twitter: #00aced;
 $color-youtube: #bb0000;
-$color-blue: #24357f;
 
 @import "form-elements";
 @import "blocks/home-featured";
@@ -74,4 +81,6 @@ $color-blue: #24357f;
 @import "blocks/filter";
 @import "blocks/program-button";
 @import "blocks/accordion";
+@import "blocks/piechart";
+
 @import "elements";
