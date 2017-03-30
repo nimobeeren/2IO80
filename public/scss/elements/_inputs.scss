@@ -21,23 +21,8 @@ input{
 // Styleguide 2.2.1
 input[type="checkbox"]{
     display: none;
-    &:checked{
-        + label{
-            position: relative;
-            &:after{
-                // source svg: <svg width="17" height="14" viewBox="6 4 17 14" xmlns="http://www.w3.org/2000/svg"><path d="M21 4.7c-.3-.4-1-.4-1.3 0L13 11.5c-.3.4-1 .4-1.3 0L9.4 9.3C9 9 8.4 9 8 9.3l-1.3 1.3c-.4.4-.4 1 0 1.4l5 4.8c.4.3 1 .3 1.4 0l9.4-9.5c.4-.4.4-1 0-1.4L21 4.5z" fill="#CF285A"/></svg>
-                content: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTQiIHZpZXdCb3g9IjYgNCAxNyAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjEgNC43Yy0uMy0uNC0xLS40LTEuMyAwTDEzIDExLjVjLS4zLjQtMSAuNC0xLjMgMEw5LjQgOS4zQzkgOSA4LjQgOSA4IDkuM2wtMS4zIDEuM2MtLjQuNC0uNCAxIDAgMS40bDUgNC44Yy40LjMgMSAuMyAxLjQgMGw5LjQtOS41Yy40LS40LjQtMSAwLTEuNEwyMSA0LjV6IiBmaWxsPSIjQ0YyODVBIi8+PC9zdmc+');
-                width: 1em;
-                height: 1em;
-                display: inline-block;
-                position: absolute;
-                left: 4px;
-                top: 0;
-            }
-        }
-    }
-    + label{
-        &:before{
+    + label {
+        &:before {
             content: "";
             width: 1em;
             height: 1em;
@@ -46,6 +31,18 @@ input[type="checkbox"]{
             border-radius: 4px;
             vertical-align: bottom;
             margin-right: 15px;
+        }
+    }
+    &:checked{
+        + label{
+            &:before {
+                background: url('/icons/checkmark.svg') no-repeat;
+            }
+        }
+    }
+    + label{
+        &:before{
+            background: none;
         }
     }
 }

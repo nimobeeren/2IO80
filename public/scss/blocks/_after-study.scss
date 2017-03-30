@@ -1,0 +1,28 @@
+.switch-menu {
+    &__item {
+        width: 47%;
+        display: inline-block;
+        color: $color-grey;
+        border-bottom: 1px dotted $color-grey-light;
+        box-sizing: border-box;
+        margin: 2%;
+        text-align: center;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__content {
+        display: none;
+        overflow: hidden;
+        padding: 15px;
+        .program-button {
+            // todo: use small buttons
+            width: 290px;
+            height: 125px;
+            margin: 15px;
+        }
+    }
+}

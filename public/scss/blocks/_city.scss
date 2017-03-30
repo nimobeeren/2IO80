@@ -1,0 +1,47 @@
+.city-icon {
+    svg {
+        width: 4em;
+        height: 4em;
+        display: inline-block;
+        vertical-align: middle;
+        fill: $color-blue;
+    }
+    p {
+        color: $color-grey;
+        display: inline-block;
+    }
+    &__beer, &__students {
+        //TODO: make it go to the left side
+        display: inline-block;
+    }
+    &__research, &__nationalities {
+        //TODO: make it go to the right side
+        display: inline-block;
+    }
+}
+
+.city-link {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    text-decoration: none;
+    svg {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        vertical-align: middle;
+        fill: $color-grey;
+    }
+    p {
+        display: inline-block;
+        transform: skew($skewdeg);
+        color: $color-grey;
+        font-weight: bold;
+
+    }
+
+}
+
+/*{
+    background-color: rgba(0, 0, 0, 0.1);
+}*/
