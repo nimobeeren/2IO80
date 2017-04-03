@@ -1,13 +1,16 @@
 .footer {
-    color: $color-white;
-    padding: 30px 0;
-    position: fixed;
-    bottom: 0;
-    @extend small;
     @include span(full nest);
     @include full-width-bars($color-black);
+    @extend small; // use font-size of small element
+
+    display: flex;
+    flex-wrap: wrap;
+    color: $color-white;
+    padding: 30px 0;
+    margin-top: 15px;
     @include bp(large) {
         @include span(full nest);
+        display: block;
     }
     h6 {
         color: $color-white;
@@ -18,28 +21,26 @@
         margin: 0;
     }
     a {
-        color: CurrentColor;
+        color: currentColor;
         text-decoration: none;
     }
     &__social-media {
         @include span(2);
         @include bp(large) {
-            @include span(last 6);
-            margin: 0 15px; // overrides mobile margin
-            width: auto;
+            @include span(last 6 nest);
+            margin: 0; // overrides mobile margin
         }
     }
     &__socialbutton {
         width: 33%;
         position: relative;
         float: left;
+        max-width: 4em;
         @include bp(large) {
-            width: 77px;
+            @include span(1 of 6);
             display: inline-block;
-            margin-right: 0px;
-            margin-left: 15px;
         }
-        // Makes the div keep a 1:1 aspect ratio
+        // Let's the div keep a 1:1 aspect ratio
         &:before {
             content: "";
             padding-top: 100%;
@@ -57,24 +58,24 @@
             width: 100%;
             height: 100%;
         }
-    }
-    &--facebook {
-        background-color: $color-facebook;
-    }
-    &--googleplus {
-        background-color: $color-googleplus;
-    }
-    &--instagram {
-        background-color: $color-instagram;
-    }
-    &--linkedin {
-        background-color: $color-linkedin;
-    }
-    &--twitter {
-        background-color: $color-twitter;
-    }
-    &--youtube {
-        background-color: $color-youtube;
+        &--facebook {
+            background-color: $color-facebook;
+        }
+        &--googleplus {
+            background-color: $color-googleplus;
+        }
+        &--instagram {
+            background-color: $color-instagram;
+        }
+        &--linkedin {
+            background-color: $color-linkedin;
+        }
+        &--twitter {
+            background-color: $color-twitter;
+        }
+        &--youtube {
+            background-color: $color-youtube;
+        }
     }
     &__address {
         @include span(last 2);
@@ -99,7 +100,6 @@
         &-btn {
             display: table;
             width: 100%;
-            min-width: 147px;
             &:first-child {
                 margin-top: 15px;
                 margin-bottom: 15px;
@@ -130,24 +130,24 @@
         }
     }
     &__totop {
-        text-align: center;
-        padding-top: 47px;
-        cursor: pointer; // Why does this only work for the icon?
         @include span(last 2);
+        text-align: center;
+        background: none;
+        color: inherit;
+        border: none;
+        align-self: flex-end;
+
         @include bp(large) {
             display: none;
-        }
-        div {
-            display: inline-block;
         }
         svg {
             fill: currentColor;
             display: inline-block;
             width: 1em;
             height: 1em;
-            vertical-align: middle;
+            vertical-align: text-top;
+            margin-left: 5px;
             transform: rotate(-90deg);
-            border: 1px dotted $color-white;
         }
     }
 }
