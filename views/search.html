@@ -11,17 +11,6 @@
     <script src="/js/search.js"></script>
 </head>
 <body>
-<input id='search' type="search">
-<div id="search_result"></div>
+    {{> search-overlay}}
 </body>
-
-<style>
-    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
-    .string { color: green; }
-    .number { color: darkorange; }
-    .boolean { color: blue; }
-    .null { color: magenta; }
-    .key { color: red; }
-    .json { margin: 5px;}
-</style>
 </html>
