@@ -1,5 +1,3 @@
-$pinkcolor: #d1275a;
-
 // navigation bar
 header {
     @include full-width-bars($color-white);
@@ -61,23 +59,56 @@ header {
             width: 60px;
             left: -5px;
             top: -5px;
-            background-color: $pinkcolor;
+            background-color: $color-pink;
             svg {
                 fill: white;
             }
             }
     }
     }
-
-    ul{
-        display: none;
+    nav{
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $color-grey-light;
+        z-index: 99999;
         @include bp(large){
-        display: inline;
-        @include span(7 of 12);
-          li {
+            background-color: none;
+            z-index: 0;
+            position: auto;
+        }
+        ul{
+           padding-left: 0;
+           height: 100%;
+           margin-top: 0;
+           margin-bottom: 0;
+           display: flex;
+           flex-direction: column;
+           @include bp(large){
+              @include span(7 of 12);
+              height: 30px;
+              background-color: none;
+              li {
+                 float: left;
+                 display: table;
+                 margin-top: 30px;
+                 a {
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding-top: 10px;
+                    width: 100px;
+                    text-decoration: none;
+                    color: darkblue;
+                    text-align: center;
+                 }
+              }
+           }
+        li{
             list-style-type:none;
-            float: left;
-            margin-top: 30px;
+            flex-grow: 1;
             a {
               margin-left: auto;
               margin-right: auto;
@@ -88,13 +119,9 @@ header {
               display: table;
               text-align: center;
             }
-            .slash {
-              font-size: 2em;
-              margin-top: 20px;
-              color: $pinkcolor;
-            }
-          }
         }
+    }
+
     }
     .header--hamburger{
         @include span(1 last);
