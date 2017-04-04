@@ -13,7 +13,7 @@
     }
     input{
         height: 35/18*1em;
-        margin: 8px 15px;
+        margin: 10px 15px;
         border: none;
         vertical-align: middle;
         transform: skewX(-$skewdeg);
@@ -24,7 +24,6 @@
         &::placeholder{
             color: $color-pink-light;
             font-style: italic;
-            text-shadow: 0 1px 1px rgba(black,.1);
         }
     }
     button{

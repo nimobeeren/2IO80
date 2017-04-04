@@ -1,7 +1,8 @@
 // Automatically search whenever input changes
 window.onload = () => {
-    new SearchOverlay().bind(document.getElementsByTagName('input')[0], document.getElementsByTagName('button')[0], document.getElementById('search-overlay'), document.getElementById('search_result'),
+    new SearchOverlay().bind(document.getElementById('search-field-input'), document.getElementById('search-field-button'), document.getElementById('search-overlay'), document.getElementById('search_result'),
         document.getElementsByClassName('search-overlay__close')[0]);
+
 };
 
 function SearchOverlay() {
@@ -16,7 +17,8 @@ function SearchOverlay() {
         this.resultHTML = resultHTML;
         this.closeButton = closeButton;
 
-        this.overlay.open = true;
+        document.getElementsByClassName('header--msearch')[0].onclick = () => this.overlay.open = 1;
+
 
         if (typeof input == 'string') {
             this.input = document.querySelector(input);
@@ -99,7 +101,8 @@ function SearchOverlay() {
         query = query.trim();
 
         // Check if database is empty
-        if (pages.length == 0) {
+        if (this.pages.length == 0) {
+            this.getPages();
             // Give feedback when searching on an empty database
             return log("The database has not been updated");
         } else {
@@ -163,11 +166,12 @@ function SearchOverlay() {
 
             // Decide order based on overall occurrences
             return (b.score + b.pageRank) - (a.score + a.pageRank);
-        }).map(x => {
+        }).slice(0, 9).map(x => {
             this.title.innerHTML = x.title || "No title found!";
             this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
             return this.result.outerHTML;
-        }).slice(0, 9).reduce((acc, v) => acc + v, '') : 'No results found!';
+        }).reduce((acc, v) => acc + v, '') : 'No results found!';
+        this.getPages();
         callback(this.results);
     };
 
