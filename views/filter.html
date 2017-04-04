@@ -10,88 +10,90 @@
     <script src="/js/db.js"></script>
     <script src="/js/filter.js"></script>
 </head>
-<body>
-{{! > header}}
-<h2>Programs</h2>
-<div class="filters">
-    <div class="filters__item" id="filters--interest">
-        <div class="filters__heading" onclick="toggleFilter('filters--interest')">
-            <div class="filters__heading-name">Area of interest</div>
-            <div class="filters__expand-button">+</div>
+<body class="body--filters">
+    {{> header}}
+    <main>
+        <h2 class="filters-main-heading">Filters</h2>
+        <div class="filter-wrapper">
+            <form class="filters">
+                <div class="filters__item" id="filters--interest">
+                    <button type="button" class="filters__heading" data-toggle="filters--interest">
+                        Area of interest
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#plus" class="toggle__plus"></use>
+                            <use xlink:href="/svg-symbols.svg#line" class="toggle__line"></use>
+                        </svg>
+                    </button>
+                    <div class="filters__options">
+                        <div class="filters__option">
+                            <input id="filters--interest-science" type="checkbox" value="science">
+                            <label for="filters--interest-science">Science</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--interest-multidisc" type="checkbox" value="multidisc">
+                            <label for="filters--interest-multidisc">Multidisciplinary Studies</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--interest-media-culture-history" type="checkbox" value="media-culture-history">
+                            <label for="filters--interest-media-culture-history">Media, Culture and History</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--interest-health-life" type="checkbox" value="health-life">
+                            <label for="filters--interest-health-life">Health and Life Sciences</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters__item" id="filters--profile">
+                    <button type="button" class="filters__heading" data-toggle="filters--profile">
+                        Admissible Dutch profiles
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#plus" class="toggle__plus"></use>
+                            <use xlink:href="/svg-symbols.svg#line" class="toggle__line"></use>
+                        </svg>
+                    </button>
+                    <div class="filters__options">
+                        <div class="filters__option">
+                            <input id="filters--profile-nt" type="checkbox" value="nt">
+                            <label for="filters--profile-nt">Nature & Technology</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--profile-ng" type="checkbox" value="ng">
+                            <label for="filters--profile-ng">Nature & Health</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--profile-em" type="checkbox" value="em">
+                            <label for="filters--profile-em">Economics & Society</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--profile-cm" type="checkbox" value="cm">
+                            <label for="filters--profile-cm">Culture & Society</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters__item" id="filters--language">
+                    <button type="button" class="filters__heading" data-toggle="filters--language">
+                        Language of instruction
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#plus" class="toggle__plus"></use>
+                            <use xlink:href="/svg-symbols.svg#line" class="toggle__line"></use>
+                        </svg>
+                    </button>
+                    <div class="filters__options">
+                        <div class="filters__option">
+                            <input id="filters--language-en" type="checkbox" value="en">
+                            <label for="filters--language-en">English</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--language-nl" type="checkbox" value="nl">
+                            <label for="filters--language-nl">Dutch</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="program-list"></div>
         </div>
-        <div class="filters__options">
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--interest-science" type="checkbox" value="science">
-                <label class="filters__option-name" for="filters--interest-science">Science</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--interest-multidisc" type="checkbox" value="multidisc">
-                <label class="filters__option-name" for="filters--interest-multidisc">Multidisciplinary Studies</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--interest-media-culture-history" type="checkbox" value="media-culture-history">
-                <label class="filters__option-name" for="filters--interest-media-culture-history">Media, Culture and History</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--interest-health-life" type="checkbox" value="health-life">
-                <label class="filters__option-name" for="filters--interest-health-life">Health and Life Sciences</label>
-            </div>
-        </div>
-    </div>
-    <div class="filters__item" id="filters--profile">
-        <div class="filters__heading" onclick="toggleFilter('filters--profile')">
-            <div class="filters__heading-name">Admissible Dutch profiles</div>
-            <div class="filters__expand-button">+</div>
-        </div>
-        <div class="filters__options">
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--profile-nt" type="checkbox" value="nt">
-                <label class="filters__option-name" for="filters--profile-nt">Nature & Technology</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--profile-ng" type="checkbox" value="ng">
-                <label class="filters__option-name" for="filters--profile-ng">Nature & Health</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--profile-em" type="checkbox" value="em">
-                <label class="filters__option-name" for="filters--profile-em">Economics & Society</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--profile-cm" type="checkbox" value="cm">
-                <label class="filters__option-name" for="filters--profile-cm">Culture & Society</label>
-            </div>
-        </div>
-    </div>
-    <div class="filters__item" id="filters--language">
-        <div class="filters__heading" onclick="toggleFilter('filters--language')">
-            <div class="filters__heading-name">Language of instruction</div>
-            <div class="filters__expand-button">+</div>
-        </div>
-        <div class="filters__options">
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--language-en" type="checkbox" value="en">
-                <label class="filters__option-name" for="filters--language-en">English</label>
-            </div>
-            <div class="filters__option">
-                <input class="filters__checkbox" id="filters--language-nl" type="checkbox" value="nl">
-                <label class="filters__option-name" for="filters--language-nl">Dutch</label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="program-list">
-    {{> program-button}}
-</div>
-{{> footer}}
+    </main>
+    {{> footer}}
+    <script src="js/index.js" charset="utf-8"></script>
 </body>
-
-<style>
-    pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
-    .string { color: green; }
-    .number { color: darkorange; }
-    .boolean { color: blue; }
-    .null { color: magenta; }
-    .key { color: red; }
-    .json { margin: 5px;}
-</style>
 </html>
