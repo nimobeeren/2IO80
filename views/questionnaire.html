@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+</head>
+<body class="body--questionnaire">
+    {{> header}}
+
+    <main class="questionnaire">
+        <h1>Which dutch profile did you have on high school?</h1>
+
+        <button type="button" class="btn btn--secondary questionnaire__icon-button">
+            <div class="questionnaire__icon-button__icons">
+                <svg><use xlink:href="/svg-symbols.svg#museum"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#plus"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#people"></use></svg>
+            </div>
+            <div class="questionnaire__icon-button__inner">
+                Culture  &  Society
+            </div>
+        </button>
+        <button type="button" class="btn btn--secondary questionnaire__icon-button">
+            <div class="questionnaire__icon-button__icons">
+                <svg><use xlink:href="/svg-symbols.svg#graph"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#plus"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#museum"></use></svg>
+            </div>
+            <div class="questionnaire__icon-button__inner">
+                Economics  & Society
+            </div>
+        </button>
+        <button type="button" class="btn btn--secondary questionnaire__icon-button">
+            <div class="questionnaire__icon-button__icons">
+                <svg><use xlink:href="/svg-symbols.svg#leaf"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#plus"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#aid-kit"></use></svg>
+            </div>
+            <div class="questionnaire__icon-button__inner">
+                Nature & Health
+            </div>
+        </button>
+        <button type="button" class="btn btn--secondary questionnaire__icon-button">
+            <div class="questionnaire__icon-button__icons">
+                <svg><use xlink:href="/svg-symbols.svg#leaf"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#plus"></use></svg>
+                <svg><use xlink:href="/svg-symbols.svg#gears"></use></svg>
+            </div>
+            <div class="questionnaire__icon-button__inner">
+                Nature & Technology
+            </div>
+        </button>
+
+        <button type="button" class="btn btn--secondary questionnaire__next btn--white">this does not apply for me</button>
+    </main>
+
+    {{> footer}}
+</body>
+</html>
