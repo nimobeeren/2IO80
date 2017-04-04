@@ -14,6 +14,33 @@ let program_list;
 
 // Set checkboxes to call filter when changed
 window.onload = () => {
+    // Get all existing filter names and the values that need to be checked
+    let filters = [];
+    Array.from(document.querySelectorAll('.filters__item')).forEach(item => {
+        let filterName = item.id.split('--')[1];
+        let filterValues = getURLParameter(filterName);
+        if (filterValues) {
+            filters.push({
+                name: filterName,
+                values: filterValues.split(',')
+            });
+        }
+    });
+
+    // Check all required checkboxes
+    filters.forEach(filter => {
+        // Get corresponding element
+        let el = id('filters--' + filter.name);
+
+        // Iterate over all its checkboxes
+        Array.from(el.querySelectorAll('input[type="checkbox"]')).forEach(box => {
+            if (filter.values.includes(box.getAttribute('value'))) {
+                console.log('checking', box);
+                box.setAttribute('checked', 'true');
+            }
+        });
+    });
+
     template = document.querySelector('.program-button');
     program_list = document.querySelector('.program-list');
     [].concat(document.querySelectorAll('[type="checkbox"]'))[0].forEach(checkbox => checkbox.onchange = filter);
@@ -41,9 +68,12 @@ function toggleFilter(element) {
  * Displays a subset of programs based on the selected filters
  */
 function filter() {
+    // TODO: generate this list from the database (might be difficult to get relevant content)
     let result = [
         {
             name: "Web Science",
+            faculty: "Mathematics & Computer Science",
+            degree: "Bachelor BSc",
             profile: ["nt", "ng"],
             interest: "science",
             language: "en",
@@ -53,6 +83,8 @@ function filter() {
         },
         {
             name: "Psychology & Technology",
+            faculty: "Psychology & Technology",
+            degree: "Bachelor BSc",
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
             language: "en",
@@ -62,6 +94,8 @@ function filter() {
         },
         {
             name: "Human Technology Interaction",
+            faculty: "Psychology & Technology",
+            degree: "Master MSc",
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
             language: "en",
@@ -70,6 +104,8 @@ function filter() {
             url: "/program/masters/HTI"
         }, {
             name: "Computer Science and Engineering",
+            faculty: "Mathematics & Computer Science",
+            degree: "Master MSc",
             profile: ["nt", "ng"],
             interest: "science",
             language: "en",
@@ -79,12 +115,15 @@ function filter() {
         }];
 
     // Get the allowed values for the current filter
+    let allowedDegrees = [];
     let allowedInterests = [];
     let allowedProfiles = [];
     let allowedLanguages = [];
     Array.from(document.querySelectorAll('.filters__item')).forEach(item => {
         Array.from(item.querySelectorAll('input[type="checkbox"]:checked')).forEach(checkbox => {
-            if (item.id === 'filters--interest') {
+            if (item.id === 'filters--degree') {
+                allowedDegrees.push(checkbox.value);
+            } else if (item.id === 'filters--interest') {
                 allowedInterests.push(checkbox.value);
             } else if (item.id === 'filters--profile') {
                 allowedProfiles.push(checkbox.value);
@@ -95,9 +134,10 @@ function filter() {
     });
 
     // Filter out programs that do not fulfill the current filter
-    if (allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
+    if (allowedDegrees.length > 0 || allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
         result = result.filter(program => {
-            return (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
+            return (allowedDegrees.length === 0 || allowedDegrees.some(deg => program.degree.toLowerCase().split(' ').includes(deg.toLowerCase())))
+                && (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
                 && (allowedProfiles.length === 0 || allowedProfiles.some(prof => program.profile.includes(prof)))
                 && (allowedLanguages.length === 0 || allowedLanguages.some(lang => program.language === lang));
         });

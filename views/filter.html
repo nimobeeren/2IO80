@@ -12,9 +12,51 @@
 <body class="body--filters">
     {{> header}}
     <main>
-        <h2 class="filters-main-heading">Filters</h2>
+        <h2 class="filters-main-heading">Programs</h2>
         <div class="filter-wrapper">
             <form class="filters">
+                <div class="filters__item" id="filters--degree">
+                    <button type="button" class="filters__heading" data-toggle="filters--degree">
+                        Degree
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#plus" class="toggle__plus"></use>
+                            <use xlink:href="/svg-symbols.svg#line" class="toggle__line"></use>
+                        </svg>
+                    </button>
+                    <div class="filters__options">
+                        <div class="filters__option">
+                            <input id="filters--degree-bachelor" type="checkbox" value="bachelor">
+                            <label for="filters--degree-bachelor">Bachelor</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--degree-master" type="checkbox" value="master">
+                            <label for="filters--degree-master">Master</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--degree-premaster" type="checkbox" value="premaster">
+                            <label for="filters--degree-premaster">Premaster</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters__item" id="filters--faculty">
+                    <button type="button" class="filters__heading" data-toggle="filters--degree">
+                        Degree
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#plus" class="toggle__plus"></use>
+                            <use xlink:href="/svg-symbols.svg#line" class="toggle__line"></use>
+                        </svg>
+                    </button>
+                    <div class="filters__options">
+                        <div class="filters__option">
+                            <input id="filters--faculty--mcs" type="checkbox" value="mcs">
+                            <label for="filters--faculty--mcs">Bachelor</label>
+                        </div>
+                        <div class="filters__option">
+                            <input id="filters--faculty--pt" type="checkbox" value="pt">
+                            <label for="filters--faculty--pt">Master</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="filters__item" id="filters--interest">
                     <button type="button" class="filters__heading" data-toggle="filters--interest">
                         Area of interest
@@ -89,7 +131,9 @@
                     </div>
                 </div>
             </form>
-            <div class="program-list"></div>
+            <div class="program-list">
+                {{> program-button}}
+            </div>
         </div>
     </main>
     {{> footer}}
