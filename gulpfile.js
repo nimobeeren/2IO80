@@ -55,15 +55,15 @@ gulp.task('icons-watch', ['icons'], function (done) {
     done();
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['sass', 'icons', 'nodemon']);
 gulp.task('serve', ['sass', 'icons', 'browser-sync']);
 
 var nodemonInstance;
 
 gulp.task('browser-sync', ['nodemon'], function() {
 	browserSync.init(null, {
-		proxy: "http://localhost:80",
-        port: 7000,
+		proxy: "http://localhost",
+        port: process.env.PORT || 7000,
         browser: []
 	});
 
