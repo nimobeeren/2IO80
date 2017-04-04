@@ -45,7 +45,7 @@
         width: 3em;
         height: 3em;
         fill: $color-white;
-        stroke: $color-white;
+        stroke: $color-black;
         stroke-width: 1;
         margin-left: gutters();
         margin-right: gutters();
@@ -63,9 +63,9 @@
 
     a{
         border-bottom: 1px dotted $color-grey;
-        color: inherit;
+        color: $color-blue-light;
         text-decoration: none;
-        display: block;
+        display: inline-block;
         padding-top: 15px;
         padding-bottom: 15px;
         h3, p{

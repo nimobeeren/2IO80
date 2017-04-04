@@ -1,16 +1,22 @@
 // Automatically search whenever input changes
 window.onload = () => {
-    new SearchOverlay().bind('#search', '#search_result');
+    new SearchOverlay().bind(document.getElementsByTagName('input')[0], document.getElementsByTagName('button')[0], document.getElementById('search-overlay'), document.getElementById('search_result'),
+        document.getElementsByClassName('search-overlay__close')[0]);
 };
 
 function SearchOverlay() {
     if (!window) throw "window not defined";
 
-    this.bind = (input, button, resultCallback = this.defaultCallback) => {
+    this.bind = (input, button, overlay, resultHTML, closeButton, resultCallback = this.defaultCallback) => {
         if (!input || !button) throw "An input and button selector or element are required";
 
         this.input = input;
         this.button = button;
+        this.overlay = overlay;
+        this.resultHTML = resultHTML;
+        this.closeButton = closeButton;
+
+        this.overlay.open = true;
 
         if (typeof input == 'string') {
             this.input = document.querySelector(input);
@@ -21,43 +27,15 @@ function SearchOverlay() {
 
         this.resultCallback = resultCallback;
 
-        this.button.onclick = () => this.search(this.input.value, this.resultCallback);
-        this.input.onkeydown = e => e.keyCode == 13 && this.search(this.input.value, this.resultCallback) || true;
-
-
+        this.button.onclick = e => e.preventDefault() || this.search(this.input.value, this.resultCallback);
+        this.input.onkeydown = e => e.keyCode === 13 && this.search(this.input.value, this.resultCallback) || true;
+        this.closeButton.onclick = () => this.overlay.open = 0;
     };
+
     this.defaultCallback = result => {
-        this.body.innerHTML = result;
-        document.body.appendChild(this.overlay);
+        this.resultHTML.innerHTML = result;
     };
     this.create = e => document.createElement(e);
-
-    this.overlay = this.create('e');
-    /** TODO: make a class instead */
-    this.overlay.style.position = 'fixed';
-    this.overlay.style.width = this.overlay.style.height = '100%';
-    this.overlay.style.top = 0;
-    this.overlay.style.background = 'rgba(128, 128, 128, 0.47)';
-    this.overlay.style.textAlign = 'center';
-
-    this.body = this.create('b');
-    /** TODO: make a class instead */
-    this.body.style.width = '80%';
-    this.body.style.height = '100%';
-    this.body.style.background = 'rgba(255, 255, 255, 0.70)';
-    this.body.style.display = 'inline-block';
-    this.body.style.overflow = 'auto';
-
-    this.close = this.create('x');
-    /** TODO: make a class instead */
-    this.close.innerHTML = "X";
-    this.close.style.position = 'absolute';
-    this.close.style.fontSize = '25px';
-    this.close.onclick = () => this.overlay.remove();
-
-    this.overlay.appendChild(this.close);
-    this.overlay.appendChild(this.body);
-
 
     this.result = this.create('w');
     this.title = this.create('h2');
@@ -76,7 +54,7 @@ function SearchOverlay() {
                     }
                     if (Object.keys(this.linkFrequency).length === 0 && this.linkFrequency.constructor === Object) {
                         this.pages.forEach(page => {
-                            page.links.forEach(link => {
+                            page.links && page.links.forEach(link => {
                                 this.linkFrequency[link] = this.linkFrequency[link] ? this.linkFrequency[link] + 1 : 1;
                             })
                         });
@@ -111,12 +89,12 @@ function SearchOverlay() {
         do: true, at: true
     };
 
-    this.evaluateTitle = (p, q) => q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0);
-    this.evaluateHeadings = (p, q) => q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0);
-    this.evaluateContent = (p, q) => q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0);
+    this.evaluateTitle = (p, q) => p.title ? q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? s + (p.title.match(new RegExp(w, "gi")) || []).length : 0, 0) : 0;
+    this.evaluateHeadings = (p, q) => p.headings ? q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? s + p.headings.reduce((s, c) => s + (c.match(new RegExp(w, "gi")) || []).length, 0) : 0, 0) : 0;
+    this.evaluateContent = (p, q) => p.contents ? q.split(" ").reduce((s, w) => !this.ignore[w.toLowerCase()] ? (s + (p.contents.match(new RegExp(w, "gi")) || []).length) : 0, 0) : 0;
 
     // Search the pages database, sorting results by relevance
-    this.search = (query, callback) => {
+    this.search = (query, callback, shouldCorrect = 1) => {
         // Trim spaces from query
         query = query.trim();
 
@@ -126,25 +104,39 @@ function SearchOverlay() {
             return log("The database has not been updated");
         } else {
             // Correct the search query
-            let corrected = '';
-            let words = query.split(" ");
-            let correctedWords = 0;
-            words.forEach(x => {
-                openUrl("get", "api/correct/" + x, {
-                    success: (x) => {
-                        corrected += x + ' ';
-                        correctedWords++;
-                        if (correctedWords == words.length) {
-                            this.startSearch(corrected.trim(), callback);
+            if (shouldCorrect) {
+                let corrected = '';
+                let words = query.toLowerCase().split(" ");
+                let correctedWords = 0;
+                words.forEach(x => {
+                    openUrl("get", "api/correct/" + x, {
+                        success: (x) => {
+                            corrected += x + ' ';
+                            correctedWords++;
+                            if (correctedWords == words.length) {
+                                this.startSearch(corrected.trim(), query.trim().toLowerCase() !== corrected.trim().toLowerCase(), query, callback);
+                            }
                         }
-                    }
+                    });
                 });
-            });
+            } else {
+                this.startSearch(query, shouldCorrect, query, callback);
+            }
         }
     };
 
-    this.startSearch = (query, callback) => {
-        this.results = this.pages.sort((a, b) => {
+    this.startSearch = (query, isCorrected, originalQuery, callback) => {
+        /** Very beautiful code */
+        if (isCorrected) {
+            this.results = '<p>' +
+                'Showing results for: <b>' + query + '</b>. '
+                + 'Search instead for: <a href=# class="search_instead_link" id="idk">' + originalQuery + '</a>' +
+                '</p>';
+            setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 0);
+        } else {
+            this.results = '';
+        }
+        this.results += this.pages ? this.pages.sort((a, b) => {
             // Count occurrences of query in title of pages
             a.score = this.evaluateTitle(a, query);
             b.score = this.evaluateTitle(b, query);
@@ -166,16 +158,16 @@ function SearchOverlay() {
                     b.relevance += b.score;
                 }
             }
-            a.pageRank = (this.linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
-            b.pageRank = (this.linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4;
+            a.pageRank = a.url ? (this.linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
+            b.pageRank = a.url ? (this.linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
 
             // Decide order based on overall occurrences
             return (b.score + b.pageRank) - (a.score + a.pageRank);
         }).map(x => {
-            this.title.innerHTML = x.title;
-            this.content.innerHTML = x.contents.substr(0, 100);
+            this.title.innerHTML = x.title || "No title found!";
+            this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
             return this.result.outerHTML;
-        }).slice(0, 9).reduce((acc, v) => acc + v, '');
+        }).slice(0, 9).reduce((acc, v) => acc + v, '') : 'No results found!';
         callback(this.results);
     };
 
