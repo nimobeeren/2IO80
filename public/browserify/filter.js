@@ -67,7 +67,7 @@ function filter() {
             language: "en",
             contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable ...",
             title: "Human Technology Interaction, MSc",
-            url: "/program/bachelors/HTI"
+            url: "/program/masters/HTI"
         }, {
             name: "Computer Science and Engineering",
             profile: ["nt", "ng"],
@@ -75,7 +75,7 @@ function filter() {
             language: "en",
             contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the ...",
             title: "Computer Science and Engineering, MSc",
-            url: "/program/bachelors/CSE"
+            url: "/program/masters/CSE"
         }];
 
     // Get the allowed values for the current filter
