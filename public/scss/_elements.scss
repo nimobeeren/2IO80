@@ -15,6 +15,12 @@ body{
 }
 main{
     flex-grow: 1;
+    @include full(nest);
+    @include bp(large){
+        @include full(nest);
+        margin-left: 0;
+        margin-right: 0;
+    };    
 }
 
 // added for the styleguide, because it uses the shadow DOM
