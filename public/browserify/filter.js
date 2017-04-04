@@ -1,3 +1,7 @@
+const fs = require("fs");
+const mustache = require("mustache");
+const programButtonTemplate = fs.readFileSync("views/program-button.mustache", "utf8");
+
 // The list of programs
 let programs = [];
 
@@ -111,8 +115,14 @@ function filter() {
 
     // Add the program buttons for the result
     result.forEach(result => {
-        template.children[0].children[0].innerHTML = result.title;
-        template.children[0].children[1].innerHTML = result.contents.substring(0, 200);
-        program_list.appendChild(template.cloneNode(true));
+        resultHTML += mustache.render(programButtonTemplate, {
+            title: result.title,
+            contents: result.contents,
+            url: result.url,
+            language: result.language == "en" ? "English" : "Dutch",
+            degree: result.degree
+        });
     });
+
+    program_list.innerHTML = resultHTML;
 }

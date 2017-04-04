@@ -18,6 +18,10 @@ const browserSync = require('browser-sync');
 const nodemon = require('gulp-nodemon');
 const styleguide = require('sc5-styleguide');
 
+// browserify
+const source = require('vinyl-source-stream');
+const browserify = require('browserify');
+
 const sassSettings = {
     importer: moduleImporter()
 }
@@ -65,6 +69,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
 
     gulp.watch('public/icons/*.svg', ['icons-watch']);
     gulp.watch('public/scss/**/*.scss', ['sass']);
+    gulp.watch('public/browserify/*.js', ['browserify']);
     gulp.watch('views/**/*.*').on('change', function(){
         nodemonInstance.emit("restart");
     });
@@ -118,4 +123,15 @@ gulp.task('styleguide:static', function() {
 gulp.task('styleguide:serve', ['styleguide'], function() {
   // Start watching changes and update styleguide whenever changes are detected
   gulp.watch('public/scss/**/*.scss', ['styleguide']);
+});
+
+gulp.task('browserify', function() {
+    return browserify('public/browserify/index.js', {
+        transform: ["brfs"]
+    })
+        .bundle()
+        //Pass desired output filename to vinyl-source-stream
+        .pipe(source('index.js'))
+        // Start piping stream to tasks!
+        .pipe(gulp.dest('public/js/'));
 });
