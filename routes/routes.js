@@ -60,6 +60,10 @@ module.exports = {
             res.render('filter.html');
         });
 
+        app.get('/questionnaire', (req, res) => {
+            res.render('questionnaire.html');
+        });
+
         app.get('/ietsleuks', (req, res) => {
             res.render('default.html', {
                 heading: "Truuske is jarig!",
