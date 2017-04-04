@@ -1,51 +1,103 @@
 .button-row{
+    @include full(nest);
+    margin-top: 45px;
+    margin-bottom: 30px;
     @include bp(large){
         @include container;
     }
+        @include full(nest);
+        margin-top: 90px;
+    }
+
     &__text{
         color: $color-blue;
-        padding-top: 50px;
-    }
-    /* &__buttons{
-        transform: skew($skewdeg);
-        width: 100%;
-        display: inline-block;
-        padding-bottom: 10px;
-        horizontal-align: center;
-    }*/
-
-    &__bachelors, &__masters, &__premasters{
-        box-sizing: border-box;
-        background-color: $color-blue;
-        @include span(2)
-        .btn__inner{
-            font-style: normal;
-            text-align: center;
-            display: table;
-            height: 10px;
-            margin-top: 3px;
-            margin-bottom:3px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        @extend h1;
+        margin: 0; // reset h2
+        @include full;
         @include bp(large){
-            @include span(4);
-
+            @include full;
+        };
+    }
+    &__buttons{
+        // break out container
+        margin:0 calc(50% - 50vw);
+        width: 100vw;
+        @include bp(large){
+            @include full;
         }
-
-       /* color: $color-white;
-        display:inline-block;
-        border-radius: 4px;
-        width: 20%;
-        margin-right: 30px;*/
+    }
+    &__bachelors, &__masters, &__premasters{
+        width: span(2 wide no-gutters) - 2.5%;
+        margin-right: 5%;
+        position: relative;
+        float:left;
+        background-color: $color-blue;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        @include bp(large){
+            @extend %btn--skew--large;
+            @include span(4);
+            transform-origin: top;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
+    &__bachelors{
+        // fake skew element
+        &:after{
+            content: "";
+            position: absolute;
+            background: inherit;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transform: skewX($skewdeg);
+            transform-origin: bottom;
+            z-index: -1;
+            @include bp(large){
+                display: none;
+            };
+        }
     }
     &__masters{
-        @include last
+        margin-right: 0;
+        @include bp(large){
+            // remove above reset
+            margin-right: gutter();
+        }
+        // fake skew element
+        &:before{
+            content: "";
+            position: absolute;
+            background: inherit;
+            display: block;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            transform: skewX($skewdeg);
+            transform-origin: top;
+            z-index: -1;
+            @include bp(large){
+                display: none;
+            };
+        }
     }
     &__premasters{
         display: none;
         @include bp(large){
-            display: inline;
+            display: inline-block;
         }
+    }
+    &__others{
+        @include last;
+        @include gutters;
+        @include bp(large){
+            margin-right: 0;
+        };
     }
 }
