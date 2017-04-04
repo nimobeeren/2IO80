@@ -1,0 +1,87 @@
+.questionnaire{
+    @include  full(nest);
+    @include full-width-bars($color-pink);
+    color: $color-white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: flex-end;
+
+    h1{
+        @include full;
+        color: inherit;
+        margin-bottom: 30px;
+        margin-top: 15px;
+        @include bp(large){
+            @include full;
+            margin-top: 30px;
+        }
+    }
+    svg{
+        fill: currentColor;
+    }
+    &__next{
+        @include full;
+        flex-shrink: 0;
+        margin-top: 15px;
+        @include bp(large){
+            @include span(6 last);
+            margin-bottom: 15px;
+        };
+    }
+
+
+    &__icon-button{
+        @include span(2);
+        font-size: rem(14px);
+        border-color: $color-white;
+        color: $color-white;
+        padding: 0;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        &__icons{
+            padding: 15px;
+        }
+        &__inner{
+            padding: 15px;
+            background: $color-white;
+            color: $color-pink;
+            flex-grow: 1;
+        }
+        svg{
+            fill: currentColor;
+            width: 44/16*1em;
+            height: 44/16*1em;
+            display: inline-block;
+            vertical-align: middle;
+            &:nth-of-type(2){
+                width: 1em;
+                height: 1em;
+                stroke-width: 1;
+                stroke: $color-white;
+            }
+        }
+        @include bp(large){
+            @include span(3);
+            font-size: rem(16px);
+            svg{
+                max-width: 66/16*1em;
+                width: 66/12*1vw;
+                height: 69/16*1em;
+                &:nth-of-type(2){
+                    max-width: 25/16*1em;
+                    width: 25/12*1vw;
+                    height: 25/16*1em;
+                    stroke-width: 2;
+                    @include gutters(3);
+                }
+            }
+        }
+    }
+}

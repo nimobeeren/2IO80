@@ -56,8 +56,12 @@ module.exports = {
             res.render('search.html');
         });
 
-        app.get('/filter', (req, res) => {
+        app.get('/program', (req, res) => {
             res.render('filter.html');
+        });
+
+        app.get('/questionnaire', (req, res) => {
+            res.render('questionnaire.html');
         });
 
         app.get('/ietsleuks', (req, res) => {

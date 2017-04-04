@@ -1,0 +1,44 @@
+.search-field{
+    @include full;
+    transform: skewX($skewdeg);
+    padding: 0 10px;
+    display: flex;
+    margin-top: 15px;
+    background: $color-white;
+    @include bp(large){
+        @include span(6);
+        @include squish(3);
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+    input{
+        height: 35/18*1em;
+        margin: 8px 15px;
+        border: none;
+        vertical-align: middle;
+        transform: skewX(-$skewdeg);
+        flex-grow: 1;
+        text-overflow: ellipsis;
+        background: inherit;
+        -webkit-appearance: none;
+        &::placeholder{
+            color: $color-pink-light;
+            font-style: italic;
+            text-shadow: 0 1px 1px rgba(black,.1);
+        }
+    }
+    button{
+        background: none;
+        border: none;
+        color: inherit;
+        vertical-align: middle;
+        padding: 10px;
+        transform: skewX(-$skewdeg);
+        svg{
+            width: 35/18*1em;
+            height: 35/18*1em;
+            fill: currentColor;
+            vertical-align: top;
+        }
+    }
+}

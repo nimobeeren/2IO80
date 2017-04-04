@@ -1,57 +1,110 @@
-.filters {
-  @include bp(large) {
-    @include span(3);
+.body--filters main{
+  @include full(nest);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// heading
+.filters-main-heading{
+  @include full;
+  margin-top: 30px;
+  @include bp(large){
+    @include full;
   }
+}
+
+// wrapper for flexbox
+.filter-wrapper{
+  @include full(nest);
+  @include bp(large){
+    @include full(nest);
+    display: flex;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.filters {
+  @include full(nest);
+  @include bp(large) {
+    @include span(3 nest);
+    width: auto;
+    flex-grow: 1;
+    flex-basis: span(3 nest);
+  }
+
   &__item {
-    border-bottom: 2px solid $color-grey;
-    padding: 0 15px;
-    &:first-child {
-      border-top: 2px solid $color-grey;
-    }
+    @include span(full inside);
+    border-top: 2px solid $color-grey-light;
     &:last-child {
+      border-bottom: 2px solid $color-grey-light;
       margin-bottom: 15px;
+    }
+    &.toggle--open{ // extra white space when inputs are visible
+      padding-bottom: 15px;
+    }
+    @include bp(large){
+      @include span(nest full of 3);
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 15px;
     }
   }
   &__heading {
-    cursor: pointer;
-    min-width: 230px;
-  }
-  &__heading-name {
-    padding: 15px;
-    display: inline-block;
-  }
-  &__expand-button {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    float: right;
-    padding: 15px 0;
-    font-size: 20px;
+    // reset button
+    text-align: left;
+    border: none;
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+    &:focus{
+      outline: none;
+    }
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    @include bp(large){
+      @include full(of 3);
+      svg{
+        display: none;
+      }
+    }
+    svg{
+      width: 16/15*1em;
+      height: 16/15*1em;
+      vertical-align: middle;
+      float: right;
+      fill: $color-grey;
+      stroke-width: 1;
+      stroke: $color-grey;
+    }
   }
   &__options {
     display: none;
-  }
-  &__option {
-    border-bottom: 2px solid $color-grey-light;
-    &:first-child {
-      border-top: 2px solid $color-grey-light;
+    @include bp(large){
+      display: block;
+    }
+    @at-root .toggle--open &{
+      display: block;
     }
   }
-  &__checkbox {
-    display: inline-block;
-    margin: 15px;
-  }
-  &__option-name {
-    display: flex;
-    align-items: center;
-      &:before {
-          flex-shrink: 0;
-      }
+  &__option {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 
 .program-list {
+  @include span(4);
   @include bp(large) {
-    @include span(last 9);
+    @include span(last 9 nest);
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+    flex-basis: span(9 nest);
+    .program-button{
+      @include span(full of 9);
+    }
   }
 }

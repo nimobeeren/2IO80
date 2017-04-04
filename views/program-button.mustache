@@ -1,20 +1,20 @@
-<a href="" class="program-button">
+<a href="{{url}}" class="program-button">
     <div class="program-button__main-content">
-        <h3>In tartiflette we trust!</h3>
-        <p>Also very nice text about something cool and such very cool indeed. Beautiful.</p>
+        <h3>{{title}}</h3>
+        <p>{{{contents}}}</p>
     </div>
-    <div class="program-button__overview-icon">
-        <div class="program-button__overview-icon--top">
+    <div class="program-button__overview">
+        <div class="program-button__overview-icon">
             <svg>
-                <use xlink:href="/svg-symbols.svg#facebook"></use>
+                <use xlink:href="/svg-symbols.svg#person"></use>
             </svg>
-            <p>coole text</p>
+            {{degree}}
         </div>
-        <div class="program-button__overview-icon--bottom">
+        <div class="program-button__overview-icon">
             <svg>
-                <use xlink:href="/svg-symbols.svg#facebook"></use>
+                <use xlink:href="/svg-symbols.svg#language"></use>
             </svg>
-            <p>meer text</p>
+            {{language}}
         </div>
     </div>
 </a>

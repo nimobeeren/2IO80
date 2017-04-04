@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "brfs": "^1.4.3",
+    "browserify": "^14.1.0",
     "express": "4.14.0",
     "mongodb": "2.2.0",
     "mustache-express": "^1.2.4",
@@ -29,7 +31,9 @@
     "normalize.css": "^5.0.0",
     "sass-module-importer": "^1.4.0",
     "sc5-styleguide": "^1.5.0",
-    "susy": "^2.2.12"
+    "susy": "^2.2.12",
+    "svg4everybody": "^2.1.7",
+    "vinyl-source-stream": "^1.1.0"
   },
   "bugs": {
     "url": "https://github.com/kedarkasarekar/2IO80/issues"

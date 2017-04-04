@@ -62,3 +62,4 @@ public/css
 public/svg-symbols.svg
 styleguide-output
 .idea
+/public/js/index.js

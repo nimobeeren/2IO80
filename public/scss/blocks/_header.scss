@@ -2,9 +2,12 @@ $pinkcolor: #d1275a;
 
 // navigation bar
 header {
-    @include container;
+    @include full-width-bars($color-white);
+    box-shadow: 0 2px 4px 0 rgba(black, .2); // make it stand out
+    @include full;
     @include bp(large){
-        @include container;
+        @include full;
+        box-shadow: none;
     }
     img {
       @include span(1);
@@ -81,7 +84,6 @@ header {
               padding-top: 10px;
               width: 100px;
               text-decoration: none;
-              font-family: Arial;
               color: darkblue;
               display: table;
               text-align: center;

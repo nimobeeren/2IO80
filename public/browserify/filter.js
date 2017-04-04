@@ -1,3 +1,7 @@
+const fs = require("fs");
+const mustache = require("mustache");
+const programButtonTemplate = fs.readFileSync("views/program-button.mustache", "utf8");
+
 // The list of programs
 let programs = [];
 
@@ -99,20 +103,27 @@ function filter() {
         });
     }
 
+    let resultHTML;
+
     // Show message if result is empty
     if (result.length === 0) {
-        program_list.innerHTML = 'No results were found for the selected filters. Please make a different selection.';
+        resultHTML = 'No results were found for the selected filters. Please make a different selection.';
     } else {
-        program_list.innerHTML = '';
+        resultHTML = '';
     }
 
     // Remove all old program buttons
     Array.from(document.querySelectorAll('.program-button')).forEach(el => el.remove());
-
     // Add the program buttons for the result
     result.forEach(result => {
-        template.children[0].children[0].innerHTML = result.title;
-        template.children[0].children[1].innerHTML = result.contents.substring(0, 200);
-        program_list.appendChild(template.cloneNode(true));
+        resultHTML += mustache.render(programButtonTemplate, {
+            title: result.title,
+            contents: result.contents,
+            url: result.url,
+            language: result.language == "en" ? "English" : "Dutch",
+            degree: result.degree
+        });
     });
+
+    program_list.innerHTML = resultHTML;
 }

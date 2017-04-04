@@ -1,3 +1,8 @@
+// make sure that '<button>' uses default font
+button {
+    font-family: inherit;
+}
+
 // Buttons
 //
 // Styleguide 2.1
@@ -23,38 +28,7 @@
     text-decoration: none;
     vertical-align: middle;
     text-align: center;
-}
-
-// Modified buttons
-//
-// btn--skew - Skewed button
-// btn--secondary - Secondary button
-// btn--tertiary - Tertiary button
-// btn--white - White button
-//
-// markup:
-// <button class="btn {$modifiers}"><div class="btn__inner">.{$modifiers}</div></button>
-//
-// Styleguide 2.1.2
-.btn{
-    &__inner{
-        display: inline;
-    }
-    &--secondary{
-        background: none;
-        border: 2px solid currentColor;
-        padding: 8px 15px;
-        color: $color-pink;
-    }
-    &--skew{
-        transform: skewX(-16deg);
-        .btn__inner{
-            transform: skewX(16deg);
-        }
-    }
-    &--white{
-        color: $color-white;
-    }
+    box-sizing: border-box;
 }
 
 // Tertiary buttons
@@ -70,6 +44,9 @@
         margin-left: 8px;
         margin-right: 8px;
         padding: 0;
+        letter-spacing: 0;
+        // font-weight: 600;
+        // font-style: italic;
         svg{
             width: 1em;
             height: 1em;
@@ -77,5 +54,60 @@
             fill: currentColor;
             vertical-align: text-top;
         }
+    }
+}
+
+// Modified buttons
+//
+// btn--skew - Skewed button
+// btn--secondary - Secondary button
+// btn--tertiary - Tertiary button
+// btn--white - White button
+//
+// markup:
+// <button class="btn {$modifiers}"><div class="btn__inner">.{$modifiers}</div></button>
+//
+// Styleguide 2.1.2
+%btn--secondary{
+    background: none;
+    border: 2px solid currentColor;
+    padding: 8px 15px;
+    color: $color-pink;
+}
+%btn--skew{
+    transform: skewX(-16deg);
+    .btn__inner{
+        transform: skewX(16deg);
+    }
+}
+
+@include bp(large){
+    %btn--secondary--large{
+        background: none;
+        border: 2px solid currentColor;
+        padding: 8px 15px;
+        color: $color-pink;
+    }
+    %btn--skew--large{
+        transform: skewX(-16deg);
+        .btn__inner{
+            transform: skewX(16deg);
+        }
+    }
+}
+
+.btn{
+    &__inner{
+        display: inline;
+    }
+    &--secondary{
+        @extend %btn--secondary;
+    }
+    &--skew{
+        @extend %btn--skew;
+    }
+    &--white{
+        color: $color-white;
+        border-width: 1px;
     }
 }

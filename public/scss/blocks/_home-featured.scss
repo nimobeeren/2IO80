@@ -1,156 +1,120 @@
-$pinkcolor: #d1275a;
-$textfont: "Fira Sans";
 $skewdeg: -16deg;
 
-// feature
-
 .featured{
+    @include full(nest);
+    position: relative;
+
     @include bp(large){
-        @include container;
+        // break out container
+        margin:0 calc(50% - 50vw);
+        width: 100vw;
     }
-    .mobileimg {
-        height: 353px;
-        margin-left: -50px;
-        max-width: 480px;
-        overflow: auto;
-        @include bp(large){
-            display: none;
+
+    &__background{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        &-inner{
+            background-image: url("/images/1k9t5yiz2wu-tim-gouw.jpg");
+            background-size: cover;
+            background-position: left bottom;
+            height: 100%;
+            transform-origin: top;
+
+            @include bp(large){
+                transform: skewX(-$skewdeg);
+            };
         }
-    }
-    .background {
-        position: relative;
-    }
-    #outerimage {
-        display: none;
+
         @include bp(large){
-            display: inline-block;
-            @include span(11);
-            @include pull(1);
+            $calc-width: strip-unit(span(8 wide))* 0.01 * susy-get(container);
+
+            @include span(8 nest);
+            background-position: left center;
+            transform: skewX($skewdeg);
+            transform-origin: top;
+            width: calc(#{$calc-width} + (100vw - #{susy-get(container)}) / 2);
             overflow: hidden;
-            z-index: -1;
-            left: -170px;
-            height:700px;
-            max-width:1400px;
-            position: relative;
-            -ms-transform: skew($skewdeg,0deg);
-            -webkit-transform: skew($skewdeg,0deg);
-            transform: skew($skewdeg,0deg);
-        }
-    }
-    #innerimage {
-    display: none;
-    @include bp(large) {
-        display: inline-block;
-        @include span(11);
-        @include pull(1);
-        background-image: url("http://rosiemecca.com/wp-content/uploads/2016/06/Slider6-Stealdownline.png");
-        z-index:-1;
-        flow:left;
-        overflow: visible;
-        position: absolute;
-        left: -50px;
-        height:700px;
-        width:2400px;
-        -ms-transform: skew(-$skewdeg,0deg);
-        -webkit-transform: skew(-$skewdeg,0deg);
-        transform: skew(-$skewdeg,0deg);
-        }
+        };
     }
 
-    .text-block {
-        @include span(4 of 4);
-        margin-top: 20px;
-        position: absolute;
-        top: 50px;
-        transform: skew($skewdeg);
+    &__text-block {
         @include bp(large){
+            @include container;
             margin-top: 100px;
-            @include span(6 last);
-            @include pull(2);
-            left: 850px;
-            position: absolute;
-            right: 10px;
-            top: 300px;
         }
     }
-    .text-block-inner {
-        width: 100px;
-        @include span(4);
-        margin: 15px;
-        font: $textfont;
+    h1{
+        color: white;
         @include bp(large){
-            @include push(2);
-            background-color: $pinkcolor;
-            right: 5%;
-            width: 600px;
-        }
+            margin: 0; // reset heading
+            padding: 50px 67px;
+            transform: skewX(-$skewdeg);
+        };
     }
-    h1 {
+    &__heading-wrapper{
+        @include span(3);
+        @include push(1);
+        color: $color-white;
         text-align: right;
-        font-size: 2em;
-        color: white;
-        transform: skew(-$skewdeg);
+
         @include bp(large){
-            margin: 20px 20%;
-            float: right;
+            @include span(5 wide last);
+            background: $color-pink;
+            transform: skewX($skewdeg);
             text-align: left;
-            font-family: $textfont;
-            font-size: 2.5em;
-            padding:  50px 0px;
-            color: white;
-            z-index: 1;
+            transform-origin: top;
+            box-sizing: border-box;
+            @supports
+                ( shape-outside: polygon(0 0, 100% 0, 0 100%) )
+                or
+                ( -webkit-shape-outside: polygon(0 0, 100% 0, 0 100%) )
+            {
+                h1{
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+                &:before, .featured__heading-shape {
+                    content: "";
+                    display: inline-block;
+                    width: 70px;
+                    padding-top: 70px/28.6745385759*100;
+                    float: left;
+                    shape-outside: polygon(0 0, 100% 0, 0 100%);
+                }
+                .featured__heading-shape{
+                    float: right;
+                    shape-outside: polygon(0 100%, 100% 0, 100% 100%);
+                }
+            }
         }
     }
-    .tomajors {
-        font-family: $textfont;
-        text-decoration: none;
-        display: block;
-        float: right;
-        color: white;
-        margin-top: 20px;
-        font-size: 1em;
-        transform: skew(16deg);
-        svg {
-            fill: white;
-            height: 10px;
-            width: 10px;
-            }
+    &__btn{
+        @include span(4);
+        margin-top: 120px;
         @include bp(large){
-            @include span(4);
-            @include pull(6);
-            margin-top: 80px;
-            color: $color-grey;
-            svg {
-                fill: $color-grey;
-            }
+            @include span(4 inside);
+            @include push(7 inside);
+            color: $color-pink;
+            background: none;
+            border: 2px solid currentColor;
+            margin-top: 30px;
+            transform-origin: top;
         }
     }
-    .button {
-        @include span(2);
-        border: solid 3px $pinkcolor;
-        color: $pinkcolor;
-        background-color: $pinkcolor;
-        padding: 15px 50px;
-        margin-left: 100px;
-        text-align: center;
+    &__btn-secondary#{&}__btn-secondary{
+        @include span(4);
+        text-align: right;
         margin-top: 15px;
-        text-decoration: none;
-        font-size: 1em;
-        font-family: $textfont;
-        &:visited { color: white; }
-        &:hover { background: white; color:$pinkcolor; }
-        & > span { display: inline-block; transform: skew(-$skewdeg); }
-
+        padding-bottom: 15px;
         @include bp(large){
-            @include span(4 of 6);
-            @include push(2);
-            background-color: white;
-            &:visited { color: $pinkcolor; }
-            &:hover { background: $pinkcolor; color:white; }
-            & > span { display: inline-block; transform: skew(-$skewdeg); }
-
+            @include span(3);
+            @include push(8);
+            padding: 15px;
+            color: $color-grey;
         }
     }
-
-
 }
