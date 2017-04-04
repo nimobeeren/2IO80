@@ -102,12 +102,18 @@ $color-instagram: #bc2a8d;
 $color-linkedin: #007bb6;
 $color-twitter: #00aced;
 $color-youtube: #bb0000;
+$color-white: #ffffff;
+$color-darkpink: #cf285a;
+$color-subtitle: #808080;
+$color-blue: #24357f;
 
 @import "form-elements";
 @import "elements";
 
 @import "blocks/home-featured";
 @import "blocks/footer";
+@import "blocks/_program-mobile";
+@import "blocks/header";
 @import "blocks/filter";
 @import "blocks/program-button";
 @import "blocks/accordion";
