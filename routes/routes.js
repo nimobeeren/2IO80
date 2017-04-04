@@ -56,7 +56,7 @@ module.exports = {
             res.render('search.html');
         });
 
-        app.get('/filter', (req, res) => {
+        app.get('/program', (req, res) => {
             res.render('filter.html');
         });
 
