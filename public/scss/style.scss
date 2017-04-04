@@ -23,6 +23,29 @@
   @return #{$remSize}rem;
 }
 
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+.toggle__line{
+    display: none;
+}
+.toggle--open{
+    .toggle__plus{
+        display: none;
+    }
+    .toggle__line{
+        display: block;
+    }
+}
+
 // Colors
 //
 // Styleguide 1.1
@@ -80,6 +103,8 @@ $color-twitter: #00aced;
 $color-youtube: #bb0000;
 
 @import "form-elements";
+@import "elements";
+
 @import "blocks/home-featured";
 @import "blocks/footer";
 @import "blocks/filter";
@@ -88,7 +113,9 @@ $color-youtube: #bb0000;
 @import "blocks/after-study";
 @import "blocks/city";
 @import "blocks/related";
-@import "elements";
 @import "blocks/header";
 @import "blocks/button-row";
 @import "blocks/piechart";
+@import "blocks/questionnaire";
+@import "blocks/search-field";
+@import "blocks/search-overlay";
