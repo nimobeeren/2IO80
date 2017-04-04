@@ -21,25 +21,12 @@
 }
 
 .city-link {
-    display: inline-block;
-    width: 100%;
+    float: right;
     text-align: right;
-    text-decoration: none;
-    svg {
-        width: 1.5em;
-        height: 1.5em;
-        display: inline-block;
-        vertical-align: middle;
-        fill: $color-grey;
-    }
-    p {
-        display: inline-block;
-        transform: skew($skewdeg);
-        color: $color-grey;
-        font-weight: bold;
-
-    }
-
+    margin-bottom: 20px;
+}
+.city-information{
+    overflow: auto;
 }
 
 /*{

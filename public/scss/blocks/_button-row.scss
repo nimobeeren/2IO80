@@ -1,7 +1,7 @@
 .button-row{
     @include bp(large){
-            @include container;
-        }
+        @include container;
+    }
     &__text{
         color: $color-blue;
         padding-top: 50px;
