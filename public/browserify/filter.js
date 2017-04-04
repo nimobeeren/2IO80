@@ -2,8 +2,15 @@ const fs = require("fs");
 const mustache = require("mustache");
 const programButtonTemplate = fs.readFileSync("views/program-button.mustache", "utf8");
 
-// The list of programs
+// Populate the list of programs
 let programs = [];
+pages.forEach(page => {
+    // Check if page is a program page
+    if (page.parent === '58e3a4430dccc1175cfaad62') {
+        console.log('found program', page);
+        programs.push(page);
+    }
+});
 
 // Which filters are being shown right now
 let shownFilters = {};
@@ -69,50 +76,53 @@ function toggleFilter(element) {
  */
 function filter() {
     // TODO: generate this list from the database (might be difficult to get relevant content)
-    let result = [
-        {
-            name: "Web Science",
-            faculty: "Mathematics & Computer Science",
-            degree: "Bachelor BSc",
-            profile: ["nt", "ng"],
-            interest: "science",
-            language: "en",
-            contents: "Over the past decade the use of web-based systems has exploded. Buying clothes, books, and DVDs, booking hotels, checking the weather forecast, contacting your friends: all ...",
-            title: "Web Science, BSc",
-            url: "/program/bachelors/web-science"
-        },
-        {
-            name: "Psychology & Technology",
-            faculty: "Psychology & Technology",
-            degree: "Bachelor BSc",
-            profile: ["nt", "ng", "em", "cm"],
-            interest: "science",
-            language: "en",
-            contents: "The games you play, the mobile phone you use to send text messages, the website where you do your online shopping. Technology is all around us, and is an important ...",
-            title: "Psychology & Technology, BSc",
-            url: "/program/bachelors/psychology-technology"
-        },
-        {
-            name: "Human Technology Interaction",
-            faculty: "Psychology & Technology",
-            degree: "Master MSc",
-            profile: ["nt", "ng", "em", "cm"],
-            interest: "science",
-            language: "en",
-            contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable ...",
-            title: "Human Technology Interaction, MSc",
-            url: "/program/masters/HTI"
-        }, {
-            name: "Computer Science and Engineering",
-            faculty: "Mathematics & Computer Science",
-            degree: "Master MSc",
-            profile: ["nt", "ng"],
-            interest: "science",
-            language: "en",
-            contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the ...",
-            title: "Computer Science and Engineering, MSc",
-            url: "/program/masters/CSE"
-        }];
+    // let result = [
+    //     {
+    //         name: "Web Science",
+    //         faculty: "Mathematics & Computer Science",
+    //         degree: "Bachelor BSc",
+    //         profile: ["nt", "ng"],
+    //         interest: "science",
+    //         language: "en",
+    //         contents: "Over the past decade the use of web-based systems has exploded. Buying clothes, books, and DVDs, booking hotels, checking the weather forecast, contacting your friends: all ...",
+    //         title: "Web Science, BSc",
+    //         url: "/program/bachelors/web-science"
+    //     },
+    //     {
+    //         name: "Psychology & Technology",
+    //         faculty: "Psychology & Technology",
+    //         degree: "Bachelor BSc",
+    //         profile: ["nt", "ng", "em", "cm"],
+    //         interest: "science",
+    //         language: "en",
+    //         contents: "The games you play, the mobile phone you use to send text messages, the website where you do your online shopping. Technology is all around us, and is an important ...",
+    //         title: "Psychology & Technology, BSc",
+    //         url: "/program/bachelors/psychology-technology"
+    //     },
+    //     {
+    //         name: "Human Technology Interaction",
+    //         faculty: "Psychology & Technology",
+    //         degree: "Master MSc",
+    //         profile: ["nt", "ng", "em", "cm"],
+    //         interest: "science",
+    //         language: "en",
+    //         contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable ...",
+    //         title: "Human Technology Interaction, MSc",
+    //         url: "/program/masters/HTI"
+    //     }, {
+    //         name: "Computer Science and Engineering",
+    //         faculty: "Mathematics & Computer Science",
+    //         degree: "Master MSc",
+    //         profile: ["nt", "ng"],
+    //         interest: "science",
+    //         language: "en",
+    //         contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the ...",
+    //         title: "Computer Science and Engineering, MSc",
+    //         url: "/program/masters/CSE"
+    //     }
+    // ];
+
+
 
     // Get the allowed values for the current filter
     let allowedDegrees = [];
@@ -134,10 +144,12 @@ function filter() {
     });
 
     // Filter out programs that do not fulfill the current filter
+    console.log(programs);
+    let result = programs;
     if (allowedDegrees.length > 0 || allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
-        result = result.filter(program => {
+        result = programs.filter(program => {
             return (allowedDegrees.length === 0 || allowedDegrees.some(deg => program.degree.toLowerCase().split(' ').includes(deg.toLowerCase())))
-                && (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
+                && (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest.includes(inter)))
                 && (allowedProfiles.length === 0 || allowedProfiles.some(prof => program.profile.includes(prof)))
                 && (allowedLanguages.length === 0 || allowedLanguages.some(lang => program.language === lang));
         });
@@ -160,7 +172,7 @@ function filter() {
             title: result.title,
             contents: result.contents,
             url: result.url,
-            language: result.language == "en" ? "English" : "Dutch",
+            language: result.language === 'en' ? 'English' : 'Dutch',
             degree: result.degree
         });
     });

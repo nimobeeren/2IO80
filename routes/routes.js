@@ -39,6 +39,14 @@ module.exports = {
                 });
             });
         });
+        app.get('/api/newcache', (req, res) => {
+            const cache = [];
+            db.query(db => {
+                db.collection('pages').find().forEach(page => cache.push(page), () => {
+                    res.send(cache);
+                });
+            });
+        });
         app.param('word', (req, res, next, word) => {
             res.send(spellingCorrector.correct(word));
         });

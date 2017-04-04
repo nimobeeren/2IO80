@@ -79,7 +79,7 @@ function SearchOverlay() {
      * almost never be the deciding factor. It is used to find small differences in relevance
      * between pages that would otherwise be equal.
      *
-     * Common words defined above are ignored altogether.
+     * Common words defined below are ignored altogether.
      *
      * */
 

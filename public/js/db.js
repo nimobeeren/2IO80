@@ -6,7 +6,7 @@ updateDB();
  * Retrieves the search database
  */
 function updateDB() {
-    openUrl("GET", "api/cache", {
+    openUrl("GET", "api/newcache", {
             success: res => {
                 try {
                     pages = JSON.parse(res);
