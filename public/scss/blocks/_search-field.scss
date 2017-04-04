@@ -22,7 +22,7 @@
         background: inherit;
         -webkit-appearance: none;
         &::placeholder{
-            color: inherit;
+            color: $color-pink-light;
             font-style: italic;
             text-shadow: 0 1px 1px rgba(black,.1);
         }

@@ -55,7 +55,7 @@ gulp.task('icons-watch', ['icons'], function (done) {
     done();
 });
 
-gulp.task('default', ['sass', 'icons', 'nodemon']);
+gulp.task('default', ['sass', 'icons', 'nodemon', 'browserify']);
 gulp.task('serve', ['sass', 'icons', 'browser-sync']);
 
 var nodemonInstance;

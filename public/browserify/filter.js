@@ -103,16 +103,17 @@ function filter() {
         });
     }
 
+    let resultHTML;
+
     // Show message if result is empty
     if (result.length === 0) {
-        program_list.innerHTML = 'No results were found for the selected filters. Please make a different selection.';
+        resultHTML = 'No results were found for the selected filters. Please make a different selection.';
     } else {
-        program_list.innerHTML = '';
+        resultHTML = '';
     }
 
     // Remove all old program buttons
     Array.from(document.querySelectorAll('.program-button')).forEach(el => el.remove());
-
     // Add the program buttons for the result
     result.forEach(result => {
         resultHTML += mustache.render(programButtonTemplate, {
