@@ -1,13 +1,12 @@
-.button-row{
+.button-row {
     @include full(nest);
     margin-top: 45px;
     margin-bottom: 30px;
-    @include bp(large){
+    @include bp(large) {
         @include container;
     }
-        @include full(nest);
-        margin-top: 90px;
-    }
+    @include full(nest);
+    margin-top: 90px;
 
     &__text{
         color: $color-blue;
@@ -18,23 +17,23 @@
             @include full;
         };
     }
-    &__buttons{
+    &__buttons {
         // break out container
-        margin:0 calc(50% - 50vw);
+        margin: 0 calc(50% - 50vw);
         width: 100vw;
-        @include bp(large){
+        @include bp(large) {
             @include full;
         }
     }
-    &__bachelors, &__masters, &__premasters{
+    &__bachelors, &__masters, &__premasters {
         width: span(2 wide no-gutters) - 2.5%;
         margin-right: 5%;
         position: relative;
-        float:left;
+        float: left;
         background-color: $color-blue;
         margin-top: 15px;
         margin-bottom: 15px;
-        @include bp(large){
+        @include bp(large) {
             @extend %btn--skew--large;
             @include span(4);
             transform-origin: top;
@@ -42,9 +41,9 @@
             margin-bottom: 30px;
         }
     }
-    &__bachelors{
+    &__bachelors {
         // fake skew element
-        &:after{
+        &:after {
             content: "";
             position: absolute;
             background: inherit;
@@ -57,19 +56,20 @@
             transform: skewX($skewdeg);
             transform-origin: bottom;
             z-index: -1;
-            @include bp(large){
+            @include bp(large) {
                 display: none;
-            };
+            }
+        ;
         }
     }
-    &__masters{
+    &__masters {
         margin-right: 0;
-        @include bp(large){
+        @include bp(large) {
             // remove above reset
             margin-right: gutter();
         }
         // fake skew element
-        &:before{
+        &:before {
             content: "";
             position: absolute;
             background: inherit;
@@ -82,22 +82,23 @@
             transform: skewX($skewdeg);
             transform-origin: top;
             z-index: -1;
-            @include bp(large){
+            @include bp(large) {
                 display: none;
-            };
+            }
+        ;
         }
     }
-    &__premasters{
+    &__premasters {
         display: none;
-        @include bp(large){
+        @include bp(large) {
             display: inline-block;
         }
     }
-    &__others{
+    &__others {
         @include last;
         @include gutters;
-        @include bp(large){
+        @include bp(large) {
             margin-right: 0;
-        };
+        }
     }
 }
