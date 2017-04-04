@@ -1,10 +1,20 @@
+html{
+    height: 100%;
+}
 body{
+    @include container;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    min-width: 320px;
     font-family: 'Fira Sans', sans-serif;
     color: $color-black;
-    @include container;
     @include bp(large){
         @include container;
     }
+}
+main{
+    flex-grow: 1;
 }
 
 // added for the styleguide, because it uses the shadow DOM
