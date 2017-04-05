@@ -42,7 +42,6 @@ function SearchOverlay() {
     this.link.appendChild(this.content);
     this.result.appendChild(this.link);
 
-    this.pages = [];
     this.getPages = () => {
         openUrl("get", "/api/cache", {
                 success: res => {
