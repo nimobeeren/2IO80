@@ -14,12 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "brfs": "^1.4.3",
-    "browserify": "^14.1.0",
-    "express": "4.14.0",
-    "mongodb": "2.2.0",
-    "mustache-express": "^1.2.4",
-    "spelling-corrector": "^3.0.0",
     "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "dialog-polyfill": "^0.4.7",
+    "express": "4.14.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-nodemon": "^2.2.1",
@@ -28,9 +26,12 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-svg-symbols": "^2.0.2",
     "gulp-svgmin": "^1.2.3",
+    "mongodb": "2.2.0",
+    "mustache-express": "^1.2.4",
     "normalize.css": "^5.0.0",
     "sass-module-importer": "^1.4.0",
     "sc5-styleguide": "^1.5.0",
+    "spelling-corrector": "^3.0.0",
     "susy": "^2.2.12",
     "svg4everybody": "^2.1.7",
     "vinyl-source-stream": "^1.1.0"
@@ -43,7 +44,5 @@
     "npm": "4.4.1"
   },
   "homepage": "https://github.com/kedarkasarekar/2IO80#readme",
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
