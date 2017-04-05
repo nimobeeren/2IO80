@@ -1,11 +1,13 @@
-<dialog id="search-overlay" class="search-overlay">
+<div id="search-overlay" class="search-overlay">
     <div class="search-overlay__inner">
         <div class="search-overlay__top">
             <div class="search-overlay__top-container">
                 {{> search-field}}
-                <svg class="search-overlay__close" data-dialog-close>
-                    <use xlink:href="/svg-symbols.svg#plus"></use>
-                </svg>
+                <div class="search-overlay-close-container" id="search-overlay-close">
+                    <svg class="search-overlay__close" data-dialog-close>
+                        <use xlink:href="/svg-symbols.svg#plus"></use>
+                    </svg>
+                </div>
             </div>
         </div>
 
@@ -18,4 +20,5 @@
             {{/search_results}}
         </div>
     </div>
-</dialog>
+</div>
+<script src="/js/search.js"></script>

@@ -44,7 +44,7 @@ window.onload = () => {
     template = document.querySelector('.program-button');
     program_list = document.querySelector('.program-list');
     [].concat(document.querySelectorAll('[type="checkbox"]'))[0].forEach(checkbox => checkbox.onchange = filter);
-    if(program_list){ filter(); }
+    if(program_list && program_list != null){ filter(); }
 };
 
 /**
@@ -72,7 +72,7 @@ function filter() {
     let result = [
         {
             name: "Web Science",
-            faculty: "Mathematics & Computer Science",
+            faculty: "mcs",
             degree: "Bachelor BSc",
             profile: ["nt", "ng"],
             interest: "science",
@@ -83,7 +83,7 @@ function filter() {
         },
         {
             name: "Psychology & Technology",
-            faculty: "Psychology & Technology",
+            faculty: "pt",
             degree: "Bachelor BSc",
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
@@ -94,7 +94,7 @@ function filter() {
         },
         {
             name: "Human Technology Interaction",
-            faculty: "Psychology & Technology",
+            faculty: "pt",
             degree: "Master MSc",
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
@@ -104,7 +104,7 @@ function filter() {
             url: "/program/masters/HTI"
         }, {
             name: "Computer Science and Engineering",
-            faculty: "Mathematics & Computer Science",
+            faculty: "mcs",
             degree: "Master MSc",
             profile: ["nt", "ng"],
             interest: "science",
@@ -116,6 +116,7 @@ function filter() {
 
     // Get the allowed values for the current filter
     let allowedDegrees = [];
+    let allowedFaculties = [];
     let allowedInterests = [];
     let allowedProfiles = [];
     let allowedLanguages = [];
@@ -123,6 +124,8 @@ function filter() {
         Array.from(item.querySelectorAll('input[type="checkbox"]:checked')).forEach(checkbox => {
             if (item.id === 'filters--degree') {
                 allowedDegrees.push(checkbox.value);
+            } else if (item.id === 'filters--faculty') {
+                allowedFaculties.push(checkbox.value);
             } else if (item.id === 'filters--interest') {
                 allowedInterests.push(checkbox.value);
             } else if (item.id === 'filters--profile') {
@@ -134,9 +137,11 @@ function filter() {
     });
 
     // Filter out programs that do not fulfill the current filter
-    if (allowedDegrees.length > 0 || allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
+    console.log('faculties: ', allowedFaculties);
+    if (allowedDegrees.length > 0 || allowedFaculties.length > 0 || allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
         result = result.filter(program => {
             return (allowedDegrees.length === 0 || allowedDegrees.some(deg => program.degree.toLowerCase().split(' ').includes(deg.toLowerCase())))
+                && (allowedFaculties.length === 0 || allowedFaculties.some(fac => program.faculty === fac))
                 && (allowedInterests.length === 0 || allowedInterests.some(inter => program.interest === inter))
                 && (allowedProfiles.length === 0 || allowedProfiles.some(prof => program.profile.includes(prof)))
                 && (allowedLanguages.length === 0 || allowedLanguages.some(lang => program.language === lang));
