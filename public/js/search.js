@@ -159,7 +159,7 @@ function SearchOverlay() {
                 }
             }
             a.pageRank = a.url ? (this.linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
-            b.pageRank = a.url ? (this.linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
+            b.pageRank = b.url ? (this.linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
 
             // Decide order based on overall occurrences
             return (b.score + b.pageRank) - (a.score + a.pageRank);
