@@ -8,6 +8,7 @@
     height: auto;
     border: none;
     overflow-y: auto;
+    z-index: 9999; // it is needed apparently
     background: $color-grey-light;
     &__inner{
         @include container;
