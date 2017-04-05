@@ -133,9 +133,9 @@ function SearchOverlay() {
                 '</p>';
             setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 0);
         } else {
-            this.results = 'No results found for ' + query;
+            this.results = '';
         }
-        this.results += this.pages ? this.pages.sort((a, b) => {
+        this.searchResults = this.pages.sort((a, b) => {
             // Count occurrences of query in title of pages
             a.score = this.evaluateTitle(a, query);
             b.score = this.evaluateTitle(b, query);
@@ -164,12 +164,18 @@ function SearchOverlay() {
 
             // Decide final order
             return b.totalScore - a.totalScore;
-        }).filter(x => x.totalScore > 0).slice(0, 9).map(x => {
-            this.title.innerHTML = x.title || "No title found!";
-            this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
-            this.link.href = x.url || "#";
-            return this.result.outerHTML;
-        }).reduce((acc, v) => acc + v, '') : 'No results found!';
+        }).filter(x => x.totalScore > 0);
+        if (this.searchResults.length > 0) {
+            this.results +=  'No results found for ' + query;
+        } else {
+            this.results += this.searchResults.slice(0, 9).map(x => {
+                this.title.innerHTML = x.title || "No title found!";
+                this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
+                this.link.href = x.url || "#";
+                return this.result.outerHTML;
+            }).reduce((acc, v) => acc + v, '');
+        }
+
         this.getPages();
         callback(this.results);
     };
