@@ -1,6 +1,6 @@
 // Automatically search whenever input changes
 new SearchOverlay().bind(document.getElementById('search-field-input'), document.getElementById('search-field-button'), document.getElementById('search-overlay'), document.getElementById('search_result'),
-    document.getElementsByClassName('search-overlay__close')[0]);
+    document.getElementById('search-overlay-close'));
 
 function SearchOverlay() {
     if (!window) throw "window not defined";
@@ -14,8 +14,7 @@ function SearchOverlay() {
         this.resultHTML = resultHTML;
         this.closeButton = closeButton;
 
-        document.getElementsByClassName('header__search')[0].onclick = () => this.overlay.show();
-        this.closeButton.onclick = () => this.overlay.close();
+        this.closeButton.onclick = document.getElementsByClassName('header__search')[0].onclick = () => this.overlay.classList.toggle("open");
 
         if (typeof input === 'string') {
             this.input = document.querySelector(input);
@@ -28,7 +27,6 @@ function SearchOverlay() {
 
         this.button.onclick = e => e.preventDefault() || this.search(this.input.value, this.resultCallback);
         this.input.onkeydown = e => e.keyCode === 13 && this.search(this.input.value, this.resultCallback) || true;
-        this.closeButton.onclick = () => this.overlay.open = 0;
     };
 
     this.defaultCallback = result => {

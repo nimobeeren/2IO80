@@ -44,7 +44,7 @@ window.onload = () => {
     template = document.querySelector('.program-button');
     program_list = document.querySelector('.program-list');
     [].concat(document.querySelectorAll('[type="checkbox"]'))[0].forEach(checkbox => checkbox.onchange = filter);
-    if(program_list){ filter(); }
+    if(program_list && program_list != null){ filter(); }
 };
 
 /**
