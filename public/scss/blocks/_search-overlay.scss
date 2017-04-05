@@ -87,7 +87,7 @@
       margin-bottom: 5px;
       &:after {
         content: "";
-        background-image: linear-gradient(to right, transparent, $color-grey-light 80%);
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $color-grey-light 80%);
         width: 6em;
         height: 1em*1.15;
         position: absolute;
@@ -102,7 +102,7 @@
       margin-bottom: 5px;
       &:after {
         content: "";
-        background-image: linear-gradient(to right, transparent, $color-grey-light 80%);
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $color-grey-light 80%);
         width: 6em;
         height: 1em*1.15;
         position: absolute;
@@ -112,9 +112,11 @@
     }
   }
 }
+
 .search-overlay.open {
   display: block;
 }
+
 .search-overlay-close-container {
   cursor: pointer;
 }
