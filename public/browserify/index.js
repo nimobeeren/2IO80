@@ -3,6 +3,7 @@
 require("svg4everybody");
 
 require("./filter.js");
+require("./tabs.js");
 
 // footer
 document.getElementById("scroll-to-top").addEventListener("click", function(){

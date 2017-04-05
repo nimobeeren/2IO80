@@ -1,28 +1,50 @@
-.switch-menu {
-    &__item {
-        width: 47%;
-        display: inline-block;
-        color: $color-grey;
-        border-bottom: 1px dotted $color-grey-light;
-        box-sizing: border-box;
-        margin: 2%;
-        text-align: center;
-        &:first-child {
-            margin-left: 0;
-        }
-        &:last-child {
-            margin-right: 0;
+.after-study{
+    @include full(nest);
+    margin-top: 30px;
+    @include bp(large){
+        @include full(nest);
+        margin-top: 45px;
+    };
+    h2{
+        @include full;
+        margin-top: 0;
+        margin-bottom: 10px;
+        @include bp(large){
+            @include full;
+            margin-bottom: 20px;
+        };
+    }
+    &__tab{
+        @include full(nest);
+        button{
+            @include span(2);
+            @extend small;
+            text-align: center;
+            background: none;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            &.tab--open{
+                border-bottom: 2px dotted $color-grey-light;
+            }
+            @include bp(large){
+                @include span(6);
+            }
         }
     }
-    &__content {
+    &__tab-content{
         display: none;
-        overflow: hidden;
-        padding: 15px;
-        .program-button {
-            // todo: use small buttons
-            width: 290px;
-            height: 125px;
-            margin: 15px;
+        > p{
+            @include full;
+        }
+        &-list{
+            @include full(nest);
+        }
+        &.tab--open{
+            @include full(nest);
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 15px;
         }
     }
 }
