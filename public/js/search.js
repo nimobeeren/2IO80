@@ -20,10 +20,10 @@ function SearchOverlay() {
         document.getElementsByClassName('header--msearch')[0].onclick = () => this.overlay.open = 1;
 
 
-        if (typeof input == 'string') {
+        if (typeof input === 'string') {
             this.input = document.querySelector(input);
         }
-        if (typeof button == 'string') {
+        if (typeof button === 'string') {
             this.button = document.querySelector(button);
         }
 
@@ -101,7 +101,7 @@ function SearchOverlay() {
         query = query.trim();
 
         // Check if database is empty
-        if (this.pages.length == 0) {
+        if (this.pages.length === 0) {
             this.getPages();
             // Give feedback when searching on an empty database
             return log("The database has not been updated");
@@ -116,7 +116,7 @@ function SearchOverlay() {
                         success: (x) => {
                             corrected += x + ' ';
                             correctedWords++;
-                            if (correctedWords == words.length) {
+                            if (correctedWords === words.length) {
                                 this.startSearch(corrected.trim(), query.trim().toLowerCase() !== corrected.trim().toLowerCase(), query, callback);
                             }
                         }
@@ -146,14 +146,14 @@ function SearchOverlay() {
             a.relevance = a.score * 100;
             b.relevance = b.score * 100;
             // If title count is equal, look at the headings
-            if (a.score == b.score) {
+            if (a.score === b.score) {
                 // Count occurrences of query in headings of pages
                 a.score = this.evaluateHeadings(a, query);
                 b.score = this.evaluateHeadings(b, query);
                 a.relevance += a.score * 10;
                 b.relevance += b.score * 10;
                 // If heading count is equal, look at the contents
-                if (a.score == b.score) {
+                if (a.score === b.score) {
                     // Count occurrences of query in contents of pages
                     a.score = this.evaluateContent(a, query);
                     b.score = this.evaluateContent(b, query);
