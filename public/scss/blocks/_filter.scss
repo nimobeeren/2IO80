@@ -1,9 +1,3 @@
-.body--filters main{
-  @include full(nest);
-  margin-left: 0;
-  margin-right: 0;
-}
-
 // heading
 .filters-main-heading{
   @include full;

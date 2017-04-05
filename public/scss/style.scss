@@ -110,6 +110,23 @@ $color-youtube: #bb0000;
 // to skew the pictures and buttons
 $skewdeg: -16deg;
 
+.body{
+    &--filters main{
+      @include full(nest);
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &--program{
+        &__btn{
+            @include full;
+            @include bp(large){
+                @include span(6);
+                @include squish(3);
+            };
+        }
+    }
+}
+
 @import "form-elements";
 @import "elements";
 
