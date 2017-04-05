@@ -165,7 +165,7 @@ function SearchOverlay() {
             // Decide final order
             return b.totalScore - a.totalScore;
         }).filter(x => x.totalScore > 0);
-        if (this.searchResults.length > 0) {
+        if (this.searchResults.length === 0) {
             this.results +=  'No results found for ' + query;
         } else {
             this.results += this.searchResults.slice(0, 9).map(x => {
