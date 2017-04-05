@@ -50,7 +50,7 @@
     color: $color-white;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     border-radius: 4px;
     @include bp(large) {
       padding-top:30px;
@@ -93,18 +93,21 @@
   }
     &__rectangle-button-colored {
       @include span(4);
-      margin-left:0px;
+      margin-left:0;
       margin-bottom: 10px;
       @include bp(large) {
         float: left;
+        @include span(5);
       }
     }
     &__rectangle-button {
       @include span(4);
-      margin-left: 0px;
+      margin-left: 0;
       margin-bottom: 15px;
       @include bp(large) {
-        float: right;
+        @include span(5);
+        height: 54.7px;
+        text-align: center;
       }
     }
     &__image {
