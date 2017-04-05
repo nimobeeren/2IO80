@@ -44,7 +44,7 @@ function SearchOverlay() {
 
     this.pages = [];
     this.getPages = () => {
-        openUrl("get", "api/cache", {
+        openUrl("get", "/api/cache", {
                 success: res => {
                     this.pages = JSON.parse(res);
                     // PageRank implementation
