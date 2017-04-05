@@ -1,6 +1,6 @@
 <header>
-    <a href="/" class="header--logo"> <img src="/images/logo.svg"></a>
-    <nav>
+    <a href="/" class="header__logo"> <img src="/images/logo.svg"></a>
+    <nav id="nav">
         <ul>
             <li><a href="/program/?degree=bsc">Bachelors</a></li>
             <li><a href="/program/?degree=msc">Masters</a></li>
@@ -8,26 +8,14 @@
             <li><a href="#">Why TU/e?</a></li>
             <li><a href="#">Info</a></li>
         </ul>
+        <button type="button" data-menu-close class="header__close-btn">
+            <svg><use xlink:href="/svg-symbols.svg#plus" /></svg>
+        </button>
     </nav>
-    <div class="msearch-outter">
-        <div class="header--msearch">
-            <svg>
-                <use xlink:href="/svg-symbols.svg#search"></use>
-            </svg>
-        </div>
-    </div>
-
-    <div class="header--hamburger">
-        <svg>
-            <use xlink:href="/svg-symbols.svg#hamburger"></use>
-        </svg>
-    </div>
-
-    <div class="header__form">
-       <form action="">
-           <input type="search">
-           <button type="search">Search</button>
-       </form>
-    </div>
-
+    <button type="button" class="header__search">
+        <svg><use xlink:href="/svg-symbols.svg#search"></use></svg>
+    </button>
+    <button type="button" class="header__hamburger" data-menu-toggle>
+        <svg><use xlink:href="/svg-symbols.svg#hamburger"></use></svg>
+    </button>
 </header>

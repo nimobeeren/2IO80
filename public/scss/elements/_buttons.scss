@@ -97,9 +97,6 @@ button {
 }
 
 .btn{
-    &__inner{
-        display: inline;
-    }
     &--secondary{
         @extend %btn--secondary;
     }
