@@ -1,7 +1,8 @@
 // Automatically search whenever input changes
-new SearchOverlay().bind(document.getElementById('search-field-input'), document.getElementById('search-field-button'), document.getElementById('search-overlay'), document.getElementById('search_result'),
-    document.getElementsByClassName('search-overlay__close')[0]);
-
+window.onload = () => {
+    new SearchOverlay().bind(document.getElementById('search-field-input'), document.getElementById('search-field-button'), document.getElementById('search-overlay'), document.getElementById('search_result'),
+        document.getElementsByClassName('search-overlay__close')[0]);
+};
 
 function SearchOverlay() {
     if (!window) throw "window not defined";
