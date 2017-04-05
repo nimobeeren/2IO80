@@ -164,7 +164,8 @@ function SearchOverlay() {
 
             // Decide final order
             return b.totalScore - a.totalScore;
-        }).filter(x => x.totalScore > 0);
+        }).filter(x => x.score > 0);
+
         if (this.searchResults.length === 0) {
             this.results +=  'No results found for ' + query;
         } else {
