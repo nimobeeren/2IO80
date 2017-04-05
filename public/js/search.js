@@ -108,7 +108,7 @@ function SearchOverlay() {
                 let words = query.toLowerCase().split(" ");
                 let correctedWords = 0;
                 words.forEach(x => {
-                    openUrl("get", "api/correct/" + x, {
+                    openUrl("get", "/api/correct/" + x, {
                         success: (x) => {
                             corrected += x + ' ';
                             correctedWords++;
