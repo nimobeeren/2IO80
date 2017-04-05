@@ -35,10 +35,12 @@ function SearchOverlay() {
     this.create = e => document.createElement(e);
 
     this.result = this.create('w');
-    this.title = this.create('h2');
+    this.title = this.create('h3');
     this.content = this.create('p');
-    this.result.appendChild(this.title);
-    this.result.appendChild(this.content);
+    this.link = this.create('a');
+    this.link.appendChild(this.title);
+    this.link.appendChild(this.content);
+    this.result.appendChild(this.link);
 
 
     this.getPages = () => {
@@ -164,6 +166,7 @@ function SearchOverlay() {
         }).slice(0, 9).map(x => {
             this.title.innerHTML = x.title || "No title found!";
             this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
+            this.link.href = x.url || "#";
             return this.result.outerHTML;
         }).reduce((acc, v) => acc + v, '') : 'No results found!';
         this.getPages();
