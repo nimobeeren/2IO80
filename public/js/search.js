@@ -133,7 +133,7 @@ function SearchOverlay() {
                 '</p>';
             setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 0);
         } else {
-            this.results = '';
+            this.results = 'No results found for ' + query;
         }
         this.results += this.pages ? this.pages.sort((a, b) => {
             // Count occurrences of query in title of pages
@@ -159,10 +159,12 @@ function SearchOverlay() {
             }
             a.pageRank = a.url ? (this.linkFrequency[a.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
             b.pageRank = b.url ? (this.linkFrequency[b.url.replace("https://studyguide.tue.nl", '')] || 0) / 4 : 0;
+            a.totalScore = (a.score + a.pageRank);
+            b.totalScore = (b.score + b.pageRank);
 
-            // Decide order based on overall occurrences
-            return (b.score + b.pageRank) - (a.score + a.pageRank);
-        }).slice(0, 9).map(x => {
+            // Decide final order
+            return b.totalScore - a.totalScore;
+        }).filter(x => x.totalScore > 0).slice(0, 9).map(x => {
             this.title.innerHTML = x.title || "No title found!";
             this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
             this.link.href = x.url || "#";
