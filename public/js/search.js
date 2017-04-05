@@ -1,5 +1,6 @@
 // Automatically search whenever input changes
 window.onload = () => {
+    console.log("fired");
     new SearchOverlay().bind(document.getElementById('search-field-input'), document.getElementById('search-field-button'), document.getElementById('search-overlay'), document.getElementById('search_result'),
         document.getElementsByClassName('search-overlay__close')[0]);
 };
