@@ -33,6 +33,11 @@ input[type="checkbox"]{
             margin-right: 15px;
         }
     }
+    &:focus + label, + label:hover{
+        &:before {
+            box-shadow: 0 0 3px rgba(black, .7);
+        }
+    }
     &:checked{
         + label{
             &:before {

@@ -1,0 +1,29 @@
+.default{
+    @include span(4)
+    img{
+       // text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    figure{
+        margin: 0;
+    }
+
+    @include bp(large){
+        > img, figure{
+            margin-bottom: 2*gutters();
+            @include span(4)
+            margin-left: 2*gutters();
+            &:nth-child(4n-2){
+                @include last
+                margin-left: gutters();
+                margin-right: 2*gutters();
+            }
+        }
+        p{
+            @include full
+            float: none;
+            clear: none;
+        }
+    }
+}

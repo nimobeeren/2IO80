@@ -1,118 +1,212 @@
-$pinkcolor: #d1275a;
-
 // navigation bar
 header {
+    @include full(nest);
     @include full-width-bars($color-white);
     box-shadow: 0 2px 4px 0 rgba(black, .2); // make it stand out
-    @include full;
+    display: flex;
     @include bp(large){
-        @include full;
+        @include full(nest);
         box-shadow: none;
+        display: table;
+        width: 100%;
+        margin-top: 30px;
     }
-    img {
-      @include span(1);
-      max-width: 100px;
-      height: 60px;
-      @include bp(large) {
-        @include span(2 of 12);
-        max-width: 200px;
-        height: 90px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-      }
-    .msearch-outter {
-        width: 150px;
-        height: 60px;
-        @include span(2);
-        @include bp(large) {
-            @include span(2 of 12 last);
-            margin-top: 30px;
-            -ms-transform: rotate(16deg); /* IE 9 */
-            -webkit-transform: rotate(16deg); /* Safari */
-            transform: rotate(16deg); /* Standard syntax */
-            display: inline;
-            width: 65px;
-            height: 65px;
-            background-image: linear-gradient(286deg, #f3f2f2, #c6c6c6);
-            position: relative;
-        }
-
-
-    .header--msearch{
-        position: absolute;
-        width: 150px;
-        height: 60px;
-        transform: skewX(-16deg);
-        background-color: $color-grey-light;
-        svg{
-           transform: skewX(16deg);
-           height: 40px;
-           margin-top: 10px;
-           width: 100%;
-           position: center;
-           fill: $color-grey;
-           }
-        @include bp(large){
-            -ms-transform: rotate(-16deg) skewX(-16deg); /* IE 9 */
-            -webkit-transform: rotate(-16deg) skewX(-16deg); /* Safari */
-            transform: rotate(-16deg) skewX(-16deg); /* Standard syntax */
-            float: right;
-            width: 60px;
-            left: -5px;
-            top: -5px;
-            background-color: $pinkcolor;
-            svg {
-                fill: white;
-            }
-            }
-    }
-    }
-
-    ul{
+    nav{
         display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $color-grey-light;
+        z-index: 99999;
+        &.menu--open{
+            display: block;
+        }
         @include bp(large){
-        display: inline;
-        @include span(7 of 12);
-          li {
-            list-style-type:none;
-            float: left;
-            margin-top: 30px;
-            a {
-              margin-left: auto;
-              margin-right: auto;
-              padding-top: 10px;
-              width: 100px;
-              text-decoration: none;
-              color: darkblue;
-              display: table;
-              text-align: center;
+            @include span(9);
+            position: static;
+            display: block;
+            background-color: transparent;;
+            padding-top: 37px;
+            z-index: initial;
+        }
+        ul{
+            padding-left: 0;
+            height: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            @include bp(large){
+                display: block;
+                text-align: center;
             }
-            .slash {
-              font-size: 2em;
-              margin-top: 20px;
-              color: $pinkcolor;
+        }
+        li{
+            list-style: none;
+            flex-grow: 1;
+            display: flex;
+            align-items: stretch;
+            border-bottom: 1px dotted $color-grey;
+            @include bp(large){
+                border: none;
+                display: inline-block;
+                padding-right: 15px;
+                &:after{
+                    content: "/";
+                    display: inline-block;
+                    color: $color-pink;
+                    font-size: 32/16*1em;
+                    padding-left: 15px;
+                    vertical-align: middle;
+                }
+                &:last-child{
+                    &:after{
+                        content: none;
+                    }
+                }
             }
-          }
+        }
+        a{
+            @extend h2;
+            flex-grow: 1;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include bp(large){
+                // reset h2
+                font-size: 24px;
+                color: $color-blue;
+                font-weight: 400;
+
+                display: inline-block;
+                vertical-align: middle;
+            }
         }
     }
-    .header--hamburger{
-        @include span(1 last);
-        display: inline;
-        svg{
-        height: 40px;
-        width: 40px;
+}
+.header{
+    &__logo {
+        @include span(1);
         margin-top: 10px;
-        fill: $color-grey;
+        margin-bottom: 7px;
+        text-align: center;
+        img{
+            max-width: 100px;
+            vertical-align: top;
+        }
+        @include bp(large) {
+            @include span(2 of 12);
+            margin-top: 0;
+            img{
+                max-width: none;
+            }
+        }
+    }
+    &__hamburger{
+        @include span(1 last);
+        background: none;
+        border: none;
+        svg{
+            height: 40px;
+            width: 40px;
+            margin-top: 10px;
+            fill: $color-blue;
         }
         @include bp(large) {
             display: none;
         }
     }
-    .header__form {
-        display: none;
+    &__close-btn{
+        position: absolute;
+        display: block;
+        width: 3em;
+        height: 3em;
+        top: 15px;
+        right: 15px;
+        background: none;
+        padding: 0;
+        border: none;
         @include bp(large){
-            display:none;
+            display: none;
+        };
+        svg{
+            stroke: $color-black;
+            stroke-width: 2;
+            transform: rotate(45deg);
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__search{
+        @include span(2);
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+        &:focus{
+            outline: none;
+        }
+        &:before{
+            content: "";
+            position: absolute;
+            display: block;
+            background-color: $color-grey-light;
+            transform: skewX($skewdeg);
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+        svg{
+            fill: $color-grey;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+            height: 60px;
+
+        }
+        @include bp(large) {
+            @include span(1 last);
+            max-width: 62px;
+            height: 62px;
+            margin-top: 10px;
+            &:before{
+                background-color: transparent;
+                background-image: linear-gradient(-46deg, rgba(black,.1), transparent);
+                transform-origin: top;
+                z-index: 3;
+            }
+            &:after{
+                content: "";
+                position: absolute;
+                display: block;
+                transform: skewX($skewdeg) rotate(16deg); /* Standard syntax */
+                width: 55px;
+                height: 100%;
+                left: 5px;
+                top: 10px;
+                background-image: linear-gradient(286deg, #f3f2f2, #c6c6c6);
+                z-index: 1;
+            }
+            svg{
+                padding: 15px 15px 15px 10px;
+                fill: $color-white;
+                transform: skewX($skewdeg);
+                background-color: $color-pink;
+                transform-origin: top;
+                use{
+                    transform: skewX(-$skewdeg);
+                }
+            }
         }
     }
 }

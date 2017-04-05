@@ -19,3 +19,14 @@ for (var i = 0; i < toggleButtons.length; i++) {
         document.getElementById(linkedId).classList.toggle("toggle--open");
     });
 }
+
+// menu
+var toggleMenu = document.querySelector("[data-menu-toggle]");
+var closeMenu = document.querySelector("[data-menu-close]");
+
+toggleMenu.addEventListener("click", function(){
+    document.getElementById("nav").classList.toggle("menu--open");
+});
+closeMenu.addEventListener("click", function(){
+    document.getElementById("nav").classList.remove("menu--open");
+});

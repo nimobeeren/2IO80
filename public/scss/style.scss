@@ -15,23 +15,23 @@
         right: 0;
         border-left: 9990px solid $color;
         box-shadow: 9990px 0 0 $color;
+        z-index: -1;
     }
 }
 
 @function rem($size) {
-  $remSize: $size / 16px;
-  @return #{$remSize}rem;
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
 }
 
 /// Remove the unit of a length
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
-  }
-
-  @return $number;
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
 }
 
 .toggle__line{
@@ -44,6 +44,10 @@
     .toggle__line{
         display: block;
     }
+}
+
+svg{
+    pointer-events: none;
 }
 
 // Colors
@@ -74,7 +78,7 @@
 // social media button colors (footer)
 $color-black: #4A4A4A;
 $color-pink: #cf285a;
-$color-pink-light: #e07db3;
+$color-pink-light: #cf687b;
 $color-grey: #7F7F7F;
 $color-grey-light: #F3F3F3;
 $color-white: white;
@@ -107,6 +111,9 @@ $color-darkpink: #cf285a;
 $color-subtitle: #808080;
 $color-blue: #24357f;
 
+// to skew the pictures and buttons
+$skewdeg: -16deg;
+
 @import "form-elements";
 @import "elements";
 
@@ -126,3 +133,4 @@ $color-blue: #24357f;
 @import "blocks/questionnaire";
 @import "blocks/search-field";
 @import "blocks/search-overlay";
+@import "blocks/default"
