@@ -17,7 +17,7 @@ function SearchOverlay() {
         this.resultHTML = resultHTML;
         this.closeButton = closeButton;
 
-        document.getElementsByClassName('header--msearch')[0].onclick = () => this.overlay.open = 1;
+        document.getElementsByClassName('header__search')[0].onclick = () => this.overlay.open = 1;
 
 
         if (typeof input === 'string') {
