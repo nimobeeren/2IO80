@@ -1,34 +1,49 @@
-.city-icon {
-    svg {
-        width: 4em;
-        height: 4em;
-        display: inline-block;
-        vertical-align: middle;
-        fill: $color-blue;
-    }
-    p {
-        color: $color-grey;
-        display: inline-block;
-    }
-    &__beer, &__students {
-        //TODO: make it go to the left side
-        display: inline-block;
-    }
-    &__research, &__nationalities {
-        //TODO: make it go to the right side
-        display: inline-block;
-    }
-}
-
-.city-link {
-    float: right;
-    text-align: right;
-    margin-bottom: 20px;
-}
 .city-information{
-    overflow: auto;
+    @include full(nest);
+    margin-top: 30px;
+    margin-bottom: 45px;
+    @include bp(large){
+        @include full(nest);
+        margin-top: 45px;
+        margin-bottom: 60px;
+    };
+    h2{
+        @include full;
+        margin-top: 0;
+        margin-bottom: 5px;
+        @include bp(large){
+            @include full;
+            margin-bottom: 15px;
+        }
+    }
+    &__icon {
+        @include span(2 inside);
+        @extend small;
+        display: flex;
+        padding-left: 0;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        @include bp(large){
+            @include span(3);
+        };
+        svg {
+            @include span(1 of 2 nest);
+            height: 4em;
+            fill: $color-blue;
+            flex-shrink: 0;
+        }
+        svg, span{
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    &__link {
+        @include last;
+        display: inline-block;
+        margin-right: gutters();
+        @include bp(large){
+            margin-top: 15px;
+        }
+    }
 }
-
-/*{
-    background-color: rgba(0, 0, 0, 0.1);
-}*/
