@@ -1,5 +1,9 @@
 <div class="related">
-    <h2>Not your perfect study?</h2>
-    <div>Maybe one of the studies below suits you better!</div>
+    <div class="related__text">
+        <h2>Not your perfect study?</h2>
+        <p>Maybe one of the studies below suits you better!</p>        
+    </div>
+    {{#alternate}}
+        {{> program-button--small}}
+    {{/alternate}}
 </div>
-{{> program-button}}

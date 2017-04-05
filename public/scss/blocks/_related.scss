@@ -1,17 +1,28 @@
 .related {
-    @include bp(large) {
-        display: inline-block;
-        width: 290px;
-        float: left;
-    }
+    @include full(nest);
+    margin-top: 20px;
+    margin-bottom: 5px;
+    @include bp(large){
+        @include full(nest);
+        margin-top: 50px;
+        margin-bottom: 35px;
+    };
     .program-button {
-        @include bp(large) {
-            display: inline-block;
-            width: 290px;
-            height: 125px;
+        clear: none;
+        margin-top: 10px;
+    }
+    &__text{
+        @include full;
+        margin-bottom: 5px;
+        h2, p{
+            margin: 10px 0 15px;;
+        }
+        h2{
+            margin-bottom: 15px;
+        }
+        @include bp(large){
+            @include span(3);
+            clear: none;
         }
     }
-}
-h2 {
-    margin-top: 0;
 }
