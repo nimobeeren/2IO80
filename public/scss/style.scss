@@ -3,9 +3,9 @@
 
 @import "susy-settings";
 
-@mixin full-width-bars($color){
+@mixin full-width-bars($color, $dir: both){
     position: relative;
-    background: $color;
+    @if $dir == both { background: $color; }
     &:before {
         content: "";
         position: absolute;
@@ -13,8 +13,12 @@
         bottom: 0;
         left: -9990px;
         right: 0;
-        border-left: 9990px solid $color;
-        box-shadow: 9990px 0 0 $color;
+        @if $dir == both or $dir == left{
+            border-left: 9990px solid $color;
+        }
+        @if $dir == both or $dir == right{
+            box-shadow: 9990px 0 0 $color;
+        }
         z-index: -1;
     }
 }
@@ -114,12 +118,28 @@ $color-blue: #24357f;
 // to skew the pictures and buttons
 $skewdeg: -16deg;
 
+.body{
+    &--filters main{
+      @include full(nest);
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &--program{
+        &__btn{
+            @include full;
+            @include bp(large){
+                @include span(6);
+                @include squish(3);
+            };
+        }
+    }
+}
+
 @import "form-elements";
 @import "elements";
 
 @import "blocks/home-featured";
 @import "blocks/footer";
-@import "blocks/_program-mobile";
 @import "blocks/header";
 @import "blocks/filter";
 @import "blocks/program-button";
@@ -133,4 +153,5 @@ $skewdeg: -16deg;
 @import "blocks/questionnaire";
 @import "blocks/search-field";
 @import "blocks/search-overlay";
-@import "blocks/default"
+@import "blocks/default";
+@import "blocks/intro-text";

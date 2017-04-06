@@ -1,14 +1,18 @@
 .piechart{
+    @include full;
+    @include bp(large){
+        @include full;
+    }
     &__year{
         @include span(2);
         margin-top: 15px;
-        &:nth-child(2n){
+        &:nth-child(2n+1){
             @include last;
         }
         @include bp(large){
             @include span(3);
             text-align: center;
-            &:nth-child(2n){ // overwrite @include last
+            &:nth-child(2n+1){ // overwrite @include last
                 float: left;
             }
             svg{

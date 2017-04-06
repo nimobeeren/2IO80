@@ -1,10 +1,12 @@
 <div class="piechart">
-    {{#years}}
+    <h2>
+        Course structure
+    </h2>
+    {{#pieCharts}}
         <div class="piechart__year">
-        <h6>Year 1</h6>
-        {{{pieChart}}}
+        {{{genPieChart}}}
         </div>
-    {{/years}}
+    {{/pieCharts}}
     <div class="piechart__legend">
         <div class="piechart__legend-item piechart__legend-item--basic">Basic courses</div>
         <div class="piechart__legend-item piechart__legend-item--major">Major courses</div>

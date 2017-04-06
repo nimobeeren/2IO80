@@ -1,4 +1,5 @@
 .program-button{
+    @include full;
     box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.1);
     color: $color-black;
     border: solid 1px $color-blue;
@@ -9,13 +10,14 @@
     text-decoration: none;
     margin-bottom: 10px;
     box-sizing: border-box;
-    &--small{
-        @include span(3)
-    }
     @include bp(large){
         @include span(9 nest)
     }
-
+    &--small{
+        @include bp(large){
+            @include span(3);
+        };
+    }
     &__main-content{
         display: inline-block;
         @include span(full);
@@ -23,7 +25,9 @@
             @include span(7 of 9)
         }
         @at-root .program-button--small .program-button__main-content{
-            @include span(full nest)
+            @include bp(large){
+                @include span(full of 3);
+            }
         }
     }
     &__overview{
@@ -55,6 +59,7 @@
         color: $color-blue;
         margin-top: 0;
         margin-bottom: 10px;
+        font-weight: 400;
     }
     p{
         margin-top: 0;
@@ -65,6 +70,9 @@
         @include bp(large){
             height: 3em*1.15;
         };
+        @at-root .program-button--small p{
+            height: 4em*1.15;
+        }
     }
 
 }

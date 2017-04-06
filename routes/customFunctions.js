@@ -1,3 +1,33 @@
+const CONFIG = {PIETYPE: {
+    BASIC: {
+        color: "#FBA312",
+        title: "Basic courses"
+    },
+    MAJOR: {
+        color: "#00A2ED",
+        title: "Major courses"
+    },
+    USE: {
+        color: "#24357F",
+        title: "USE courses"
+    },
+    FREE: {
+        color: "#BB0000",
+        title: "Free courses"
+    },
+    SPECIALIZATION: {
+        color: "#FDEC00",
+        title: "Specialization courses"
+    }
+}};
+
+function ref(obj, str) {
+    str = str.split(".");
+    for (var i = 0; i < str.length; i++)
+        obj = obj[str[i]];
+    return obj;
+}
+
 let cumulativePercent = 0;
 
 const getCoordinatesForPercent = (percent) => {
@@ -25,12 +55,14 @@ const pie = (pie) => {
       `L 0 0`, // Line
     ].join(' ');
 
-    return `<path d="${pathData}" fill="${pie.type.color}"><title>${pie.type.title}</title></path>`;
+    return `<path d="${pathData}" fill="${ref(CONFIG, pie.type).color}"><title>${ref(CONFIG, pie.type).title}</title></path>`;
 }
 
+var year = 0;
 exports.pieChart = function(pieList){
     var html = [];
 
+    html.push('<h6>Year '+ ++year +'</h6>');
     html.push('<svg viewBox="-1 -1 2 2" style="transform: rotate(270deg) scaleX(-1)">');
     let cumulativePercent = 0; // reset var
     for (pieData in pieList) {

@@ -1,6 +1,21 @@
 .switch-menu {
+    @include full(nest);
+    margin-top: 30px;
+    @include bp(large){
+        @include full(nest);
+        margin-top: 45px;
+    };
+    h2{
+        @include full;
+        margin-top: 0;
+        margin-bottom: 10px;
+        @include bp(large){
+            @include full;
+            margin-bottom: 20px;
+        };
+    }
     &__item {
-        width: 47%;
+        width: 46%;
         display: inline-block;
         color: $color-grey;
         border-bottom: 1px dotted $color-grey-light;
