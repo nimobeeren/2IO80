@@ -10,7 +10,7 @@
     }
 
     @include bp(large){
-        @include span(8)
+        //@include span(8)
         > img, figure{
             margin-bottom: 2*gutters();
             @include span(4)
