@@ -71,12 +71,21 @@ module.exports = {
             let success = false;
             db.query(db => {
                 db.collection('search').find({url: new RegExp(req.path.slice(1), 'gi')}).forEach(obj => {
-                    !success && res.render("default.html", {
-                        title: obj.title,
-                        contents: obj.contents,
-                        headings: obj.headings
-                    });
-                    success = true;
+                    if (obj.url.replace("https://studyguide.tue.nl/", '') === req.path.slice(1)) {
+                        obj.contents = obj.contents.replace(/&#xA0;/i, '');
+                        if (obj.contents.includes(obj.title)) {
+                            obj.contents = obj.contents.replace(new RegExp(obj.title, 'i'), '');
+                        }
+                        obj.headings.forEach(heading => {
+                            obj.contents = obj.contents.replace(new RegExp(heading, 'g'), "<h2>" + heading + "</h2>");
+                        });
+                        !success && res.render("default.html", {
+                            title: obj.title,
+                            content: obj.contents,
+                            heading: obj.title
+                        });
+                        success = true;
+                    }
                 }, () => {
                     !success && res.status(404).send("404");
                 })
