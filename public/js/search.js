@@ -14,7 +14,10 @@ function SearchOverlay() {
         this.resultHTML = resultHTML;
         this.closeButton = closeButton;
 
-        this.closeButton.onclick = document.getElementsByClassName('header__search')[0].onclick = () => this.overlay.classList.toggle("open");
+        this.closeButton.onclick = document.getElementsByClassName('header__search')[0].onclick = () => {
+            this.overlay.classList.toggle("open");
+            document.body.classList.toggle("open");
+        };
 
         if (typeof input === 'string') {
             this.input = document.querySelector(input);

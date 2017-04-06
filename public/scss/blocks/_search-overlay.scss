@@ -126,3 +126,7 @@
   min-width: initial !important;
   border-bottom: none !important;
 }
+
+body.open {
+  overflow: hidden;
+}
