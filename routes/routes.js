@@ -63,30 +63,29 @@ module.exports = {
         });
 
         app.get('/program/*', (req, res) => {
-            res.render('program.html');
-            // let success = false;
-            // db.query(db => {
-            //     db.collection('pages').find({url: req.path}).forEach(obj => {
-            //         // get referenced alternate
-            //         var alternate = typeof obj.alternate == 'object' ? db.collection('pages').find({ _id: {$in: obj.alternate}}).toArray() : null;
-            //         var masters = typeof obj.masters == 'object' ? db.collection('pages').find({ _id: {$in: obj.masters}}).toArray() : null;
-            //
-            //         Promise.all([alternate, masters]).then(values => {
-            //             obj.alternate = values[0];
-            //             obj.masters = values[1];
-            //             obj.genPieChart = function () {
-            //                 return customFunc.pieChart(this)
-            //             };
-            //
-            //             !success && res.render("program.html", obj);
-            //             success = true;
-            //             }, reason => {
-            //         });
-            //     }, () => {
-            //         // todo: redirect to 404
-            //         // !success && res.status(404).send("404");
-            //     })
-            // });
+            let success = false;
+            db.query(db => {
+                db.collection('pages').find({url: req.path}).forEach(obj => {
+                    // get referenced alternate
+                    var alternate = typeof obj.alternate == 'object' ? db.collection('pages').find({ _id: {$in: obj.alternate}}).toArray() : null;
+                    var masters = typeof obj.masters == 'object' ? db.collection('pages').find({ _id: {$in: obj.masters}}).toArray() : null;
+
+                    Promise.all([alternate, masters]).then(values => {
+                        obj.alternate = values[0];
+                        obj.masters = values[1];
+                        obj.genPieChart = function () {
+                            return customFunc.pieChart(this)
+                        };
+
+                        !success && res.render("program.html", obj);
+                        success = true;
+                        }, reason => {
+                    });
+                }, () => {
+                    // todo: redirect to 404
+                    // !success && res.status(404).send("404");
+                })
+            });
         });
 
         app.get('*', (req, res) => {
