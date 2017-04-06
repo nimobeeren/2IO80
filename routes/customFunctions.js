@@ -58,9 +58,11 @@ const pie = (pie) => {
     return `<path d="${pathData}" fill="${ref(CONFIG, pie.type).color}"><title>${ref(CONFIG, pie.type).title}</title></path>`;
 }
 
+var year = 0;
 exports.pieChart = function(pieList){
     var html = [];
 
+    html.push('<h6>Year '+ ++year +'</h6>');
     html.push('<svg viewBox="-1 -1 2 2" style="transform: rotate(270deg) scaleX(-1)">');
     let cumulativePercent = 0; // reset var
     for (pieData in pieList) {
