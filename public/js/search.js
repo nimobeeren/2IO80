@@ -129,9 +129,9 @@ function SearchOverlay() {
         if (isCorrected) {
             this.results = '<p>' +
                 'Showing results for: <b>' + query + '</b>. '
-                + 'Search instead for: <a href=# class="search_instead_link" id="idk">' + originalQuery + '</a>' +
+                + 'Search instead for: <a href=# class="initial" id="idk">' + originalQuery + '</a>' +
                 '</p>';
-            setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 0);
+            setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 500);
         } else {
             this.results = '';
         }
