@@ -170,12 +170,12 @@ function SearchOverlay() {
         }).filter(x => x.score > 0);
 
         if (this.searchResults.length === 0) {
-            this.results +=  'No results found for ' + query;
+            this.results += 'No results found for ' + query;
         } else {
             this.results += this.searchResults.slice(0, 9).map(x => {
                 this.title.innerHTML = x.title || "No title found!";
                 this.content.innerHTML = x.contents ? x.contents.substr(0, 100) : "No contents found!";
-                this.link.href = x.url || "#";
+                this.link.href = x.url ? x.url.replace("https://studyguide.tue.nl", '') : "#";
                 return this.result.outerHTML;
             }).reduce((acc, v) => acc + v, '');
         }
