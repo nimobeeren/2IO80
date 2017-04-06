@@ -70,10 +70,12 @@ module.exports = {
         app.get('*', (req, res) => {
             let success = false;
             db.query(db => {
-                console.log((req.path.slice(1)));
                 db.collection('search').find({url: new RegExp(req.path.slice(1), 'gi')}).forEach(obj => {
-                    console.log(obj.url.replace("https://studyguide.tue.nl", ''), req.path.slice(1));
                     if (obj.url.replace("https://studyguide.tue.nl/", '') === req.path.slice(1)) {
+                        obj.contents = obj.contents.replace(/&#xA0;/i, '');
+                        if (obj.contents.includes(obj.title)) {
+                            obj.contents = obj.contents.replace(new RegExp(obj.title, 'i'), '');
+                        }
                         obj.headings.forEach(heading => {
                             obj.contents = obj.contents.replace(new RegExp(heading, 'g'), "<h2>" + heading + "</h2>");
                         });
