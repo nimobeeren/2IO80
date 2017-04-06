@@ -71,10 +71,6 @@
     min-width: 50%;
     padding-top: 15px;
     padding-bottom: 15px;
-    .instead {
-      min-width: initial;
-      border-bottom: none;
-    }
     h3, p {
       margin: 0;
     }
@@ -124,4 +120,9 @@
 
 .search-overlay-close-container {
   cursor: pointer;
+}
+
+.search-instead-link {
+  min-width: initial;
+  border-bottom: none;
 }
