@@ -13,39 +13,38 @@ let template;
 let program_list;
 
 // Set checkboxes to call filter when changed
-window.onload = () => {
-    // Get all existing filter names and the values that need to be checked
-    let filters = [];
-    Array.from(document.querySelectorAll('.filters__item')).forEach(item => {
-        let filterName = item.id.split('--')[1];
-        let filterValues = getURLParameter(filterName);
-        if (filterValues) {
-            filters.push({
-                name: filterName,
-                values: filterValues.split(',')
-            });
+// Get all existing filter names and the values that need to be checked
+let filters = [];
+Array.from(document.querySelectorAll('.filters__item')).forEach(item => {
+    let filterName = item.id.split('--')[1];
+    let filterValues = getURLParameter(filterName);
+    if (filterValues) {
+        filters.push({
+            name: filterName,
+            values: filterValues.split(',')
+        });
+    }
+});
+
+// Check all required checkboxes
+filters.forEach(filter => {
+    // Get corresponding element
+    let el = id('filters--' + filter.name);
+
+    // Iterate over all its checkboxes
+    Array.from(el.querySelectorAll('input[type="checkbox"]')).forEach(box => {
+        if (filter.values.includes(box.getAttribute('value'))) {
+            box.setAttribute('checked', 'true');
         }
     });
+});
 
-    // Check all required checkboxes
-    filters.forEach(filter => {
-        // Get corresponding element
-        let el = id('filters--' + filter.name);
-
-        // Iterate over all its checkboxes
-        Array.from(el.querySelectorAll('input[type="checkbox"]')).forEach(box => {
-            if (filter.values.includes(box.getAttribute('value'))) {
-                console.log('checking', box);
-                box.setAttribute('checked', 'true');
-            }
-        });
-    });
-
-    template = document.querySelector('.program-button');
-    program_list = document.querySelector('.program-list');
-    [].concat(document.querySelectorAll('[type="checkbox"]'))[0].forEach(checkbox => checkbox.onchange = filter);
-    if(program_list && program_list !== null){ filter(); }
-};
+template = document.querySelector('.program-button');
+program_list = document.querySelector('.program-list');
+[].concat(document.querySelectorAll('[type="checkbox"]'))[0].forEach(checkbox => checkbox.onchange = filter);
+if (program_list && program_list !== null) {
+    filter();
+}
 
 /**
  * Shows and hides the filter options
@@ -77,7 +76,7 @@ function filter() {
             profile: ["nt", "ng"],
             interest: "science",
             language: "en",
-            contents: "Over the past decade the use of web-based systems has exploded. Buying clothes, books, and DVDs, booking hotels, checking the weather forecast, contacting your friends: all ...",
+            contents: "Over the past decade the use of web-based systems has exploded. Buying clothes, books, and DVDs, booking hotels, checking the weather forecast, contacting your friends: all...",
             title: "Web Science, BSc",
             url: "/program/bachelors/web-science"
         },
@@ -88,7 +87,7 @@ function filter() {
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
             language: "en",
-            contents: "The games you play, the mobile phone you use to send text messages, the website where you do your online shopping. Technology is all around us, and is an important ...",
+            contents: "The games you play, the mobile phone you use to send text messages, the website where you do your online shopping. Technology is all around us, and is an important...",
             title: "Psychology & Technology, BSc",
             url: "/program/bachelors/psychology-technology"
         },
@@ -99,7 +98,7 @@ function filter() {
             profile: ["nt", "ng", "em", "cm"],
             interest: "science",
             language: "en",
-            contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable ...",
+            contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable...",
             title: "Human Technology Interaction, MSc",
             url: "/program/masters/HTI"
         }, {
@@ -109,7 +108,7 @@ function filter() {
             profile: ["nt", "ng"],
             interest: "science",
             language: "en",
-            contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the ...",
+            contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the...",
             title: "Computer Science and Engineering, MSc",
             url: "/program/masters/CSE"
         }];
@@ -137,7 +136,6 @@ function filter() {
     });
 
     // Filter out programs that do not fulfill the current filter
-    console.log('faculties: ', allowedFaculties);
     if (allowedDegrees.length > 0 || allowedFaculties.length > 0 || allowedProfiles.length > 0 || allowedInterests.length > 0 || allowedLanguages.length > 0) {
         result = result.filter(program => {
             return (allowedDegrees.length === 0 || allowedDegrees.some(deg => program.degree.toLowerCase().split(' ').includes(deg.toLowerCase())))
