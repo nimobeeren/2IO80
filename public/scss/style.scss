@@ -1,57 +1,59 @@
 @import "susy";
 @import "normalize.css";
-
 @import "susy-settings";
 
-@mixin full-width-bars($color, $dir: both){
-    position: relative;
-    @if $dir == both { background: $color; }
-    &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: -9990px;
-        right: 0;
-        @if $dir == both or $dir == left{
-            border-left: 9990px solid $color;
-        }
-        @if $dir == both or $dir == right{
-            box-shadow: 9990px 0 0 $color;
-        }
-        z-index: -1;
+@mixin full-width-bars($color, $dir: both) {
+  position: relative;
+  @if $dir == both {
+    background: $color;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9990px;
+    right: 0;
+    @if $dir == both or $dir == left {
+      border-left: 9990px solid $color;
     }
+    @if $dir == both or $dir == right {
+      box-shadow: 9990px 0 0 $color;
+    }
+    z-index: -1;
+  }
 }
 
 @function rem($size) {
-    $remSize: $size / 16px;
-    @return #{$remSize}rem;
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
 }
 
 /// Remove the unit of a length
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
-    @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
-    }
-    @return $number;
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
 }
 
-.toggle__line{
+.toggle__line {
+  display: none;
+}
+
+.toggle--open {
+  .toggle__plus {
     display: none;
-}
-.toggle--open{
-    .toggle__plus{
-        display: none;
-    }
-    .toggle__line{
-        display: block;
-    }
+  }
+  .toggle__line {
+    display: block;
+  }
 }
 
-svg{
-    pointer-events: none;
+svg {
+  pointer-events: none;
 }
 
 // Colors
@@ -118,21 +120,26 @@ $color-blue: #24357f;
 // to skew the pictures and buttons
 $skewdeg: -16deg;
 
-.body{
-    &--filters main{
-      @include full(nest);
-      margin-left: 0;
-      margin-right: 0;
+.body {
+  &--filters main {
+    @include full(nest);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &--program {
+    &__btn {
+      @include full;
+      @include bp(large) {
+        @include span(6);
+        @include squish(3);
+      }
+    ;
     }
-    &--program{
-        &__btn{
-            @include full;
-            @include bp(large){
-                @include span(6);
-                @include squish(3);
-            };
-        }
-    }
+  }
+}
+
+button {
+  cursor: pointer;
 }
 
 @import "form-elements";
