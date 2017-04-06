@@ -121,3 +121,12 @@
 .search-overlay-close-container {
   cursor: pointer;
 }
+
+.search-instead-link {
+  min-width: initial !important;
+  border-bottom: none !important;
+}
+
+body.open {
+  overflow: hidden;
+}

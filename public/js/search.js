@@ -14,7 +14,10 @@ function SearchOverlay() {
         this.resultHTML = resultHTML;
         this.closeButton = closeButton;
 
-        this.closeButton.onclick = document.getElementsByClassName('header__search')[0].onclick = () => this.overlay.classList.toggle("open");
+        this.closeButton.onclick = document.getElementsByClassName('header__search')[0].onclick = () => {
+            this.overlay.classList.toggle("open");
+            document.body.classList.toggle("open");
+        };
 
         if (typeof input === 'string') {
             this.input = document.querySelector(input);
@@ -129,9 +132,9 @@ function SearchOverlay() {
         if (isCorrected) {
             this.results = '<p>' +
                 'Showing results for: <b>' + query + '</b>. '
-                + 'Search instead for: <a href=# class="search_instead_link" id="idk">' + originalQuery + '</a>' +
+                + 'Search instead for: <a href=# class="search-instead-link" id="idk">' + originalQuery + '</a>' +
                 '</p>';
-            setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 0);
+            setTimeout(() => document.getElementById('idk').onclick = () => this.startSearch(originalQuery, 0, originalQuery, callback), 500);
         } else {
             this.results = '';
         }
