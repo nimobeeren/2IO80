@@ -1,7 +1,18 @@
-<div class="switch-menu">
+<div class="after-study">
     <h2>After your study</h2>
-    <div class="switch-menu__item" data-subject="masters" onclick="showSwitchMenu('masters')">Masters</div><!--
-    --><div class="switch-menu__item" data-subject="jobs" onclick="showSwitchMenu('jobs')">Jobs</div>
-    <div class="switch-menu__content" data-subject="masters">If you are interested in studying further after completing your Bachelor program, take a look at these related master programs. {{> program-button}} {{> program-button}}</div>
-    <div class="switch-menu__content" data-subject="jobs">Nothing to see here</div>
+    <div class="after-study__tab" data-tab-list>
+        <button class="tab--open" type="button" data-tab="masters">Masters</button>
+        <button type="button" data-tab="work">Work</button>
+    </div>
+    <div data-tab-content-list class="after-study__tab-content-list">
+        <div  data-tab-content class="after-study__tab-content tab--open" id="masters">
+            {{#masters}}
+                {{> program-button--small}}
+            {{/masters}}
+        </div>
+        <div  data-tab-content class="after-study__tab-content" id="work">
+            <p>{{{work}}}</p>
+        </div>
+    </div>
+</div>
 </div>

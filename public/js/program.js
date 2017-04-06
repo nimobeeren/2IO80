@@ -6,7 +6,7 @@ window.onload = () => {
         = document.getElementsByClassName('accordion__content')[0].innerHTML;
 
     // Set switch menu default item
-    showSwitchMenu(document.getElementsByClassName('switch-menu__item')[0].getAttribute('data-subject'));
+    // showSwitchMenu(document.getElementsByClassName('switch-menu__item')[0].getAttribute('data-subject'));
 };
 
 function toggleAccordion(element) {
