@@ -13,11 +13,12 @@
     }
     input{
         height: 35/18*1em;
-        margin: 10px 15px;
+        margin: 10px 0px;
         border: none;
         vertical-align: middle;
         transform: skewX(-$skewdeg);
         flex-grow: 1;
+        width: 100%;
         text-overflow: ellipsis;
         background: inherit;
         -webkit-appearance: none;
