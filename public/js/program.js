@@ -53,4 +53,3 @@ function showSwitchMenu(subject) {
         }
     });
 }
-showSwitchMenu('jobs');

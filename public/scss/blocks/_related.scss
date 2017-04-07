@@ -12,17 +12,12 @@
         margin-top: 10px;
     }
     &__text{
-        @include full;
         margin-bottom: 5px;
         h2, p{
             margin: 10px 0 15px;;
         }
         h2{
             margin-bottom: 15px;
-        }
-        @include bp(large){
-            @include span(3);
-            clear: none;
         }
     }
 }
