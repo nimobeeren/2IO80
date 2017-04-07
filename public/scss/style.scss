@@ -15,7 +15,7 @@
     left: -9990px;
     right: 0;
     @if $dir == both or $dir == left {
-      border-left: 9990px solid $color;
+      //border-left: 9990px solid $color;
     }
     @if $dir == both or $dir == right {
       box-shadow: 9990px 0 0 $color;
