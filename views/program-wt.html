@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Science</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/utility.js"></script>
+</head>
+
+<body>
+{{> header}}
+    <main>
+        <div class="intro-text">
+            <div class="intro-text__left">
+                <h1 class="intro-text__heading">Major Web Science</h1>
+                <div class="intro-text__content" id="content">
+                    <p class="intro-text__content-text">
+                        The world runs on software nowadays, but sometimes it runs in the wrong direction. Just imagine what could happen if level crossing barriers failed to close in good time or if the power failed as a result of a software fault. Why do so many projects on automation fail, why is it so complicated to design or maintain a large software system? Why are some apps an instant success and others not, what is needed for new web services to emerge? <br/> In this major you will learn the basic principles and methods to develop (large) software systems and web services that are reliable, efficient and maintainable. This is something that goes beyond writing computer programs. You will learn how to take the user perspective into account. You will be able to reason about the correctness and efficiency of programs in a scientific way, by using formal mathematical methods. You will know how to develop further the technology and software that underlies the internet. <br/> You will develop knowledge and skills that you can enjoy for the rest of your career and that will therefore not immediately become obsolete whenever a new programming language or development environment is introduced. <br/> In addition to expanding your knowledge and skills, you also learn how to apply all of these in order to solve specific problems. We will teach you how to do this by means of Design-Based Learning, known as the DBL projects. These involve working in a team of fellow students on projects. In the first year you will develop a user-friendly web portal. In the second year you can choose one out of four projects: develop an embedded system, or a brand new app, or an information system or a new efficient algorithm for a specific problem. In the third year, your final project will be a special DBL where you develop a software system (or improve an existing one) on request of a company.
+                    </p>
+                    <button class="intro-text__read-more" data-toggle="content">
+                        read more
+                        <svg><use xlink:href="/svg-symbols.svg#arrow"></use></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="intro-text__image">
+                <div class="intro-text__image-inner"></div>
+            </div>
+        </div>
+    <a href="#" class="btn program__c2a-primary">
+        Apply now
+    </a>
+    <a href="#" class="btn program__c2a-secondary">
+        Go to an introduction day
+    </a>
+        <div class="piechart">
+            <h2>
+                Course structure
+            </h2>
+            <img src="/images/piechart.jpg" height="150" width="150">
+            <img src="/images/piechart.jpg" height="150" width="150">
+            <img src="/images/piechart.jpg" height="150" width="150">
+
+            <div class="piechart__legend">
+                <div class="piechart__legend-item piechart__legend-item--basic">Basic courses</div>
+                <div class="piechart__legend-item piechart__legend-item--major">Major courses</div>
+                <div class="piechart__legend-item piechart__legend-item--use">USE courses</div>
+                <div class="piechart__legend-item piechart__legend-item--free">Free courses</div>
+                <div class="piechart__legend-item piechart__legend-item--specialisation">Specialisation</div>
+                <a href="#" class="btn btn--tertiary piechart__btn">
+                    courses in detail
+                    <svg><use xlink:href="/svg-symbols.svg#arrow" /></svg>
+                </a>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion__items">
+                <div class="accordion__item" id="accordion--admission">
+                    <div class="accordion__header" onclick="toggleAccordion('accordion--admission')">
+                        <div class="accordion__name">Admission requirements</div>
+                        <div class="accordion__icon accordion--expand">+</div>
+                        <div class="accordion__icon accordion--chevron">></div>
+                    </div>
+                    <div class="accordion__content">
+                        <h5>Admission requirements for international students</h5>
+                        TU/e welcomes students from all over the world, but before we can grant admission we need to check that your previous educational background is at a sufficient level to participate succesfully in a TU/e program. This includes a specific level of Mathematics and Physics in the last two years of secondary education.
+                        <h5>Dutch pre-University (vwo) diploma or equivalent</h5>
+                        A Dutch pre-University (vwo) diploma qualifies a student for admission to the Dutch Bachelor's programs of Eindhoven University of Technology. If you do not have a Dutch pre-university diploma (vwo) other requirements apply. Your secondary education must be recognized as being equivalent to the Dutch vwo diploma. The requirements for a number of countries are detailed under "Requirements per country".
+                    </div>
+                </div>
+                <div class="accordion__item" id="accordion--enrollment">
+                    <div class="accordion__header" onclick="toggleAccordion('accordion--enrollment')">
+                        <div class="accordion__name">Enrollment</div>
+                        <div class="accordion__icon accordion--expand">+</div>
+                        <div class="accordion__icon accordion--chevron">></div>
+                    </div>
+                    <div class="accordion__content">
+                        A Dutch pre-University (vwo) diploma qualifies a student for admission to the Dutch Bachelor's programs of Eindhoven University of Technology. If you are commencing your studies at the TU/e, you must register in Studielink before May 1. In order to register in Studielink, you must first get a DigiD. If you do not already have one, please contact the Dutch tax office on time and request one. Please note it takes several days for the tax office to process your request. For the majority of international students, enrollment takes place during the TU/e Introduction Program. The staff of the International Relations Office will help you to fill in the necessary forms.Students not taking part in the TU/e Introduction Program will also be assisted by the International Relations Office to fill in the enrollment forms.
+                    </div>
+                </div>
+                <div class="accordion__item" id="accordion--coaching">
+                    <div class="accordion__header" onclick="toggleAccordion('accordion--coaching')">
+                        <div class="accordion__name">Coaching</div>
+                        <div class="accordion__icon accordion--expand">+</div>
+                        <div class="accordion__icon accordion--chevron">></div>
+                    </div>
+                    <div class="accordion__content">
+                        There are coaches and they teach you things. Also, lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt est ac leo faucibus, sed tempus risus bibendum. Cras sagittis dapibus augue, ut efficitur nisi blandit ac. Proin quis quam auctor, sagittis enim ac, efficitur lacus. Aliquam fermentum eros viverra, hendrerit diam quis, gravida odio. Integer viverra leo id elit dapibus vestibulum. Nulla facilisi. Pellentesque at felis dui. Donec egestas sem non lectus convallis mollis. Nam iaculis blandit nunc. Fusce rutrum felis vitae elementum accumsan. Donec eget bibendum augue, pellentesque egestas mi. Phasellus accumsan augue vel eleifend finibus. Vestibulum accumsan facilisis nibh, id mattis metus. Pellentesque cursus varius nisl ac volutpat. Etiam ut tincidunt velit. Integer hendrerit tristique leo quis gravida. Cras tincidunt nibh ante. Morbi aliquam ultricies purus, nec iaculis ipsum rutrum sit amet. Integer quis tortor feugiat, facilisis nisi ut, vestibulum erat. Pellentesque bibendum mi id erat vehicula lobortis. Nunc accumsan erat ex, quis sodales justo sollicitudin eu. Nulla ullamcorper ipsum id massa semper vehicula. Curabitur eu lacus suscipit nulla efficitur fermentum. Vivamus quis vehicula velit. Phasellus at faucibus urna. Ut a tincidunt libero. In hac habitasse platea dictumst.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion__desktop-content"></div>
+        </div>
+        <div class="switch-menu">
+            <h2>After your study</h2>
+            <div class="switch-menu__item" data-subject="masters" onclick="showSwitchMenu('masters')">Masters</div><!--
+    --><div class="switch-menu__item" data-subject="jobs" onclick="showSwitchMenu('jobs')">Jobs</div>
+            <div class="switch-menu__content" data-subject="masters">If you are interested in studying further after completing your Bachelor program, take a look at these related master programs.
+                <a href="{{url}}" class="program-button">
+                    <div class="program-button__main-content">
+                        <h3>Computer Science and Engineering</h3>
+                        <p>text text texts</p>
+                    </div>
+                    <div class="program-button__overview">
+                        <div class="program-button__overview-icon">
+                            <svg>
+                                <use xlink:href="/svg-symbols.svg#person"></use>
+                            </svg>
+                            Master Msc
+                        </div>
+                        <div class="program-button__overview-icon">
+                            <svg>
+                                <use xlink:href="/svg-symbols.svg#language"></use>
+                            </svg>
+                            English
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="switch-menu__content" data-subject="jobs">As an engineer in Computer Science and Engineering , you are ready to pursue a career as a software or app developer. You could, for example, begin work as a team member with one of the many innovative companies in the region, or even with organizations in other areas of the world. <br/> Would you like to develop into roles such as project manager or software architect? In that case, we recommend undertaking a follow-up program in the form of a Master's degree. You might complete the Master's in Business Information Systems. Then you will soon be the one in the team who analyzes the business problem. You will also determine the direction that the IT solution will take.<br/> After completing the Master's in Computer Science and Engineering, you could be working on software for securing level crossings. You can also choose Web Science courses among the electives of your Master's program. <br/> After a Master's in Embedded Systems, you could work on the design of software for a 3D television, for example. </br> There is considerable shortage of computer science and engineering graduates. You can get an idea of what kinds of jobs exist in the ICT sector in a special edition of the Volkskrant newspaper.</div>
+        </div>
+        <div class="city-information">
+            <h2>What about our city?</h2>
+            <div class="city-information__icon">
+                <svg><use xlink:href="/svg-symbols.svg#beer"></use></svg>
+                <span>longest beer street</span>
+            </div>
+            <div class="city-information__icon">
+                <svg><use xlink:href="/svg-symbols.svg#person"></use></svg>
+                <span>10.000 students</span>
+            </div>
+            <div class="city-information__icon">
+                <svg><use xlink:href="/svg-symbols.svg#flask"></use></svg>
+                <span>14 unique research labs</span>
+            </div>
+            <div class="city-information__icon">
+                <svg><use xlink:href="/svg-symbols.svg#globe"></use></svg>
+                <span>90 nationalities</span>
+            </div>
+            <a href="#" class="btn btn--tertiary city-information__link">
+                more about Eindhoven
+                <svg><use xlink:href="/svg-symbols.svg#arrow" /></svg>
+            </a>
+        </div>
+    <a href="#" class="btn body--program__btn">
+         Apply now!
+    </a>
+        <div class="related">
+            <div class="related__text">
+                <h2>Not your perfect study?</h2>
+                <p>Maybe one of these studies suits you better!</p>
+            </div>
+
+            <a href="{{url}}" class="program-button program-button--small">
+                <div class="program-button__main-content">
+                    <h3> Computer Science and Engineering </h3>
+                    <p>text text text</p>
+                </div>
+                <div class="program-button__overview">
+                    <div class="program-button__overview-icon">
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#person"></use>
+                        </svg>
+                        Master Msc
+                    </div>
+                    <div class="program-button__overview-icon">
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#language"></use>
+                        </svg>
+                        English
+                    </div>
+                </div>
+            </a>
+            <a href="{{url}}" class="program-button program-button--small">
+                <div class="program-button__main-content">
+                    <h3>Web Science</h3>
+                    <p>text text text</p>
+                </div>
+                <div class="program-button__overview">
+                    <div class="program-button__overview-icon">
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#person"></use>
+                        </svg>
+                        Bachelor Bsc
+                    </div>
+                    <div class="program-button__overview-icon">
+                        <svg>
+                            <use xlink:href="/svg-symbols.svg#language"></use>
+                        </svg>
+                        English
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+    {{> footer}}
+    <script src="/js/index.js" charset="utf-8"></script>
+    <script src="/js/program.js" charset="utf-8"></script>
+</body>
+</html>

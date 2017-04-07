@@ -78,7 +78,7 @@ function filter() {
             language: "en",
             contents: "Over the past decade the use of web-based systems has exploded. Buying clothes, books, and DVDs, booking hotels, checking the weather forecast, contacting your friends: all...",
             title: "Web Science, BSc",
-            url: "/program/bachelors/web-science"
+            url: "/program-wt"
         },
         {
             name: "Psychology & Technology",
@@ -89,7 +89,7 @@ function filter() {
             language: "en",
             contents: "The games you play, the mobile phone you use to send text messages, the website where you do your online shopping. Technology is all around us, and is an important...",
             title: "Psychology & Technology, BSc",
-            url: "/program/bachelors/psychology-technology"
+            url: "/program-pt"
         },
         {
             name: "Human Technology Interaction",
@@ -100,7 +100,7 @@ function filter() {
             language: "en",
             contents: "Technological development offers new possibilities to make people's daily lives more healthy, safe, understandable, independent, fun and comfortable...",
             title: "Human Technology Interaction, MSc",
-            url: "/program/masters/HTI"
+            url: "/program-hti"
         }, {
             name: "Computer Science and Engineering",
             faculty: "mcs",
@@ -110,7 +110,7 @@ function filter() {
             language: "en",
             contents: "Software systems play an often unseen yet highly important role in our society. Consider, for example, the systems of banks or insurance companies, or the...",
             title: "Computer Science and Engineering, MSc",
-            url: "/program/masters/CSE"
+            url: "/program-cse"
         }];
 
     // Get the allowed values for the current filter
