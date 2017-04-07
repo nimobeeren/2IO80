@@ -4,6 +4,8 @@ require("svg4everybody");
 
 require("./filter.js");
 require("./tabs.js");
+require("./tabs.js");
+require("./polyfill.js");
 
 // footer
 document.getElementById("scroll-to-top").addEventListener("click", function(){

@@ -30,7 +30,7 @@ function toggleAccordion(element) {
 
 function showSwitchMenu(subject) {
     // Hide and show the correct content
-    [...document.getElementsByClassName('switch-menu__content')].forEach(el => {
+    Array.from(document.getElementsByClassName('switch-menu__content')).forEach(el => {
         if(el.getAttribute('data-subject') === subject) {
             // Show the desired item
             el.style.display = 'block';
@@ -41,7 +41,7 @@ function showSwitchMenu(subject) {
     });
 
     // Put emphasis on the selected item
-    [...document.getElementsByClassName('switch-menu__item')].forEach(el => {
+    Array.from(document.getElementsByClassName('switch-menu__item')).forEach(el => {
         if(el.getAttribute('data-subject') === subject) {
             // Put emphasis on the item
             el.style.color = '#4A4A4A'; // color-black
