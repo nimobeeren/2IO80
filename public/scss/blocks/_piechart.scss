@@ -1,69 +1,69 @@
-.piechart{
+.piechart {
+  @include full;
+  @include bp(large) {
     @include full;
-    @include bp(large){
-        @include full;
+  }
+  &__year {
+    @include span(2);
+    margin-top: 15px;
+    &:nth-child(2n+1) {
+      @include last;
     }
-    &__year{
-        @include span(2);
-        margin-top: 15px;
-        &:nth-child(2n+1){
-            @include last;
-        }
-        @include bp(large){
-            @include span(3);
-            text-align: center;
-            &:nth-child(2n+1){ // overwrite @include last
-                float: left;
-            }
-            svg{
-                max-width: span(2 of 3);
-            }
-        };
-        h6{
-            font-size: rem(14px);
-            color: $color-grey;
-            text-align: center;
-            font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
+    @include bp(large) {
+      @include span(3);
+      text-align: center;
+      &:nth-child(2n+1) { // overwrite @include last
+        float: left;
+      }
+      svg {
+        max-width: span(2 of 3);
+      }
     }
-    &__legend{
-        @include span(2 last);
-        margin-top: 15px;
-        @include bp(large){
-            @include span(3 last);
-        };
+  ;
+    h6 {
+      font-size: rem(14px);
+      color: $color-grey;
+      text-align: center;
+      font-weight: 400;
+      margin-top: 0;
+      margin-bottom: 15px;
     }
-    &__legend-item{
-        margin-bottom: 5px;
-        color: $color-grey;
-        &:before{
-            content: "";
-            display: inline-block;
-            width: 12/16*1em;
-            height: 12/16*1em;
-            border-radius: 4px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        &--basic:before{
-            background: $color-orange;
-        }
-        &--major:before{
-            background: $color-blue;
-        }
-        &--use:before{
-            background: $color-blue-light;
-        }
-        &--free:before{
-            background: $color-pink;
-        }
-        &--specialisation:before{
-            background: $color-yellow;
-        }
+  }
+  &__legend {
+    margin-top: 15px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__legend-item {
+    margin-bottom: 5px;
+    color: $color-grey;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 12/16*1em;
+      height: 12/16*1em;
+      border-radius: 4px;
+      margin-right: 10px;
+      vertical-align: middle;
     }
-    &__btn#{&}__btn{
-        margin-top: 15px;
+    &--basic:before {
+      background: $color-orange;
     }
+    &--major:before {
+      background: $color-blue;
+    }
+    &--use:before {
+      background: $color-blue-light;
+    }
+    &--free:before {
+      background: $color-pink;
+    }
+    &--specialisation:before {
+      background: $color-yellow;
+    }
+  }
+  &__btn#{&}__btn {
+    margin-top: 15px;
+  }
 }
