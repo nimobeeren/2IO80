@@ -91,7 +91,7 @@ header {
 }
 .header{
     &__logo {
-        @include span(1);
+        width: 24%;
         margin-top: 10px;
         margin-bottom: 7px;
         text-align: center;
