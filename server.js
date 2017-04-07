@@ -16,22 +16,22 @@ app.set('view engine', 'mustache');
 console.log('Server running port:', port);
 
 // Web Science URLs
-const urls = [
-'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/program-learning-objectives/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/basic-courses/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/elective-courses-and-packages/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/coaching/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/professional-skills/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/bachelor-thesis/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/examination-schedules/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/graduation-deadlines/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/associate-master-programs/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/regulationsforms/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/advisors-tutors/',
-    'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/contact/'
-];
+// const urls = [
+// 'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/program-learning-objectives/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/basic-courses/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/curriculum/elective-courses-and-packages/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/coaching/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/professional-skills/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/bachelor-thesis/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/examination-schedules/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/graduation-deadlines/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/associate-master-programs/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/regulationsforms/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/advisors-tutors/',
+//     'https://studyguide.tue.nl/programs/bachelor-college/majors/web-science/contact/'
+// ];
 
 // P&T URLs
 // const urls = [
@@ -116,6 +116,37 @@ const urls = [
 //     'https://studyguide.tue.nl/programs/graduate-school/masters-programs/human-technology-interaction/regulations/'
 // ];
 
+// CSE URLS
+const urls = [
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/web-science-stream/core-courses/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/software-science-stream/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/software-science-stream/core-courses/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/systems-science-stream/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/systems-science-stream/core-courses/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/free-stream/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/free-electives/',
+    'https://studyguide.tue.nl/programs/tue-honors-academy/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/composition-of-study-program/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/curriculum/admission-to-seminars-capita-selecta-master-project/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/coaching-and-professional-skills/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/coaching-and-professional-skills/study-advisor/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/coaching-and-professional-skills/mentoring/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/internship-and-exchange/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/honors-program/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/graduation/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/graduation/cs-research-groups/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/graduation/graduation-checklist/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/graduation/thesis-writing-guidelines/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/examination-schedules/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/graduation-deadlines/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/prior-bachelors/',
+    'https://studyguide.tue.nl/programs/graduate-school/masters-programs/computer-science-and-engineering/regulations/',
+];
+
 urls.forEach(url => {
     let sc = scraper.StaticScraper.create(url);
     let page = {};
@@ -126,7 +157,7 @@ urls.forEach(url => {
     page['title'] = '';
     page['faculty'] = 'Psychology & Technology';
     page['degree'] = 'Master MSc';
-    page['program'] = 'Human-Technology Interaction';
+    page['program'] = 'Human-Technolgy Interaction';
     page['url'] = url;
 
     sc.scrape(function ($) {
@@ -178,7 +209,7 @@ urls.forEach(url => {
         // Add page to search database
         console.log(page);
         db.query(db => {
-            // db.collection('search2').insertOne(page);
+            db.collection('search2').insertOne(page);
         });
     });
 });
