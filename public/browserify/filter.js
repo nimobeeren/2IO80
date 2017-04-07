@@ -150,7 +150,7 @@ function filter() {
 
     // Show message if result is empty
     if (result.length === 0) {
-        resultHTML = 'No results were found for the selected filters. Please make a different selection.';
+        resultHTML = '<p>No results were found for the selected filters. Please make a different selection.</p>';
     } else {
         resultHTML = '';
     }
