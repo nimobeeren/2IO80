@@ -62,10 +62,20 @@ module.exports = {
                 content: "<img src='//lorempixel.com/600/400/' /> <p> There is something about parenthood that gives us a sense of history and a deeply rooted desire to send on into the next generation the great things we have discovered about life. And part of that is the desire to instill in our children the love of science, of learning and particularly the love of nature. Your fascination with the universe and how to explore it as we so often do in the field of astronomy can be highly academic and dry as maybe it was if you took a course in astronomy. But when you get out there in the field at night, your equipment is just right and the night sky comes alive with activity, there is no other experience like it for majesty and pure excitement. And that is the kind of experience we want our children to come to love as much as we do.</p><figure><img src='//lorempixel.com/600/400'/><figcaption>Dit is een heel mooi konijn, punt</figcaption></figure><p>There is something about parenthood that gives us a sense of history and a deeply rooted desire to send on into the next generation the great things we have discovered about life. And part of that is the desire to instill in our children the love of science, of learning and particularly the love of nature. Your fascination with the universe and how to explore it as we so often do in the field of astronomy can be highly academic and dry as maybe it was if you took a course in astronomy. But when you get out there in the field at night, your equipment is just right and the night sky comes alive with activity, there is no other experience like it for majesty and pure excitement. And that is the kind of experience we want our children to come to love as much as we do.</p>"
             });
         });
-
-        app.get('/program/*', (req, res) => {
-            res.render('program.html');
+        app.get('/program-pt', (req, res) => {
+            res.render('program-pt.html');
         });
+        app.get('/program-wt', (req, res) => {
+            res.render('program-wt.html');
+        });
+        app.get('/program-hti', (req, res) => {
+            res.render('program-hti.html');
+        });
+        app.get('/program-cse', (req, res) => {
+            res.render('program-cse.html');
+        });
+
+
 
         app.get('*', (req, res) => {
             let success = false;
