@@ -8,14 +8,6 @@ $susy-breakpoints: (
     )
 );
 
-$susy-settings: (
-    debug: (
-        image: show,
-        output: overlay,
-        toggle: top right
-    )
-);
-
 $susy: map-merge(layout(map-get(map-get($susy-breakpoints, small), layout)), $susy-settings);
 
 @mixin bp($susy-breakpoint){
