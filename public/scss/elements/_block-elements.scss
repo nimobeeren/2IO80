@@ -9,6 +9,7 @@
 // Styleguide 3.1
 figure{
     text-align: center;
+    display: inline-block;
 }
 figcaption{
     @extend small;
