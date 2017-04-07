@@ -2,8 +2,6 @@
   margin: 15px;
   @include bp(large) {
     @include span(full nest);
-    border-top: 2px solid $color-grey-light;
-    border-bottom: 2px solid $color-grey-light;
     padding: 15px;
   }
   &__items {
