@@ -1,7 +1,11 @@
 .piechart {
   @include full;
+  text-align: center;
   @include bp(large) {
     @include full;
+  }
+  h2 {
+
   }
   &__year {
     @include span(2);
@@ -11,7 +15,6 @@
     }
     @include bp(large) {
       @include span(3);
-      text-align: center;
       &:nth-child(2n+1) { // overwrite @include last
         float: left;
       }
@@ -19,7 +22,7 @@
         max-width: span(2 of 3);
       }
     }
-  ;
+
     h6 {
       font-size: rem(14px);
       color: $color-grey;
@@ -34,6 +37,7 @@
     margin-bottom: 15px;
     display: inline-block;
     margin-left: auto;
+    text-align: left;
     margin-right: auto;
   }
   &__legend-item {
