@@ -71,11 +71,8 @@ module.exports = {
             });
         });
 
-        app.get('/program/bachelors/psychology-technology', (req, res) => {
-            res.render('program.html', {
-                title: 'Psychology & Technology',
-
-            })
+        app.get('/program/bachelors/psychology-technolgy', (req, res) => {
+            res.render('program-pt.html');
         });
         app.get('/program/bachelors/web-science', (req, res) => {
             res.render('program-wt.html');
