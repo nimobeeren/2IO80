@@ -50,12 +50,18 @@
     @include bp(large) {
       display: none !important;
     }
+    h5 {
+      margin: 10px 0;
+    }
   }
   &__desktop-content {
     display: none;
     @include bp(large) {
       @include span(last 8);
       display: block;
+    }
+    h5 {
+      margin: 10px 0;
     }
   }
 }
