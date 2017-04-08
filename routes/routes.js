@@ -71,16 +71,16 @@ module.exports = {
             });
         });
 
-        app.get('/program-pt', (req, res) => {
+        app.get('/program/bachelors/psychology-technology', (req, res) => {
             res.render('program-pt.html');
         });
-        app.get('/program-wt', (req, res) => {
+        app.get('/program/bachelors/web-science', (req, res) => {
             res.render('program-wt.html');
         });
-        app.get('/program-hti', (req, res) => {
+        app.get('/program/masters/HTI', (req, res) => {
             res.render('program-hti.html');
         });
-        app.get('/program-cse', (req, res) => {
+        app.get('/program/masters/CSE', (req, res) => {
             res.render('program-cse.html');
         });
         app.get('/program/*', (req, res) => {
